@@ -1,3 +1,8 @@
 function Main.main 0
+call StartScreen.chooseDifficulty 0
+pop static 0
+push static 0
+call Output.printInt 1
+pop temp 0
 push constant 0
 return

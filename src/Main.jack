@@ -1,7 +1,9 @@
-class Main
-{
-    function void main () 
-    {
+class Main{
+    static int coins;
+
+    function void main(){
+        let coins = StartScreen.chooseDifficulty();
+        do Output.printInt(coins);
         return;
     }
 }
