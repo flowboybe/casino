@@ -1,5 +1,5 @@
 class StartScreen{
-    function int chooseDifficulty(){
+    function void chooseDifficulty(){
         var char pressedKey;
         do Output.moveCursor(12,20);
         do Output.printString("WELCOME TO OUR CASINO!");
@@ -13,21 +13,47 @@ class StartScreen{
         do Output.printString("2. Pretty good");
         do Output.moveCursor(13,10);
         do Output.printString("3. LETS GO GAMBLING!");
-        let pressedKey = Keyboard.keyPressed();
-        do Output.printInt(pressedKey);
         while ((~(pressedKey = 49)) & (~(pressedKey = 50)) & (~(pressedKey = 51))){
             let pressedKey = Keyboard.keyPressed();
         }
         do Screen.clearScreen();
         if (pressedKey = 49){
-            return 500;
+            do Main.SetCoins(500);
         }
         if (pressedKey = 50){
-            return 250;
+            do Main.SetCoins(250);
         }
         if (pressedKey = 51){
-            return 1;
+            do Main.SetCoins(1);
         }
-        return -1;
+        return;
+    }
+
+    function void initializeMenu(int coins){
+        var char pressedKey;
+        do Output.moveCursor(5, 5);
+        do Output.printString("CASINO");
+        do Output.moveCursor(5, 50);
+        do Output.printString("Cash: ");
+        do Output.printInt(coins);
+        do Output.moveCursor(10,20);
+        do Output.printString("SELECT GAME MODE:");
+        do Output.moveCursor(12,20);
+        do Output.printString("1. ONE-ARMED BANDIT");
+        do Output.moveCursor(14,20);
+        do Output.printString("2. BLACKJACK");
+        do Sys.wait(1000);
+        while ((~(pressedKey = 49)) & (~(pressedKey = 50))){
+            let pressedKey = Keyboard.keyPressed();
+        }
+        if (pressedKey = 49){
+            do Screen.clearScreen();
+            do Output.printString("Bandit");
+        }
+        if (pressedKey = 50){
+            do Screen.clearScreen();
+            do Output.printString("Blackjack");
+        }
+        return;
     }
 }

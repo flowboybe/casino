@@ -2,8 +2,19 @@ class Main{
     static int coins;
 
     function void main(){
-        let coins = StartScreen.chooseDifficulty();
-        do Output.printInt(coins);
+        do StartScreen.chooseDifficulty();
+        while (true){
+            do StartScreen.initializeMenu(coins);
+        }
+        return;
+    }
+
+    function int GetCoins(){
+        return coins;
+    }
+
+    function void SetCoins(int value){
+        let coins = value;
         return;
     }
 }
