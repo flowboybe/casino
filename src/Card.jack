@@ -1,3 +1,41 @@
 class Card{
-    
+    field bool opened;
+    field int points;
+    field int colour;
+
+    constructor Card new(int points, int colour){
+        let points = points;
+        let colour = colour;
+        let opened = false;
+        return this;
+    }
+
+    method void openCard (){
+        let opened = true;
+        return;
+    }
+
+    method void closeCard (){
+        let opened = false;
+        return;
+    }
+
+    method void drawCard(int x, int y){
+        if (~(opened)){
+            do Screen.drawRectangle(x, y, x + 32, y + 48);
+        }
+        else{
+            do Screen.drawLine(x, y, x, y + 48);
+            do Screen.drawLine(x, y + 48, x + 32, y + 48);
+            do Screen.drawLine(x + 32, y + 48, x + 32, y);
+            do Screen.drawLine(x + 32, y, x, y);
+            do SymbolTable.drawPoint(10, x + 4, y + 4);
+        }
+        return;
+    }
+
+    method void dispose() {
+        do Memory.deAlloc(this);
+        return;
+    }
 }

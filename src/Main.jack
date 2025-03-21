@@ -1,9 +1,14 @@
 class Main{
     static int coins;
+    static int seed;
 
     function void main(){
         do StartScreen.chooseDifficulty();
         while (true){
+            let seed = seed + 3;
+            if (seed > 1000){
+                let seed = 110;
+            }
             do StartScreen.initializeMenu(coins);
         }
         return;
@@ -22,5 +27,9 @@ class Main{
         do Output.moveCursor(2, 55);
         do Output.printInt(coins);
         return;
+    }
+
+    function int getSeed(){
+        return seed;
     }
 }
