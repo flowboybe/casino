@@ -1,0 +1,132 @@
+// class MachineOptions {
+//     function void lowerLever () {
+//         var char key;
+//         var int x, y, width, height;
+//         var bool flag;
+ 
+//         let key = Keyboard.keyPressed();
+//         if (key = 32) {
+//             // нажатие пробела
+
+//             do Cells.cleanCells();
+//             do Sys.wait(100);
+
+//             do Screen.setColor(false);
+//             let x = 443;
+//             let y = 105;
+//             let width = 20;
+//             let height = 65;
+//             do Screen.drawRectangle(x, y, x + width, y + height); // очистка верхнего рычага
+
+//             do Screen.setColor(true);
+//             let x = 453;
+//             let y = 178;
+//             let width = 8;
+//             let height = 50;
+//             do Screen.drawRectangle(x, y, x + width, y + height);
+//             let x = 456;
+//             let y = 232;
+//             do Screen.drawCircle(x, y, 7); // отрисовка нижнего рычага
+
+            
+//             do Cells.changeFirstCell();
+//             do Cells.changeSecondCell();
+//             do Cells.changeThirdCell();
+//             do Sys.wait(100);
+        
+            
+
+//             return;
+//         } 
+//         else {
+//             do Sys.wait(100);
+
+//             do Screen.setColor(false);
+//             let x = 443;
+//             let y = 178;
+//             let width = 20;
+//             let height = 65;
+//             do Screen.drawRectangle(x, y, x + width, y + height);  // очистка нижнего рычага
+
+//             do Screen.setColor(true);
+//             let x = 453;
+//             let y = 120;
+//             let width = 8;
+//             let height = 50;
+
+//             do Screen.drawRectangle(x, y, x + width, y + height);
+
+//             let x = 456;
+//             let y = 116;
+//             do Screen.drawCircle(x, y, 7); // отрисовка верхнего рычага
+//         }
+
+//         return;
+//     }
+// }
+
+class MachineOptions {
+    // опустить рычаг
+    function void lowerArm () {
+        var char key;
+        var int x, y, width, height;
+
+ 
+        let key = Keyboard.keyPressed();
+        if (key = 32) {
+            // нажатие пробела
+
+            do Cells.cleanCells();
+
+            do Screen.setColor(false);
+            let x = 443;
+            let y = 105;
+            let width = 20;
+            let height = 65;
+            do Screen.drawRectangle(x, y, x + width, y + height); // очистка верхнего рычага
+
+            do Screen.setColor(true);
+            let x = 453;
+            let y = 178;
+            let width = 8;
+            let height = 50;
+            do Screen.drawRectangle(x, y, x + width, y + height);
+            let x = 456;
+            let y = 232;
+            do Screen.drawCircle(x, y, 7); // отрисовка нижнего рычага  
+
+            do Cells.ActivateCells(); // активация смены ячеек
+        } 
+
+        return;
+    }
+
+    // поднять рычаг
+    function void liftArm() {
+        var char key;
+        var int x, y, width, height;
+
+        do Sys.wait(100);
+
+        do Screen.setColor(false);
+        let x = 443;
+        let y = 178;
+        let width = 20;
+        let height = 65;
+        do Screen.drawRectangle(x, y, x + width, y + height);  // очистка нижнего рычага
+
+        do Screen.setColor(true);
+        let x = 453;
+        let y = 120;
+        let width = 8;
+        let height = 50;
+
+        do Screen.drawRectangle(x, y, x + width, y + height);
+
+        let x = 456;
+        let y = 116;
+        do Screen.drawCircle(x, y, 7); // отрисовка верхнего рычага
+
+        return;
+    }
+}

@@ -1,0 +1,144 @@
+class Cells {
+    static int seed1;
+    static int seed2;
+    static int seed3;
+
+    // ячейки начинают изменяться
+    function void ActivateCells() {
+        var int iterations;
+
+        let iterations = 0;
+
+        while (iterations < 20) {
+            do Cells.changeFirstCell();
+            do Cells.changeSecondCell();
+            do Cells.changeThirdCell();
+
+            do Sys.wait(100);
+
+            let iterations = iterations + 1;
+        }
+        
+        return;
+    }
+
+    // выбор для первой ячейки
+    function void changeFirstCell() { 
+        var CellsImages cellImage;
+        var int randomNumber;
+        var Random randomizer;
+        
+
+        let seed1 = seed1 + 100;
+        if (seed1 > 1000) {
+            let seed1 = 120;
+        }
+
+        let randomizer = Random.new(seed1);  
+        let randomNumber = randomizer.nextInt(2);
+        
+        if (randomNumber = 0) {
+            do cellImage.drawRectangleCell(90, 120, 30, 30);
+            return;
+        }
+        if (randomNumber = 1) {
+            do cellImage.drawLine(90, 120);
+            return;
+        }
+        if (randomNumber = 2) {
+            do cellImage.drawCircleCell(90, 120, 10);
+            return;
+        }
+
+        return;
+    }
+
+    // выбор для второй ячейки
+    function void changeSecondCell() {
+        var CellsImages cellImage;
+        var int randomNumber;
+        var Random randomizer;
+        
+
+        let seed2 = seed2 + 80;
+        if (seed2 > 1000) {
+            let seed2 = 200;
+        }
+
+        let randomizer = Random.new(seed2);  
+        let randomNumber = randomizer.nextInt(2);
+
+        if (randomNumber = 0) {
+            do cellImage.drawRectangleCell(210, 120, 30, 30);
+            return;
+        }
+        if (randomNumber = 1) {
+            do cellImage.drawLine(210, 120);
+            return;
+        }
+        if (randomNumber = 2) {
+            do cellImage.drawCircleCell(210, 120, 10);
+            return;
+        }
+
+        return;
+    }
+
+    // выбор для третьей ячейки
+    function void changeThirdCell() {
+        var CellsImages cellImage;
+        var int randomNumber;
+        var Random randomizer;
+        
+
+        let seed3 = seed3 + 40;
+        if (seed3 > 1000) {
+            let seed3 = 65;
+        }
+
+        let randomizer = Random.new(seed3);  
+        let randomNumber = randomizer.nextInt(2);
+
+        if (randomNumber = 0) {
+            do cellImage.drawRectangleCell(330, 120, 30, 30);
+            return;
+        }
+        if (randomNumber = 1) {
+            do cellImage.drawLine(330, 120);
+            return;
+        }
+        if (randomNumber = 2) {
+            do cellImage.drawCircleCell(330, 120, 10);
+            return;
+        }
+
+        return;
+    }
+
+    function void cleanCells() {
+        var int x, y, width, height;
+
+        let x = 50;
+        let y = 70;
+        let width = 109;
+        let height = 110;
+
+        do Screen.setColor(false);
+        do Screen.drawRectangle(x, y, x + width, y + height); 
+
+
+        let x = 166;
+        let width = 108;
+
+        do Screen.drawRectangle(x, y, x + width, y + height);
+
+
+        let x = 281;
+        let width = 107;
+
+        do Screen.drawRectangle(x, y, x + width, y + height);
+
+        return;
+    }
+
+}

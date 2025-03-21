@@ -46,11 +46,11 @@ class StartScreen{
         while ((~(pressedKey = 49)) & (~(pressedKey = 50))){
             let pressedKey = Keyboard.keyPressed();
         }
-        if (pressedKey = 49){
+        if (pressedKey = 49) {
             do Screen.clearScreen();
-            do Output.printString("Bandit");
+            do Bandit.initializeBandit();
         }
-        if (pressedKey = 50){
+        if (pressedKey = 50) {
             do Screen.clearScreen();
             do Blackjack.initializeBlackjack();
         }

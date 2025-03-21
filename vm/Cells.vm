@@ -1,0 +1,282 @@
+function Cells.ActivateCells 1
+push constant 0
+pop local 0
+label WHILE_EXP0
+push local 0
+push constant 20
+lt
+not
+if-goto WHILE_END0
+call Cells.changeFirstCell 0
+pop temp 0
+call Cells.changeSecondCell 0
+pop temp 0
+call Cells.changeThirdCell 0
+pop temp 0
+push constant 100
+call Sys.wait 1
+pop temp 0
+push local 0
+push constant 1
+add
+pop local 0
+goto WHILE_EXP0
+label WHILE_END0
+push constant 0
+return
+function Cells.changeFirstCell 3
+push static 0
+push constant 100
+add
+pop static 0
+push static 0
+push constant 1000
+gt
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push constant 120
+pop static 0
+label IF_FALSE0
+push static 0
+call Random.new 1
+pop local 2
+push local 2
+push constant 2
+call Random.nextInt 2
+pop local 1
+push local 1
+push constant 0
+eq
+if-goto IF_TRUE1
+goto IF_FALSE1
+label IF_TRUE1
+push local 0
+push constant 90
+push constant 120
+push constant 30
+push constant 30
+call CellsImages.drawRectangleCell 5
+pop temp 0
+push constant 0
+return
+label IF_FALSE1
+push local 1
+push constant 1
+eq
+if-goto IF_TRUE2
+goto IF_FALSE2
+label IF_TRUE2
+push local 0
+push constant 90
+push constant 120
+call CellsImages.drawLine 3
+pop temp 0
+push constant 0
+return
+label IF_FALSE2
+push local 1
+push constant 2
+eq
+if-goto IF_TRUE3
+goto IF_FALSE3
+label IF_TRUE3
+push local 0
+push constant 90
+push constant 120
+push constant 10
+call CellsImages.drawCircleCell 4
+pop temp 0
+push constant 0
+return
+label IF_FALSE3
+push constant 0
+return
+function Cells.changeSecondCell 3
+push static 1
+push constant 80
+add
+pop static 1
+push static 1
+push constant 1000
+gt
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push constant 200
+pop static 1
+label IF_FALSE0
+push static 1
+call Random.new 1
+pop local 2
+push local 2
+push constant 2
+call Random.nextInt 2
+pop local 1
+push local 1
+push constant 0
+eq
+if-goto IF_TRUE1
+goto IF_FALSE1
+label IF_TRUE1
+push local 0
+push constant 210
+push constant 120
+push constant 30
+push constant 30
+call CellsImages.drawRectangleCell 5
+pop temp 0
+push constant 0
+return
+label IF_FALSE1
+push local 1
+push constant 1
+eq
+if-goto IF_TRUE2
+goto IF_FALSE2
+label IF_TRUE2
+push local 0
+push constant 210
+push constant 120
+call CellsImages.drawLine 3
+pop temp 0
+push constant 0
+return
+label IF_FALSE2
+push local 1
+push constant 2
+eq
+if-goto IF_TRUE3
+goto IF_FALSE3
+label IF_TRUE3
+push local 0
+push constant 210
+push constant 120
+push constant 10
+call CellsImages.drawCircleCell 4
+pop temp 0
+push constant 0
+return
+label IF_FALSE3
+push constant 0
+return
+function Cells.changeThirdCell 3
+push static 2
+push constant 40
+add
+pop static 2
+push static 2
+push constant 1000
+gt
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push constant 65
+pop static 2
+label IF_FALSE0
+push static 2
+call Random.new 1
+pop local 2
+push local 2
+push constant 2
+call Random.nextInt 2
+pop local 1
+push local 1
+push constant 0
+eq
+if-goto IF_TRUE1
+goto IF_FALSE1
+label IF_TRUE1
+push local 0
+push constant 330
+push constant 120
+push constant 30
+push constant 30
+call CellsImages.drawRectangleCell 5
+pop temp 0
+push constant 0
+return
+label IF_FALSE1
+push local 1
+push constant 1
+eq
+if-goto IF_TRUE2
+goto IF_FALSE2
+label IF_TRUE2
+push local 0
+push constant 330
+push constant 120
+call CellsImages.drawLine 3
+pop temp 0
+push constant 0
+return
+label IF_FALSE2
+push local 1
+push constant 2
+eq
+if-goto IF_TRUE3
+goto IF_FALSE3
+label IF_TRUE3
+push local 0
+push constant 330
+push constant 120
+push constant 10
+call CellsImages.drawCircleCell 4
+pop temp 0
+push constant 0
+return
+label IF_FALSE3
+push constant 0
+return
+function Cells.cleanCells 4
+push constant 50
+pop local 0
+push constant 70
+pop local 1
+push constant 109
+pop local 2
+push constant 110
+pop local 3
+push constant 0
+call Screen.setColor 1
+pop temp 0
+push local 0
+push local 1
+push local 0
+push local 2
+add
+push local 1
+push local 3
+add
+call Screen.drawRectangle 4
+pop temp 0
+push constant 166
+pop local 0
+push constant 108
+pop local 2
+push local 0
+push local 1
+push local 0
+push local 2
+add
+push local 1
+push local 3
+add
+call Screen.drawRectangle 4
+pop temp 0
+push constant 281
+pop local 0
+push constant 107
+pop local 2
+push local 0
+push local 1
+push local 0
+push local 2
+add
+push local 1
+push local 3
+add
+call Screen.drawRectangle 4
+pop temp 0
+push constant 0
+return

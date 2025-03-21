@@ -1,0 +1,17 @@
+class Bandit {
+    function void initializeBandit() {
+        var DrawingMachine drawing;
+        var MachineOptions option;
+        var Cells cells;
+
+        do drawing.drawMachine();
+        do drawing.drawArm();
+
+        while (true) {
+            do option.lowerArm();
+            do option.liftArm();
+        }
+
+        return;
+    }
+}

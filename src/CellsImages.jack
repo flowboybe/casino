@@ -1,0 +1,19 @@
+class CellsImages {
+    method void drawRectangleCell (int x, int y, int width, int height) {
+        do Screen.drawRectangle(x, y, x + width, y + height);
+
+        return;
+    }
+
+    method void drawCircleCell(int x, int y, int radius) {
+        do Screen.drawCircle(x, y, radius);
+
+        return;
+    }
+
+    method void drawLine (int x, int y) {
+        do Screen.drawLine(x + 10, y + 10, x + 40, y + 40);
+
+        return;
+    }
+}

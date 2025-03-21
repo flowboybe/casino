@@ -1,0 +1,44 @@
+function CellsImages.drawRectangleCell 0
+push argument 0
+pop pointer 0
+push argument 1
+push argument 2
+push argument 1
+push argument 3
+add
+push argument 2
+push argument 4
+add
+call Screen.drawRectangle 4
+pop temp 0
+push constant 0
+return
+function CellsImages.drawCircleCell 0
+push argument 0
+pop pointer 0
+push argument 1
+push argument 2
+push argument 3
+call Screen.drawCircle 3
+pop temp 0
+push constant 0
+return
+function CellsImages.drawLine 0
+push argument 0
+pop pointer 0
+push argument 1
+push constant 10
+add
+push argument 2
+push constant 10
+add
+push argument 1
+push constant 40
+add
+push argument 2
+push constant 40
+add
+call Screen.drawLine 4
+pop temp 0
+push constant 0
+return
