@@ -1,0 +1,33 @@
+class Random {
+    field int seed;
+
+    constructor Random new(int initialSeed) {
+        let seed = initialSeed;
+        return this;
+    }
+
+    method int next() {
+        let seed = (seed * 3781 + 3) & 6555;
+        return seed;
+    }
+
+    method int abs(int value){
+        if (value < 0){
+            return -value;
+        }
+        else{
+            return value;
+        }
+    }
+
+    method int nextInt(int bound) {
+        var int randomValue;
+        let randomValue = next();
+        return (abs(randomValue) - (bound * (abs(randomValue) / bound)));
+    }
+
+    method void dispose() {
+        do Memory.deAlloc(this);
+        return;
+    }
+}

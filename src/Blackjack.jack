@@ -1,4 +1,5 @@
 class Blackjack{
+    static int currentBid;
     function void initializeBlackjack(){
         do Output.moveCursor(2, 5);
         do Output.printString("BLACKJACK");
@@ -6,9 +7,7 @@ class Blackjack{
         do Output.printString("Cash: ");
         do Main.updateCoins();
         do Blackjack.drawOverlay();
-        while (true){
-            do Output.moveCursor(1,1);
-        }
+        do Blackjack.initiateGame();
         return;
     }
 
@@ -16,12 +15,60 @@ class Blackjack{
         do Output.moveCursor(20,3);
         do Output.printString("S - start round || E - increase bid || Q - decrease bid");
         do Output.moveCursor(21,3);
-        do Output.printString("F - end round   || T - take card    || ESC - return to menu");
+        do Output.printString("F - end round   || T - take card    || X - return to menu");
         do Screen.setColor(true);
         do Screen.drawLine(5, 35, 5, 210);
         do Screen.drawLine(5, 210, 507, 210);
         do Screen.drawLine(507, 210, 507, 35);
         do Screen.drawLine(507, 35, 5, 35);
+        return;
+    }
+
+    function void initiateGame(){
+        var char pressedKey;
+        var Deck currentDeck;
+        var int seed;
+        var Random randomaizer;
+        var int counter;
+        while (true){
+            let seed = seed + 3;
+            if (seed > 1000){
+                let seed = 110;
+            }
+            let pressedKey = Keyboard.keyPressed();
+            // s = 83 e = 69 q = 81 f = 70 t = 84 x = 88
+            if (pressedKey = 83){
+                let randomaizer = Random.new(seed);
+                do Output.moveCursor(10,20);
+                let counter = randomaizer.nextInt(36);
+                do Output.printInt(counter);
+                do randomaizer.dispose();
+                do Sys.wait(1000);
+                do Screen.clearScreen();
+                // do Deck.shuffle();
+                // ...
+            }
+            if (pressedKey = 69){
+                if (currentBid < Main.getCoins() & currentBid < 200){
+                    let currentBid = currentBid + 1;
+                }
+            }  
+            if (pressedKey = 81){
+                if (currentBid > 0){
+                    let currentBid = currentBid - 1;
+                }
+            }
+            if (pressedKey = 84){
+                // ...
+            }
+            if (pressedKey = 70){
+                // ...
+            }
+            if (pressedKey = 88){
+                do Screen.clearScreen();
+                return;
+            }
+        }
         return;
     }
 }
