@@ -1,0 +1,27 @@
+class Blackjack{
+    function void initializeBlackjack(){
+        do Output.moveCursor(2, 5);
+        do Output.printString("BLACKJACK");
+        do Output.moveCursor(2, 50);
+        do Output.printString("Cash: ");
+        do Main.updateCoins();
+        do Blackjack.drawOverlay();
+        while (true){
+            do Output.moveCursor(1,1);
+        }
+        return;
+    }
+
+    function void drawOverlay(){
+        do Output.moveCursor(20,3);
+        do Output.printString("S - start round || E - increase bid || Q - decrease bid");
+        do Output.moveCursor(21,3);
+        do Output.printString("F - end round   || T - take card    || ESC - return to menu");
+        do Screen.setColor(true);
+        do Screen.drawLine(5, 35, 5, 210);
+        do Screen.drawLine(5, 210, 507, 210);
+        do Screen.drawLine(507, 210, 507, 35);
+        do Screen.drawLine(507, 35, 5, 35);
+        return;
+    }
+}

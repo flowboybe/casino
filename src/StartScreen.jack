@@ -18,24 +18,24 @@ class StartScreen{
         }
         do Screen.clearScreen();
         if (pressedKey = 49){
-            do Main.SetCoins(500);
+            do Main.setCoins(500);
         }
         if (pressedKey = 50){
-            do Main.SetCoins(250);
+            do Main.setCoins(250);
         }
         if (pressedKey = 51){
-            do Main.SetCoins(1);
+            do Main.setCoins(1);
         }
         return;
     }
 
     function void initializeMenu(int coins){
         var char pressedKey;
-        do Output.moveCursor(5, 5);
+        do Output.moveCursor(2, 5);
         do Output.printString("CASINO");
-        do Output.moveCursor(5, 50);
+        do Output.moveCursor(2, 50);
         do Output.printString("Cash: ");
-        do Output.printInt(coins);
+        do Main.updateCoins();
         do Output.moveCursor(10,20);
         do Output.printString("SELECT GAME MODE:");
         do Output.moveCursor(12,20);
@@ -52,7 +52,7 @@ class StartScreen{
         }
         if (pressedKey = 50){
             do Screen.clearScreen();
-            do Output.printString("Blackjack");
+            do Blackjack.initializeBlackjack();
         }
         return;
     }

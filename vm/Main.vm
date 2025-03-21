@@ -13,11 +13,21 @@ goto WHILE_EXP0
 label WHILE_END0
 push constant 0
 return
-function Main.GetCoins 0
+function Main.getCoins 0
 push static 0
 return
-function Main.SetCoins 0
+function Main.setCoins 0
 push argument 0
 pop static 0
+push constant 0
+return
+function Main.updateCoins 0
+push constant 2
+push constant 55
+call Output.moveCursor 2
+pop temp 0
+push static 0
+call Output.printInt 1
+pop temp 0
 push constant 0
 return
