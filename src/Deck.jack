@@ -3,58 +3,51 @@ class Deck{
     field int peek;
 
     constructor Deck new(){
-        var int points;
-        var int colour;
-        var int index;
+        var int counter;
 
-        let points = 2;
-        let colour = 0;
-        let index = 0;
         let cards = Array.new(36);
         let peek = 36;
         
-        while (colour < 4){
-            while (points < 12){
-                let cards[index] = Card.new(points, colour);
-                let index = index + 1;
-                let points = points + 1;
-            }
-            let points = 2;
-            let colour = colour + 1;
+        while (counter < 36){
+            let cards[counter] = counter + 1;
+            let counter = counter + 1;
         }
         return this;
     }
 
     method void shuffle(){
-        var Card temp1Card;
-        var Card temp2Card;
-        var Random randomaizer;
-        var int reshufflesAmount;
+        var Array tempArray;
         var int counter;
-        var int firstCardToSwap;
-        var int secondCardToSwap;
-        
-        let randomaizer = Random.new(Main.getSeed());        
-        let reshufflesAmount = randomaizer.nextInt(1000);
-        while (counter < reshufflesAmount){
-            let firstCardToSwap = randomaizer.nextInt(36);
-            let temp1Card = cards[firstCardToSwap];
-            let secondCardToSwap = randomaizer.nextInt(36);
-            let temp2Card = cards[secondCardToSwap];
-            let cards[secondCardToSwap] = temp1Card;
-            let cards[firstCardToSwap] = temp2Card;
-            do temp1Card.dispose();
-            do temp2Card.dispose();
+        var Random randomaizer;
+        var int pos;
+
+        while (counter < 36){
+            let tempArray[counter] = counter + 1;
             let counter = counter + 1;
         }
 
+        let randomaizer = Random.new(Main.getSeed());
+        let counter = 0;
+
+        while (counter < 36){
+            let pos = randomaizer.nextInt(36);
+            while (tempArray[pos] = 0){
+                let pos = randomaizer.nextInt(36);
+            }
+            let cards[counter] = tempArray[pos];
+            let tempArray[pos] = 0;
+            let counter = counter + 1;
+        }
+        
+        do tempArray.dispose();
         do randomaizer.dispose();
+
         return;
     }
 
     method Card takeCard(){
         let peek = peek - 1;
-        return cards[peek];
+        return Card.new(cards[peek] - 1 - (cards[peek] - 1 / 9 * 9), cards[peek] - 1 / 9);
     }
 
     method void dispose(){

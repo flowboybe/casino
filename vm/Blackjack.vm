@@ -346,6 +346,9 @@ pop temp 0
 push local 1
 call Deck.takeCard 1
 pop local 2
+push local 1
+call Deck.takeCard 1
+pop local 2
 push local 2
 call Card.openCard 1
 pop temp 0
@@ -357,8 +360,8 @@ pop temp 0
 push local 2
 call Card.dispose 1
 pop temp 0
-push local 1
-call Deck.dispose 1
+push constant 1000
+call Sys.wait 1
 pop temp 0
 label IF_FALSE0
 push local 0

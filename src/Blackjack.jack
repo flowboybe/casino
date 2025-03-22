@@ -29,7 +29,6 @@ class Blackjack{
         var char pressedKey;
         var Deck currentDeck;
         var Card card;
-        // var Random randomaizer;
 
         while (true){
             let pressedKey = Keyboard.keyPressed();
@@ -38,17 +37,12 @@ class Blackjack{
                 let currentDeck = Deck.new();
                 do currentDeck.shuffle();
                 let card = currentDeck.takeCard();
+                let card = currentDeck.takeCard();
                 do card.openCard();
                 do card.drawCard(100,100);
                 do card.dispose();
-                do currentDeck.dispose();
-                // let randomaizer = Random.new(Main.getSeed());
-                // let card = Card.new(randomaizer.nextInt(10) + 2, randomaizer.nextInt(4));
-                // do card.openCard();
-                // do card.drawCard(100, 100);
-                // do card.dispose();
-                // do randomaizer.dispose();
-                // do Deck.shuffle();
+                do Sys.wait(1000);
+                
                 // ...
             }
             if (pressedKey = 69){
