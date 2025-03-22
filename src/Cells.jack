@@ -9,7 +9,7 @@ class Cells {
 
         let iterations = 0;
 
-        while (iterations < 10) {
+        while (iterations < 20) {
             do Cells.cleanCells();
             do Cells.changeFirstCell();
             do Cells.changeSecondCell();
@@ -30,24 +30,41 @@ class Cells {
         var Random randomizer;
         
 
-        let seed1 = seed1 + 64;
+        let seed1 = seed1 + 61;
         if (seed1 > 1000) {
-            let seed1 = 123;
+            let seed1 = 46;
         }
 
         let randomizer = Random.new(seed1);  
-        let randomNumber = randomizer.nextInt(3);
-        
+        let randomNumber = randomizer.nextInt(6);
+
         if (randomNumber = 0) {
-            do cellImage.drawRectangleCell(90, 120, 30, 30);
+            do cellImage.drawIntegral(50, 70);
             return;
         }
+
         if (randomNumber = 1) {
-            do cellImage.drawLine(90, 120);
+            do cellImage.drawPi(50, 70);
             return;
         }
+
         if (randomNumber = 2) {
-            do cellImage.drawCircleCell(90, 120, 10);
+            do cellImage.drawFiit(50, 70);
+            return;
+        }
+
+        if (randomNumber = 3) {
+            do cellImage.drawSeven(50, 70);
+            return;
+        }
+
+        if (randomNumber = 4) {
+            do cellImage.drawTetrisShape(50, 70, 0);
+            return;
+        }
+
+        if (randomNumber = 5) {
+            do cellImage.drawTetrisShape(50, 70, 0);
             return;
         }
 
@@ -67,18 +84,35 @@ class Cells {
         }
 
         let randomizer = Random.new(seed2);  
-        let randomNumber = randomizer.nextInt(3);
+        let randomNumber = randomizer.nextInt(6);
 
         if (randomNumber = 0) {
-            do cellImage.drawRectangleCell(210, 120, 30, 30);
+            do cellImage.drawIntegral(166, 70);
             return;
         }
+
         if (randomNumber = 1) {
-            do cellImage.drawLine(210, 120);
+            do cellImage.drawFiit(166, 70);
             return;
         }
+
         if (randomNumber = 2) {
-            do cellImage.drawCircleCell(210, 120, 10);
+            do cellImage.drawFiit(166, 70);
+            return;
+        }
+
+        if (randomNumber = 3) {
+            do cellImage.drawSeven(166, 70);
+            return;
+        }
+
+        if (randomNumber = 4) {
+            do cellImage.drawTetrisShape(166, 70, 0);
+            return;
+        }
+
+        if (randomNumber = 5) {
+            do cellImage.drawTetrisShape(166, 70, 1);
             return;
         }
 
@@ -98,18 +132,35 @@ class Cells {
         }
 
         let randomizer = Random.new(seed3);  
-        let randomNumber = randomizer.nextInt(3);
+        let randomNumber = randomizer.nextInt(6);
 
         if (randomNumber = 0) {
-            do cellImage.drawRectangleCell(330, 120, 30, 30);
+            do cellImage.drawIntegral(283, 70);
             return;
         }
+
         if (randomNumber = 1) {
-            do cellImage.drawLine(330, 120);
+            do cellImage.drawPi(283, 70);
             return;
         }
+
         if (randomNumber = 2) {
-            do cellImage.drawCircleCell(330, 120, 10);
+            do cellImage.drawFiit(283, 70);
+            return;
+        }
+
+        if (randomNumber = 3) {
+            do cellImage.drawSeven(283, 70);
+            return;
+        }
+
+        if (randomNumber = 4) {
+            do cellImage.drawTetrisShape(283, 70, 0);
+            return;
+        }
+
+        if (randomNumber = 5) {
+            do cellImage.drawTetrisShape(283, 70, 1);
             return;
         }
 

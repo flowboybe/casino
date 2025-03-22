@@ -105,7 +105,7 @@ push constant 413
 pop local 0
 push constant 170
 pop local 1
-push constant 30
+push constant 29
 pop local 2
 push constant 8
 pop local 3
@@ -119,11 +119,11 @@ push local 3
 add
 call Screen.drawRectangle 4
 pop temp 0
-push constant 443
+push constant 442
 pop local 0
 push constant 171
 pop local 1
-push constant 18
+push constant 19
 pop local 2
 push constant 7
 pop local 3

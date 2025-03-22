@@ -21,6 +21,8 @@ class DrawingMachine {
 
         do Screen.drawRectangle(x, y, x + width, y + height); // поле для ячеек
 
+        // верхие левые углы ячеек: (50, 70), (166, 70), (281, 70)
+
         let x = x + 110;
         let width = 5;
  
@@ -49,15 +51,15 @@ class DrawingMachine {
         let x = 413;
         let y = 170;
 
-        let width = 30;
+        let width = 29;
         let height = 8;
         
         do Screen.drawRectangle(x, y, x + width, y + height); // горизонтальная часть рычага
 
-        let x = 443;
+        let x = 442;
         let y = 171;
 
-        let width = 18;
+        let width = 19;
         let height = 7;
         
         do Screen.drawRectangle(x, y, x + width, y + height); // сужение горизонтальной части

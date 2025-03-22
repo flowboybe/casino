@@ -1,5 +1,5 @@
 class CellsImages {
-    method void drawRectangleCell (int x, int y, int width, int height) {
+    method void drawRectangleCell(int x, int y, int width, int height) {
         do Screen.drawRectangle(x, y, x + width, y + height);
 
         return;
@@ -11,8 +11,292 @@ class CellsImages {
         return;
     }
 
-    method void drawLine (int x, int y) {
+    method void drawLine(int x, int y) {
         do Screen.drawLine(x + 10, y + 10, x + 40, y + 40);
+
+        return;
+    }
+
+    method void drawIntegral(int x, int y) {
+        var int width, height, x1, y1;
+
+        let x1 = x;
+        let y1 = y;
+        let x = x + 55;
+        let y = y + 20;
+        let width = 8;
+        let height = 60;
+
+        do Screen.drawRectangle(x, y, x + width, y + height); // тело интеграла 
+
+        let x = x + 3;
+        let y = y - 4;
+        let width = 13;
+        let height = 6;
+
+        do Screen.drawRectangle(x, y, x + width, y + height); 
+
+        let x = x + 10;
+        let y = y + 2;                              
+        let width = 5;
+        let height = 6;
+
+        do Screen.drawRectangle(x, y, x + width, y + height); // верхний хвост
+
+        let x = x1 + 48;
+        let y = y1 + 80;
+        let width = 13;
+        let height = 6;
+
+        do Screen.drawRectangle(x, y, x + width, y + height);
+
+        let x = x - 3;
+        let y = y - 3;
+        let width = 5;
+        let height = 6;
+
+        do Screen.drawRectangle(x, y, x + width, y + height); // нижний хвост
+
+        return;
+    }
+
+    method void drawPi(int x, int y) {
+        var int width, height;
+
+
+        let x = x + 30;
+        let y = y + 30;
+        let width = 51;
+        let height = 8;
+
+        do Screen.drawRectangle(x, y, x + width, y + height); // верхняя часть
+
+        let x = x + 9;
+        let y = y + 8;
+        let width = 8;
+        let height = 50;
+
+        do Screen.drawRectangle(x, y, x + width, y + height); // левая палка
+
+        let x = x + 26;
+
+        do Screen.drawRectangle(x, y, x + width, y + height); // правая палка
+
+        return;
+    }
+
+    method void drawFiit(int x, int y) { 
+        var int width, height, counter, x1, y1;
+
+        let x1 = x;
+        let y1 = y;
+        let x = x + 25;
+        let y = y + 40;
+        let width = 60;
+        let height = 10;
+
+        do Screen.drawRectangle(x, y, x + width, y + height); // верхняя часть
+
+        let x = x - 5;
+        let y = y + 5;
+        let width = 10;
+        let height = 35;
+
+        do Screen.drawRectangle(x, y, x + width, y + height); // левая часть
+
+        let x = x + 60;
+
+        do Screen.drawRectangle(x, y, x + width, y + height); // правая часть
+
+        let x = x - 55;
+        let y = y + 33;
+        let width = 10;
+        let height = 6;
+
+        do Screen.drawRectangle(x, y, x + width, y + height); // начало левой нижней части
+
+        let width = 5;
+        let height = 8;
+
+        while (counter < 5) {
+            let x = x + 5;
+            let y = y - 1;
+
+            do Screen.drawRectangle(x, y, x + width, y + height); // отрисовка левой нижней части
+
+            let counter = counter + 1;
+        }
+
+        let y = y + 7;
+        let counter = 0;
+
+        while (counter < 5) {
+            let x = x + 5;
+            let y = y - 1;
+
+            do Screen.drawRectangle(x, y, x + width, y + height); // отрисовка правой нижней части
+
+            let counter = counter + 1;
+        }
+
+        // корректировка
+        let width = 10;
+        let height = 7;
+        do Screen.drawRectangle(x, y, x + width, y + height); 
+
+        let x = x1 + 22;
+        let y = y1 + 42;
+        let width = 3;
+        let height = 3;
+
+        do Screen.drawRectangle(x, y, x + width, y + height); 
+
+        let x = x + 63;
+
+        do Screen.drawRectangle(x, y, x + width, y + height);
+
+        let x = x - 63;
+        let y = y + 38;
+
+        do Screen.drawRectangle(x, y, x + width, y + height);
+
+        let x = x + 8;
+        let y = y - 30;
+        let width = 2;
+        let height = 2;
+
+        do Screen.drawRectangle(x, y, x + width, y + height);
+
+        let x = x + 47;
+
+        do Screen.drawRectangle(x, y, x + width, y + height);
+
+        return;
+    }
+    
+    method void drawSeven(int x, int y) {
+        var int width, height, counter, x1, y1;
+
+        let x1 = x;
+        let y1 = y;
+        let x = x + 30;
+        let y = y + 35;
+        let width = 50;
+        let height = 8;
+
+        do Screen.drawRectangle(x, y, x + width, y + height); // верхняя часть
+
+        let x = x + 43;
+        let y = y + 8;
+        let width = 7;
+        let height = 6;
+
+        while (counter < 25) {
+            do Screen.drawRectangle(x, y, x + width, y + height); // отрисовка диагональной палки
+
+            let x = x - 1;
+            let y = y + 2;
+
+            let counter = counter + 1; 
+        }
+
+        let x = x1 + 80;
+        let y = y1 + 36;
+        let width = 2;
+        let height = 11;
+
+        do Screen.drawRectangle(x, y, x + width, y + height);
+
+        return;
+    }
+
+    method void drawTetrisShape(int x, int y, int figureId) {
+        var int width, height;
+
+        let x = x + 37;
+        let y = y + 55;
+        let width = 30;
+        let height = 30;
+
+        do Screen.drawRectangle(x, y, x + width, y + height); 
+
+        let x = x + 2;
+        let y = y + 2;
+        let width = width - 4;
+        let height = height - 4;
+
+        do Screen.setColor(false);
+        do Screen.drawRectangle(x, y, x + width, y + height); // нижний центральный квадрат
+
+        let x = x - 32;
+        let y = y - 2;
+        let width = 30;
+        let height = 30;
+
+        do Screen.setColor(true);
+        do Screen.drawRectangle(x, y, x + width, y + height);
+
+        let x = x + 2;
+        let y = y + 2;
+        let width = width - 3;
+        let height = height - 4;
+
+        do Screen.setColor(false);
+        do Screen.drawRectangle(x, y, x + width, y + height); // нижний левый квадрат
+
+        let x = x + 28;
+        let y = y - 32;
+        let width = 30;
+        let height = 30;
+
+        do Screen.setColor(true);
+        do Screen.drawRectangle(x, y, x + width, y + height);
+
+        let x = x + 2;
+        let y = y + 2;
+        let width = width - 4;
+        let height = height - 3;
+
+        do Screen.setColor(false);
+        do Screen.drawRectangle(x, y, x + width, y + height); // верхний центральный квадрат
+
+        if (figureId = 0) {
+            let x = x + 27;
+            let y = y + 28;
+            let width = 30;
+            let height = 30;
+
+            do Screen.setColor(true);
+            do Screen.drawRectangle(x, y, x + width, y + height);
+
+            let x = x + 2;
+            let y = y + 2;
+            let width = width - 4;
+            let height = height - 4;
+
+            do Screen.setColor(false);
+            do Screen.drawRectangle(x, y, x + width, y + height); // нижний правый квадрат
+        }
+
+        if (figureId = 1) {
+            let x = x + 27;
+            let y = y - 2;
+            let width = 30;
+            let height = 31;
+
+            do Screen.setColor(true);
+            do Screen.drawRectangle(x, y, x + width, y + height);
+
+            let x = x + 2;
+            let y = y + 2;
+            let width = width - 4;
+            let height = height - 4;
+
+            do Screen.setColor(false);
+            do Screen.drawRectangle(x, y, x + width, y + height); // верхний правый квадрат
+        }
+
+        do Screen.setColor(true);
 
         return;
     }
