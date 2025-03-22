@@ -15,35 +15,24 @@ class Deck{
         return this;
     }
 
-    method void shuffle(){
-        var Array tempArray;
-        var int counter;
-        var Random randomaizer;
-        var int pos;
-
-        while (counter < 36){
-            let tempArray[counter] = counter + 1;
-            let counter = counter + 1;
-        }
-
-        let randomaizer = Random.new(Main.getSeed());
-        let counter = 0;
-
-        while (counter < 36){
-            let pos = randomaizer.nextInt(36);
-            while (tempArray[pos] = 0){
-                let pos = randomaizer.nextInt(36);
-            }
-            let cards[counter] = tempArray[pos];
-            let tempArray[pos] = 0;
-            let counter = counter + 1;
-        }
-        
-        do tempArray.dispose();
-        do randomaizer.dispose();
-
-        return;
+    method void shuffle() {
+    var int i, j, temp;
+    var Random randomizer;
+    
+    let randomizer = Random.new(Main.getSeed());
+    let i = 35;
+    while (i > -1) {
+        let j = randomizer.nextInt(i + 1);
+        let temp = cards[i];
+        let cards[i] = cards[j];
+        let cards[j] = temp;
+        let i = i - 1;
     }
+    
+    do randomizer.dispose();
+    return;
+}
+
 
     method Card takeCard(){
         let peek = peek - 1;
