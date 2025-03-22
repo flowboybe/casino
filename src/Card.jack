@@ -3,9 +3,9 @@ class Card{
     field int points;
     field int colour;
 
-    constructor Card new(int points, int colour){
-        let points = points;
-        let colour = colour;
+    constructor Card new(int p, int c){
+        let points = p;
+        let colour = c;
         let opened = false;
         return this;
     }
@@ -29,7 +29,8 @@ class Card{
             do Screen.drawLine(x, y + 48, x + 32, y + 48);
             do Screen.drawLine(x + 32, y + 48, x + 32, y);
             do Screen.drawLine(x + 32, y, x, y);
-            do SymbolTable.drawPoint(10, x + 4, y + 4);
+            do SymbolTable.drawPoint(points, x + 4, y + 4);
+            do SymbolTable.drawColour(colour, x + 13, y + 22);
         }
         return;
     }

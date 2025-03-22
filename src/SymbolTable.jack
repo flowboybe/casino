@@ -1,39 +1,7 @@
-    //   ##  
-    //  ####
-    // ######
-    // ######
-    //  ####
-    //   ##
-
-    //  #  # 
-    // ######
-    // ######
-    // ######
-    //  ####
-    //   ##
-
-    //   ##
-    //   ##
-    //   ##
-    // ######
-    // ######
-    //   ##
-
-    //   ##
-    //  ####
-    // ######
-    // ######
-    //   ##
-    //   ##  
-
-class SymbolTable{
+ class SymbolTable{
 
     function void drawPoint(int point, int x, int y){
         var Array strArray;
-        var int currentX;
-        var int currentY;
-        var bool isBlack;
-        var string currentString;
 
         let strArray = Array.new(6);
         if (point = 2){
@@ -108,26 +76,72 @@ class SymbolTable{
             let strArray[4] =  "#    #";
             let strArray[5] =  "#    #";
         }
+        do SymbolTable.draw(strArray, x, y);
+        return;
+    }
+
+    function void drawColour(int colour, int x, int y){
+        var Array strArray;
+
+        let strArray = Array.new(6);
+        if (colour = 0){
+            let strArray[0] =  "  ##  ";
+            let strArray[1] =  " #### ";
+            let strArray[2] =  "######";
+            let strArray[3] =  "######";
+            let strArray[4] =  " #### ";
+            let strArray[5] =  "  ##  ";
+        }
+        if (colour = 1){
+            let strArray[0] =  " #  # ";
+            let strArray[1] =  "######";
+            let strArray[2] =  "######";
+            let strArray[3] =  "######";
+            let strArray[4] =  " #### ";
+            let strArray[5] =  "  ##  ";
+        }
+        if (colour = 2){
+            let strArray[0] =  "  ##  ";
+            let strArray[1] =  "  ##  ";
+            let strArray[2] =  "  ##  ";
+            let strArray[3] =  "######";
+            let strArray[4] =  "######";
+            let strArray[5] =  "  ##  ";
+        }
+        if (colour = 3){
+            let strArray[0] =  "  ##  ";
+            let strArray[1] =  " #### ";
+            let strArray[2] =  "######";
+            let strArray[3] =  "######";
+            let strArray[4] =  "  ##  ";
+            let strArray[5] =  "  ##  ";
+        }
+        do SymbolTable.draw(strArray, x, y);
+        return;
+    }
+
+    function void draw(Array strArray, int x, int y){
+        var Array strArray;
+        var int currentX;
+        var int currentY;
+        var String currentString;
+
         do Screen.setColor(true);
         let currentX = 0;
         let currentY = 0;
-        while (currentY < 5){
-            let currentString = strArray [currentY];
-            if (currentString.charAt(currentX) = 35){
-                let isBlack = true;
+        while (currentY < 6){
+            let currentString = strArray[currentY];
+            while (currentX < currentString.length()){
+                if (currentString.charAt(currentX) = 35){
+                    do Screen.drawPixel(x + currentX, y + currentY);
+                }
+                let currentX = currentX + 1;
             }
-            if (isBlack){
-                do Screen.drawPixel(x + currentX, y + currentY);
-            }
-            let isBlack = false;
-            let currentX = currentX + 1;
-            if (currentX = 6){
-                let currentX = 0;
-                let currentY = currentY + 1;
-            }
+            do currentString.dispose();
+            let currentX = 0;
+            let currentY = currentY + 1;
         }
         do strArray.dispose();
-        do currentString.dispose();
         return;
     }
 }

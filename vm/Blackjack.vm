@@ -324,7 +324,7 @@ call Screen.drawLine 4
 pop temp 0
 push constant 0
 return
-function Blackjack.initiateGame 3
+function Blackjack.initiateGame 4
 label WHILE_EXP0
 push constant 0
 not
@@ -338,8 +338,17 @@ eq
 if-goto IF_TRUE0
 goto IF_FALSE0
 label IF_TRUE0
+call Main.getSeed 0
+call Random.new 1
+pop local 3
+push local 3
+push constant 10
+call Random.nextInt 2
+push constant 2
+add
+push local 3
 push constant 4
-push constant 0
+call Random.nextInt 2
 call Card.new 2
 pop local 2
 push local 2
@@ -352,6 +361,9 @@ call Card.drawCard 3
 pop temp 0
 push local 2
 call Card.dispose 1
+pop temp 0
+push local 3
+call Random.dispose 1
 pop temp 0
 label IF_FALSE0
 push local 0

@@ -6,19 +6,6 @@ push constant 0
 not
 not
 if-goto WHILE_END0
-push static 1
-push constant 3
-add
-pop static 1
-push static 1
-push constant 1000
-gt
-if-goto IF_TRUE0
-goto IF_FALSE0
-label IF_TRUE0
-push constant 110
-pop static 1
-label IF_FALSE0
 push static 0
 call StartScreen.initializeMenu 1
 pop temp 0
@@ -46,4 +33,9 @@ push constant 0
 return
 function Main.getSeed 0
 push static 1
+return
+function Main.setSeed 0
+push argument 0
+pop static 1
+push constant 0
 return

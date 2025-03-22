@@ -5,10 +5,6 @@ class Main{
     function void main(){
         do StartScreen.chooseDifficulty();
         while (true){
-            let seed = seed + 3;
-            if (seed > 1000){
-                let seed = 110;
-            }
             do StartScreen.initializeMenu(coins);
         }
         return;
@@ -31,5 +27,10 @@ class Main{
 
     function int getSeed(){
         return seed;
+    }
+
+    function void setSeed(int value){
+        let seed = value;
+        return;
     }
 }

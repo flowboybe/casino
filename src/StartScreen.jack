@@ -31,6 +31,8 @@ class StartScreen{
 
     function void initializeMenu(int coins){
         var char pressedKey;
+        var int seed;
+
         do Output.moveCursor(2, 5);
         do Output.printString("CASINO");
         do Output.moveCursor(2, 50);
@@ -44,8 +46,13 @@ class StartScreen{
         do Output.printString("2. BLACKJACK");
         do Sys.wait(1000);
         while ((~(pressedKey = 49)) & (~(pressedKey = 50))){
+            let seed = seed + 3;
+            if (seed > 10000){
+                let seed = 0;
+            }
             let pressedKey = Keyboard.keyPressed();
         }
+        do Main.setSeed(seed);
         if (pressedKey = 49){
             do Screen.clearScreen();
             do Output.printString("Bandit");

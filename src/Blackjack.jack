@@ -29,14 +29,18 @@ class Blackjack{
         var char pressedKey;
         var Deck currentDeck;
         var Card card;
+        var Random randomaizer;
+
         while (true){
             let pressedKey = Keyboard.keyPressed();
             // s = 83 e = 69 q = 81 f = 70 t = 84 x = 88
             if (pressedKey = 83){
-                let card = Card.new(4, 0);
+                let randomaizer = Random.new(Main.getSeed());
+                let card = Card.new(randomaizer.nextInt(10) + 2, randomaizer.nextInt(4));
                 do card.openCard();
                 do card.drawCard(100, 100);
                 do card.dispose();
+                do randomaizer.dispose();
                 // do Deck.shuffle();
                 // ...
             }
