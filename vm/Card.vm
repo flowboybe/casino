@@ -106,6 +106,24 @@ pop temp 0
 label IF_END0
 push constant 0
 return
+function Card.undrawCard 0
+push argument 0
+pop pointer 0
+push constant 0
+call Screen.setColor 1
+pop temp 0
+push argument 1
+push argument 2
+push argument 1
+push constant 32
+add
+push argument 2
+push constant 48
+add
+call Screen.drawRectangle 4
+pop temp 0
+push constant 0
+return
 function Card.dispose 0
 push argument 0
 pop pointer 0

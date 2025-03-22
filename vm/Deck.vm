@@ -1,0 +1,147 @@
+function Deck.new 3
+push constant 2
+call Memory.alloc 1
+pop pointer 0
+push constant 2
+pop local 0
+push constant 0
+pop local 1
+push constant 0
+pop local 2
+push constant 36
+call Array.new 1
+pop this 0
+push constant 36
+pop this 1
+label WHILE_EXP0
+push local 1
+push constant 4
+lt
+not
+if-goto WHILE_END0
+label WHILE_EXP1
+push local 0
+push constant 12
+lt
+not
+if-goto WHILE_END1
+push local 2
+push this 0
+add
+push local 0
+push local 1
+call Card.new 2
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push local 2
+push constant 1
+add
+pop local 2
+push local 0
+push constant 1
+add
+pop local 0
+goto WHILE_EXP1
+label WHILE_END1
+push constant 2
+pop local 0
+push local 1
+push constant 1
+add
+pop local 1
+goto WHILE_EXP0
+label WHILE_END0
+push pointer 0
+return
+function Deck.shuffle 7
+push argument 0
+pop pointer 0
+call Main.getSeed 0
+call Random.new 1
+pop local 2
+push local 2
+push constant 1000
+call Random.nextInt 2
+pop local 3
+label WHILE_EXP0
+push local 4
+push local 3
+lt
+not
+if-goto WHILE_END0
+push local 2
+push constant 36
+call Random.nextInt 2
+pop local 5
+push local 5
+push this 0
+add
+pop pointer 1
+push that 0
+pop local 0
+push local 2
+push constant 36
+call Random.nextInt 2
+pop local 6
+push local 6
+push this 0
+add
+pop pointer 1
+push that 0
+pop local 1
+push local 6
+push this 0
+add
+push local 0
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push local 5
+push this 0
+add
+push local 1
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push local 0
+call Card.dispose 1
+pop temp 0
+push local 1
+call Card.dispose 1
+pop temp 0
+push local 4
+push constant 1
+add
+pop local 4
+goto WHILE_EXP0
+label WHILE_END0
+push local 2
+call Random.dispose 1
+pop temp 0
+push constant 0
+return
+function Deck.takeCard 0
+push argument 0
+pop pointer 0
+push this 1
+push constant 1
+sub
+pop this 1
+push this 1
+push this 0
+add
+pop pointer 1
+push that 0
+return
+function Deck.dispose 0
+push argument 0
+pop pointer 0
+push pointer 0
+call Memory.deAlloc 1
+pop temp 0
+push constant 0
+return
