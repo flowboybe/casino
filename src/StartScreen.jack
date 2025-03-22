@@ -1,6 +1,8 @@
 class StartScreen{
     function void chooseDifficulty(){
         var char pressedKey;
+        var int seed;
+
         do Output.moveCursor(12,20);
         do Output.printString("WELCOME TO OUR CASINO!");
         do Sys.wait(3000);
@@ -14,8 +16,13 @@ class StartScreen{
         do Output.moveCursor(13,10);
         do Output.printString("3. LETS GO GAMBLING!");
         while ((~(pressedKey = 49)) & (~(pressedKey = 50)) & (~(pressedKey = 51))){
+            let seed = seed + 7;
+            if (seed > 1000){
+                let seed = 1;
+            }
             let pressedKey = Keyboard.keyPressed();
         }
+        do Main.setSeed(seed);
         do Screen.clearScreen();
         if (pressedKey = 49){
             do Main.setCoins(500);
@@ -33,6 +40,7 @@ class StartScreen{
         var char pressedKey;
         var int seed;
 
+        let seed = Main.getSeed();
         do Output.moveCursor(2, 5);
         do Output.printString("CASINO");
         do Output.moveCursor(2, 50);
@@ -47,8 +55,8 @@ class StartScreen{
         do Sys.wait(1000);
         while ((~(pressedKey = 49)) & (~(pressedKey = 50))){
             let seed = seed + 3;
-            if (seed > 10000){
-                let seed = 0;
+            if (seed > 1000){
+                let seed = 41;
             }
             let pressedKey = Keyboard.keyPressed();
         }
