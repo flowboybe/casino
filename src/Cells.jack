@@ -9,13 +9,14 @@ class Cells {
 
         let iterations = 0;
 
-        while (iterations < 20) {
+        while (iterations < 10) {
+            do Cells.cleanCells();
             do Cells.changeFirstCell();
             do Cells.changeSecondCell();
             do Cells.changeThirdCell();
 
-            do Sys.wait(100);
-
+            do Sys.wait(200);
+            
             let iterations = iterations + 1;
         }
         
@@ -29,13 +30,13 @@ class Cells {
         var Random randomizer;
         
 
-        let seed1 = seed1 + 100;
+        let seed1 = seed1 + 64;
         if (seed1 > 1000) {
-            let seed1 = 120;
+            let seed1 = 123;
         }
 
         let randomizer = Random.new(seed1);  
-        let randomNumber = randomizer.nextInt(2);
+        let randomNumber = randomizer.nextInt(3);
         
         if (randomNumber = 0) {
             do cellImage.drawRectangleCell(90, 120, 30, 30);
@@ -60,13 +61,13 @@ class Cells {
         var Random randomizer;
         
 
-        let seed2 = seed2 + 80;
+        let seed2 = seed2 + 78;
         if (seed2 > 1000) {
-            let seed2 = 200;
+            let seed2 = 321;
         }
 
         let randomizer = Random.new(seed2);  
-        let randomNumber = randomizer.nextInt(2);
+        let randomNumber = randomizer.nextInt(3);
 
         if (randomNumber = 0) {
             do cellImage.drawRectangleCell(210, 120, 30, 30);
@@ -91,13 +92,13 @@ class Cells {
         var Random randomizer;
         
 
-        let seed3 = seed3 + 40;
+        let seed3 = seed3 + 21;
         if (seed3 > 1000) {
             let seed3 = 65;
         }
 
         let randomizer = Random.new(seed3);  
-        let randomNumber = randomizer.nextInt(2);
+        let randomNumber = randomizer.nextInt(3);
 
         if (randomNumber = 0) {
             do cellImage.drawRectangleCell(330, 120, 30, 30);
@@ -137,6 +138,8 @@ class Cells {
         let width = 107;
 
         do Screen.drawRectangle(x, y, x + width, y + height);
+
+        do Screen.setColor(true);
 
         return;
     }
