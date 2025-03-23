@@ -1,0 +1,29 @@
+class Bet{
+    static int bet;
+    function int GetBet(){
+        return bet;
+    }
+
+    function void RefreshBet(){
+        do Output.moveCursor(5, 5);
+        do Output.printString("Bet: ");
+        do Output.printInt(Bet.GetBet());
+        return;
+    }
+
+    function void RaiseBet(int money){
+        if (~((bet + money) > Main.GetCoins())){
+            let bet = bet + money;
+            do Bet.RefreshBet();
+        }
+        return;
+    }
+
+    function void LowerBet(int money){
+        if (~((bet - money) < Main.GetCoins())){
+            let bet = bet - money;
+            do Bet.RefreshBet();
+        }
+        return;
+    }
+}

@@ -42,8 +42,10 @@ class StartScreen{
         do Output.printString("1. ONE-ARMED BANDIT");
         do Output.moveCursor(14,20);
         do Output.printString("2. BLACKJACK");
+        do Output.moveCursor(16, 20);
+        do Output.printString("3. ROULETTE");
         do Sys.wait(1000);
-        while ((~(pressedKey = 49)) & (~(pressedKey = 50))){
+        while ((~(pressedKey = 49)) & (~(pressedKey = 50)) & (~(pressedKey = 51))){
             let pressedKey = Keyboard.keyPressed();
         }
         if (pressedKey = 49){
@@ -54,6 +56,9 @@ class StartScreen{
             do Screen.clearScreen();
             do Output.printString("Blackjack");
         }
+        if (pressedKey = 51){
+            do Roulette.startRoulette(coins);
+        } 
         return;
     }
 }

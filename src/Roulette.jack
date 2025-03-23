@@ -1,0 +1,27 @@
+class Roulette{
+    function void startRoulette(int coins){
+        do Screen.clearScreen();
+        do Output.moveCursor(1, 27);
+        do Output.printString("Roulette");
+        do Output.moveCursor(5, 50);
+        do Output.printString("Cash: ");
+        do Output.printInt(coins);
+        do Output.moveCursor(5, 5);
+        do Output.printString("Bet: ");
+        do Output.printInt(Bet.GetBet());
+        do Bet.RaiseBet(10);
+        var char key;
+        while(true){
+            while(key = 0){
+                let key = Keyboard.keyPressed();
+            }
+            if (key = 87){
+                Bet.RaiseBet(10);
+            }
+            if (key = 83){
+                Bet.LowerBet(10);
+            }
+        }
+        return;
+    }
+}
