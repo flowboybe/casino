@@ -97,6 +97,15 @@ push constant 34
 call Math.multiply 2
 add
 push argument 2
+call Card.undrawCard 3
+pop temp 0
+push local 1
+push argument 1
+push local 0
+push constant 34
+call Math.multiply 2
+add
+push argument 2
 call Card.drawCard 3
 pop temp 0
 push local 0

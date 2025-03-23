@@ -30,6 +30,7 @@ class Hand{
             if ((iterator > 0) & isDealersHand){
                 do currentCard.closeCard();
             }
+            do currentCard.undrawCard(x + (iterator * 34), y);
             do currentCard.drawCard(x + (iterator * 34), y);
             let iterator = iterator + 1;
         } 

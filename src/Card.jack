@@ -60,6 +60,7 @@ class Card{
     }
 
     method void drawCard(int x, int y){
+        do Screen.setColor(true);
         if (~(opened)){
             do Screen.drawRectangle(x, y, x + 32, y + 48);
         }

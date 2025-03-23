@@ -71,17 +71,24 @@ class Blackjack{
         let deck = Deck.new();
         do deck.shuffle();
 
-        do Sys.wait(500);
         do player.addCard(deck.takeCard());
-        do Sys.wait(500);
-        do dealer.addCard(deck.takeCard());
-        do Sys.wait(500);
-        do player.addCard(deck.takeCard());
-        do Sys.wait(500);
-        do dealer.addCard(deck.takeCard());
-
         do player.showCards(20, 150);
+        do Sys.wait(500);
+
+        do dealer.addCard(deck.takeCard());
         do dealer.showCards(20, 50);
+        do Sys.wait(500);
+
+        do player.addCard(deck.takeCard());
+        do player.showCards(20, 150);
+        do Sys.wait(500);
+
+        do dealer.addCard(deck.takeCard());
+        do dealer.showCards(20, 50);
+        do Sys.wait(500);
+
+        do Sys.halt();
+
         return;
     }
 }
