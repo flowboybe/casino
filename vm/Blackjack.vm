@@ -1,4 +1,6 @@
 function Blackjack.initializeBlackjack 0
+push constant 1
+pop static 0
 push constant 2
 push constant 5
 call Output.moveCursor 2
@@ -324,7 +326,7 @@ call Screen.drawLine 4
 pop temp 0
 push constant 0
 return
-function Blackjack.initiateGame 3
+function Blackjack.initiateGame 2
 label WHILE_EXP0
 push constant 0
 not
@@ -338,30 +340,8 @@ eq
 if-goto IF_TRUE0
 goto IF_FALSE0
 label IF_TRUE0
-call Deck.new 0
-pop local 1
-push local 1
-call Deck.shuffle 1
-pop temp 0
-push local 1
-call Deck.takeCard 1
-pop local 2
-push local 1
-call Deck.takeCard 1
-pop local 2
-push local 2
-call Card.openCard 1
-pop temp 0
-push local 2
-push constant 100
-push constant 100
-call Card.drawCard 3
-pop temp 0
-push local 2
-call Card.dispose 1
-pop temp 0
-push constant 1000
-call Sys.wait 1
+push static 0
+call Blackjack.doRound 1
 pop temp 0
 label IF_FALSE0
 push local 0
@@ -393,7 +373,7 @@ if-goto IF_TRUE3
 goto IF_FALSE3
 label IF_TRUE3
 push static 0
-push constant 0
+push constant 1
 gt
 if-goto IF_TRUE4
 goto IF_FALSE4
@@ -431,5 +411,67 @@ return
 label IF_FALSE7
 goto WHILE_EXP0
 label WHILE_END0
+push constant 0
+return
+function Blackjack.doRound 3
+call Main.getCoins 0
+push argument 0
+sub
+call Main.setCoins 1
+pop temp 0
+push constant 0
+call Hand.new 1
+pop local 0
+push constant 0
+not
+call Hand.new 1
+pop local 1
+call Deck.new 0
+pop local 2
+push local 2
+call Deck.shuffle 1
+pop temp 0
+push constant 500
+call Sys.wait 1
+pop temp 0
+push local 0
+push local 2
+call Deck.takeCard 1
+call Hand.addCard 2
+pop temp 0
+push constant 500
+call Sys.wait 1
+pop temp 0
+push local 1
+push local 2
+call Deck.takeCard 1
+call Hand.addCard 2
+pop temp 0
+push constant 500
+call Sys.wait 1
+pop temp 0
+push local 0
+push local 2
+call Deck.takeCard 1
+call Hand.addCard 2
+pop temp 0
+push constant 500
+call Sys.wait 1
+pop temp 0
+push local 1
+push local 2
+call Deck.takeCard 1
+call Hand.addCard 2
+pop temp 0
+push local 0
+push constant 20
+push constant 150
+call Hand.showCards 3
+pop temp 0
+push local 1
+push constant 20
+push constant 50
+call Hand.showCards 3
+pop temp 0
 push constant 0
 return

@@ -2,6 +2,7 @@ class Blackjack{
     static int currentBid;
 
     function void initializeBlackjack(){
+        let currentBid = 1;
         do Output.moveCursor(2, 5);
         do Output.printString("BLACKJACK");
         do Output.moveCursor(2, 50);
@@ -27,23 +28,13 @@ class Blackjack{
 
     function void initiateGame(){
         var char pressedKey;
-        var Deck currentDeck;
         var Card card;
 
         while (true){
             let pressedKey = Keyboard.keyPressed();
             // s = 83 e = 69 q = 81 f = 70 t = 84 x = 88
             if (pressedKey = 83){
-                let currentDeck = Deck.new();
-                do currentDeck.shuffle();
-                let card = currentDeck.takeCard();
-                let card = currentDeck.takeCard();
-                do card.openCard();
-                do card.drawCard(100,100);
-                do card.dispose();
-                do Sys.wait(1000);
-                
-                // ...
+                do Blackjack.doRound(currentBid);
             }
             if (pressedKey = 69){
                 if (currentBid < Main.getCoins() & currentBid < 200){
@@ -51,21 +42,46 @@ class Blackjack{
                 }
             }  
             if (pressedKey = 81){
-                if (currentBid > 0){
+                if (currentBid > 1){
                     let currentBid = currentBid - 1;
                 }
             }
             if (pressedKey = 84){
-                // ...
+                // ... в doround
             }
             if (pressedKey = 70){
-                // ...
+                // ... в doround
             }
             if (pressedKey = 88){
                 do Screen.clearScreen();
                 return;
             }
         }
+        return;
+    }
+
+    function void doRound(int bid){
+        var Hand player;
+        var Hand dealer;
+        var Deck deck;
+
+        do Main.setCoins(Main.getCoins() - bid);
+        let player = Hand.new(false);
+        let dealer = Hand.new(true);
+        let deck = Deck.new();
+        do deck.shuffle();
+
+        do Sys.wait(500);
+        do player.addCard(deck.takeCard());
+        do Sys.wait(500);
+        do dealer.addCard(deck.takeCard());
+        do Sys.wait(500);
+        do player.addCard(deck.takeCard());
+        do Sys.wait(500);
+        do dealer.addCard(deck.takeCard());
+
+        do player.showCards(20, 150);
+        do dealer.showCards(20, 50);
         return;
     }
 }
