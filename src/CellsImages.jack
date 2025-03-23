@@ -162,7 +162,7 @@ class CellsImages {
         let x1 = x;
         let y1 = y;
         let x = x + 30;
-        let y = y + 35;
+        let y = y + 30;
         let width = 50;
         let height = 8;
 
@@ -183,7 +183,7 @@ class CellsImages {
         }
 
         let x = x1 + 80;
-        let y = y1 + 36;
+        let y = y1 + 31;
         let width = 2;
         let height = 11;
 

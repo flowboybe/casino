@@ -455,7 +455,7 @@ push constant 30
 add
 pop argument 1
 push argument 2
-push constant 35
+push constant 30
 add
 pop argument 2
 push constant 50
@@ -519,7 +519,7 @@ push constant 80
 add
 pop argument 1
 push local 4
-push constant 36
+push constant 31
 add
 pop argument 2
 push constant 2

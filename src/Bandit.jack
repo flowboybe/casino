@@ -51,6 +51,8 @@ class Bandit {
                 if (currentBid < Main.getCoins() & currentBid < 50) {
                     let currentBid = currentBid + 1;
                     do Output.moveCursor(5, 60);
+                    do Output.printString("   ");
+                    do Output.moveCursor(5, 60);
                     do Output.printInt(currentBid);
                 }
 

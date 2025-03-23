@@ -224,7 +224,7 @@ gt
 if-goto IF_TRUE0
 goto IF_FALSE0
 label IF_TRUE0
-push constant 4
+push constant 3
 pop static 0
 label IF_FALSE0
 push static 0
@@ -326,7 +326,7 @@ push constant 0
 return
 function Cells.changeSecondCell 3
 push static 1
-push constant 1
+push constant 9
 add
 pop static 1
 push static 1
@@ -335,7 +335,7 @@ gt
 if-goto IF_TRUE0
 goto IF_FALSE0
 label IF_TRUE0
-push constant 9
+push constant 4
 pop static 1
 label IF_FALSE0
 push static 1
@@ -437,7 +437,7 @@ push constant 0
 return
 function Cells.changeThirdCell 3
 push static 2
-push constant 4
+push constant 5
 add
 pop static 2
 push static 2
@@ -446,7 +446,7 @@ gt
 if-goto IF_TRUE0
 goto IF_FALSE0
 label IF_TRUE0
-push constant 6
+push constant 5
 pop static 2
 label IF_FALSE0
 push static 2
