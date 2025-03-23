@@ -21,6 +21,8 @@ class Main{
 
     function void updateCoins(){
         do Output.moveCursor(2, 55);
+        do Output.printString("      ");
+        do Output.moveCursor(2, 55);
         do Output.printInt(coins);
         return;
     }

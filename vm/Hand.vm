@@ -1,5 +1,5 @@
 function Hand.new 0
-push constant 5
+push constant 6
 call Memory.alloc 1
 pop pointer 0
 push constant 6
@@ -7,6 +7,9 @@ call Array.new 1
 pop this 0
 push argument 0
 pop this 4
+push constant 0
+not
+pop this 5
 push pointer 0
 return
 function Hand.addCard 0
@@ -83,6 +86,8 @@ push constant 0
 gt
 push this 4
 and
+push this 5
+and
 if-goto IF_TRUE0
 goto IF_FALSE0
 label IF_TRUE0
@@ -123,6 +128,48 @@ function Hand.getNominals 0
 push argument 0
 pop pointer 0
 push this 3
+return
+function Hand.giveCard 0
+push argument 0
+pop pointer 0
+push pointer 0
+push argument 1
+call Deck.takeCard 1
+call Hand.addCard 2
+pop temp 0
+push this 4
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push pointer 0
+push constant 20
+push constant 50
+call Hand.showCards 3
+pop temp 0
+goto IF_END0
+label IF_FALSE0
+push pointer 0
+push constant 20
+push constant 150
+call Hand.showCards 3
+pop temp 0
+label IF_END0
+push constant 500
+call Sys.wait 1
+pop temp 0
+push constant 0
+return
+function Hand.countCards 0
+push argument 0
+pop pointer 0
+push this 2
+return
+function Hand.openCards 0
+push argument 0
+pop pointer 0
+push constant 0
+pop this 5
+push constant 0
 return
 function Hand.dispose 0
 push argument 0

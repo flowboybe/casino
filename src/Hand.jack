@@ -4,10 +4,12 @@ class Hand{
     field int length;
     field int nominals;
     field bool isDealersHand;
+    field bool isCardsClosed;
 
     constructor Hand new(bool isDealer){
         let cards = Array.new(6);
         let isDealersHand = isDealer;
+        let isCardsClosed = true;
         return this;
     }
 
@@ -27,7 +29,7 @@ class Hand{
         while (iterator < length){
             let currentCard = Card.new(cards[iterator] - (cards[iterator] / 10 * 10), cards[iterator] / 10);
             do currentCard.openCard();
-            if ((iterator > 0) & isDealersHand){
+            if ((iterator > 0) & isDealersHand & isCardsClosed){
                 do currentCard.closeCard();
             }
             do currentCard.undrawCard(x + (iterator * 34), y);
@@ -41,6 +43,27 @@ class Hand{
 
     method int getNominals(){
         return nominals;
+    }
+
+    method void giveCard(Deck deck){
+        do addCard(deck.takeCard());
+        if (isDealersHand){
+            do showCards(20, 50);
+        }
+        else{
+            do showCards(20, 150);
+        }
+        do Sys.wait(500);
+        return;
+    }
+
+    method int countCards(){
+        return length;
+    }
+
+    method void openCards(){
+        let isCardsClosed = false;
+        return;
     }
 
     method void dispose(){

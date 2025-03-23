@@ -5,12 +5,6 @@ class Card{
     field int nominalo;
 
     constructor Card new(int p, int c){
-        if (p > 8){
-            do Sys.error(101);
-        }
-        if (c > 3){
-            do Sys.error(102);
-        }
         let points = p;
         let colour = c;
         let opened = false;
