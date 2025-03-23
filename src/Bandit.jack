@@ -43,6 +43,10 @@ class Bandit {
         while (true) {
             let pressedKey = Keyboard.keyPressed();
 
+            if (currentBid > Main.getCoins()) {
+                let currentBid = Main.getCoins();
+            }
+
             if (pressedKey = 69) {
                 if (currentBid < Main.getCoins() & currentBid < 50) {
                     let currentBid = currentBid + 1;
