@@ -1,0 +1,26 @@
+class Animation{
+    function void Animate(){
+        var int width;
+        var int curNum;
+        var int curPosX;
+        var int num;
+        let width = 7;
+        let curPosX = 20;
+        let curNum = 0;
+        while (curNum < 27){
+            let num = curNum;
+            while (curNum < (num + width)){ 
+                do Output.moveCursor(10, curPosX);
+                do Output.printInt(curNum);
+                if ((num / 10) = 0){
+                    do Output.printString(" ");
+                }
+                let curNum = curNum + 1;
+                let curPosX = curPosX + 4;
+                do Sys.wait(500);
+            }
+            let curPosX = 20;
+        }
+        return;
+    }
+}

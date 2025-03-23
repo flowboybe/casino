@@ -6,7 +6,8 @@ class Bet{
 
     function void RefreshBet(){
         do Output.moveCursor(5, 5);
-        do Output.printString("Bet: ");
+        do Output.printString("Bet:    ");
+        do Output.moveCursor(5, 10);
         do Output.printInt(Bet.GetBet());
         return;
     }
@@ -20,7 +21,7 @@ class Bet{
     }
 
     function void LowerBet(int money){
-        if (~((bet - money) < Main.GetCoins())){
+        if (~((bet - money) < 0)){
             let bet = bet - money;
             do Bet.RefreshBet();
         }

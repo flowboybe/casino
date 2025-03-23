@@ -1,4 +1,4 @@
-function Roulette.startRoulette 0
+function Roulette.startRoulette 1
 call Screen.clearScreen 0
 pop temp 0
 push constant 1
@@ -70,13 +70,67 @@ call Bet.GetBet 0
 call Output.printInt 1
 pop temp 0
 push constant 10
-call Bet.RaiseBet 1
+push constant 30
+call Output.moveCursor 2
+pop temp 0
+push constant 1
+call String.new 1
+push constant 124
+call String.appendChar 2
+call Output.printString 1
+pop temp 0
+push constant 11
+push constant 30
+call Output.moveCursor 2
+pop temp 0
+push constant 1
+call String.new 1
+push constant 124
+call String.appendChar 2
+call Output.printString 1
+pop temp 0
+push constant 9
+push constant 30
+call Output.moveCursor 2
+pop temp 0
+push constant 1
+call String.new 1
+push constant 124
+call String.appendChar 2
+call Output.printString 1
 pop temp 0
 label WHILE_EXP0
 push constant 0
 not
 not
 if-goto WHILE_END0
+call Keyboard.keyPressed 0
+pop local 0
+push local 0
+push constant 87
+eq
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push constant 1
+call Bet.RaiseBet 1
+pop temp 0
+label IF_FALSE0
+push local 0
+push constant 83
+eq
+if-goto IF_TRUE1
+goto IF_FALSE1
+label IF_TRUE1
+push constant 1
+call Bet.LowerBet 1
+pop temp 0
+label IF_FALSE1
+call Animation.Animate 0
+pop temp 0
+push constant 70
+call Sys.wait 1
+pop temp 0
 goto WHILE_EXP0
 label WHILE_END0
 push constant 0
