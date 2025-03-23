@@ -25,6 +25,7 @@ class Blackjack{
         do Output.printString("by: br41nd34d");
         do Output.moveCursor(5,50);
         do Output.printString("Your bid: ");
+        do Blackjack.updateBid();
         do Screen.setColor(true);
         do Screen.drawLine(5, 35, 5, 210);
         do Screen.drawLine(5, 210, 507, 210);
@@ -49,6 +50,10 @@ class Blackjack{
             }
             if (pressedKey = 83){
                 do Main.setSeed(seed);
+                do Output.moveCursor(10, 1);
+                do Output.printString("Dealer's hand");
+                do Output.moveCursor(12, 1);
+                do Output.printString("Your hand");
                 do Blackjack.doRound();
                 do Sys.wait(2000);
                 do Blackjack.drawOverlay();
@@ -117,11 +122,11 @@ class Blackjack{
                 do dealer.openCards();
                 do dealer.showCards(20, 50);
                 do Sys.wait(1000);
-                do Output.moveCursor(10, 12);
+                do Output.moveCursor(10, 17);
                 do Output.printString("Dealers points: ");
                 do Output.printInt(dealer.getNominals());
                 do Sys.wait(1000);
-                do Output.moveCursor(11, 12);
+                do Output.moveCursor(11, 17);
                 do Output.printString("Your points: ");
                 do Output.printInt(player.getNominals());
                 do Sys.wait(1000);
