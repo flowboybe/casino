@@ -9,6 +9,9 @@ class Blackjack{
     }
 
     function void drawOverlay(){
+        do Screen.clearScreen();
+        do Screen.setColor(true);
+        do Screen.drawRectangle(450, 100, 482, 148);
         do Output.moveCursor(2, 5);
         do Output.printString("BLACKJACK");
         do Output.moveCursor(2, 50);
@@ -18,8 +21,10 @@ class Blackjack{
         do Output.printString("S - start round || E - increase bid || Q - decrease bid");
         do Output.moveCursor(21,3);
         do Output.printString("F - end round   || T - take card    || X - return to menu");
-        do Output.moveCursor(22,3);
+        do Output.moveCursor(22,20);
         do Output.printString("by: br41nd34d");
+        do Output.moveCursor(5,50);
+        do Output.printString("Your bid: ");
         do Screen.setColor(true);
         do Screen.drawLine(5, 35, 5, 210);
         do Screen.drawLine(5, 210, 507, 210);
@@ -30,22 +35,36 @@ class Blackjack{
 
     function void initiateGame(){
         var char pressedKey;
-        var Card card;
+        var int seed;
 
+        let seed = Main.getSeed();
         do Screen.drawRectangle(450, 100, 482, 148);
+        do Blackjack.updateBid();
+        
         while (true){
             let pressedKey = Keyboard.keyPressed();
+            let seed = seed + 43;
+            if (seed > 1000){
+                let seed = 17;
+            }
             if (pressedKey = 83){
+                do Main.setSeed(seed);
                 do Blackjack.doRound();
+                do Sys.wait(2000);
+                do Blackjack.drawOverlay();
             }
             if (pressedKey = 69){
-                if (currentBid < Main.getCoins() & currentBid < 200){
+                if (currentBid < Main.getCoins() & currentBid < 500){
                     let currentBid = currentBid + 1;
+                    do Blackjack.updateBid();
+                    do Sys.wait(50);
                 }
             }  
             if (pressedKey = 81){
                 if (currentBid > 1){
                     let currentBid = currentBid - 1;
+                    do Blackjack.updateBid();
+                    do Sys.wait(50);
                 }
             }
             if (pressedKey = 88){
@@ -62,7 +81,6 @@ class Blackjack{
         var Deck deck;
         var char pressedKey;
 
-        do Screen.drawRectangle(450, 100, 482, 148);
         do Main.setCoins(Main.getCoins() - currentBid);
         do Main.updateCoins();
         let player = Hand.new(false);
@@ -87,9 +105,9 @@ class Blackjack{
                 }
                 else{
                     do player.giveCard(deck);
-                if (dealer.getNominals() < 18){
-                    do dealer.giveCard(deck);
-                }
+                    if (dealer.getNominals() < 18){
+                        do dealer.giveCard(deck);
+                    }
                 }
             }
             if (pressedKey = 70){
@@ -140,6 +158,11 @@ class Blackjack{
                         do Blackjack.draw();
                     }
                 }
+
+                do player.dispose();
+                do dealer.dispose();
+                do deck.dispose();
+                return;
             }
         }
 
@@ -171,6 +194,14 @@ class Blackjack{
         do Screen.drawRectangle(6, 36, 506, 209);
         do Output.moveCursor(11, 25);
         do Output.printString("DRAW!");
+        return;
+    }
+
+    function void updateBid(){
+        do Output.moveCursor(5,60);
+        do Output.printString("   ");
+        do Output.moveCursor(5,60);
+        do Output.printInt(currentBid);
         return;
     }
 }

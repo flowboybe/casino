@@ -7,6 +7,7 @@ class Deck{
 
         let cards = Array.new(36);
         let peek = 36;
+        let counter = 0;
         
         while (counter < 36){
             let cards[counter] = counter + 1;
@@ -40,6 +41,7 @@ class Deck{
     }
 
     method void dispose(){
+        do cards.dispose();
         do Memory.deAlloc(this);
         return;
     }

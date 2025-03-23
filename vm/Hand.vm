@@ -10,6 +10,12 @@ pop this 4
 push constant 0
 not
 pop this 5
+push constant 0
+pop this 2
+push constant 0
+pop this 1
+push constant 0
+pop this 3
 push pointer 0
 return
 function Hand.addCard 0
@@ -174,6 +180,9 @@ return
 function Hand.dispose 0
 push argument 0
 pop pointer 0
+push this 0
+call Array.dispose 1
+pop temp 0
 push pointer 0
 call Memory.deAlloc 1
 pop temp 0

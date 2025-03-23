@@ -10,6 +10,9 @@ class Hand{
         let cards = Array.new(6);
         let isDealersHand = isDealer;
         let isCardsClosed = true;
+        let length = 0;
+        let points = 0;
+        let nominals = 0;
         return this;
     }
 
@@ -67,6 +70,7 @@ class Hand{
     }
 
     method void dispose(){
+        do cards.dispose();
         do Memory.deAlloc(this);
         return;
     }

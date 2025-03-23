@@ -77,6 +77,7 @@
             let strArray[5] =  "#    #";
         }
         do SymbolTable.draw(strArray, x, y);
+        do strArray.dispose();
         return;
     }
 
@@ -117,6 +118,7 @@
             let strArray[5] =  "  ##  ";
         }
         do SymbolTable.draw(strArray, x, y);
+        do strArray.dispose();
         return;
     }
 
