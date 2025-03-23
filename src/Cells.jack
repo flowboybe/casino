@@ -2,12 +2,16 @@ class Cells {
     static int seed1;
     static int seed2;
     static int seed3;
+    static int rand1;
+    static int rand2;
+    static int rand3;
 
     // ячейки начинают изменяться
     function void ActivateCells() {
-        var int iterations;
-
+        var int iterations, coins;
         let iterations = 0;
+        
+        let coins = Main.getCoins();
 
         while (iterations < 20) {
             do Cells.cleanCells();
@@ -19,7 +23,52 @@ class Cells {
             
             let iterations = iterations + 1;
         }
-        
+
+        if (rand1 = rand2 & rand1 = rand3 & rand2 = rand3) {
+            do Main.setCoins(coins + 100);
+            do Main.updateCoins();
+            return;
+        }
+
+        if (rand1 = 0 & rand2 = 0) {
+            do Main.setCoins(coins + 50);
+            do Main.updateCoins();
+            return;
+        }
+
+        if (rand1 = 0 & rand3 = 0) {
+            do Main.setCoins(coins + 50);
+            do Main.updateCoins();
+            return;
+        }
+
+        if (rand2 = 0 & rand3 = 0) {
+            do Main.setCoins(coins + 50);
+            do Main.updateCoins();
+            return;
+        }
+
+        if (rand1 = 1 & rand2 = 1) {
+            do Main.setCoins(coins + 50);
+            do Main.updateCoins();
+            return;
+        }
+
+        if (rand1 = 1 & rand3 = 1) {
+            do Main.setCoins(coins + 50);
+            do Main.updateCoins();
+            return;
+        }
+
+        if (rand2 = 1 & rand3 = 1) {
+            do Main.setCoins(coins + 50);
+            do Main.updateCoins();
+            return;
+        }
+
+        do Main.setCoins(coins - 50);
+        do Main.updateCoins();
+
         return;
     }
 
@@ -30,21 +79,22 @@ class Cells {
         var Random randomizer;
         
 
-        let seed1 = seed1 + 61;
+        let seed1 = seed1 + 3;
         if (seed1 > 1000) {
-            let seed1 = 46;
+            let seed1 = 4;
         }
 
         let randomizer = Random.new(seed1);  
         let randomNumber = randomizer.nextInt(6);
+        let rand1 = randomNumber;
 
         if (randomNumber = 0) {
-            do cellImage.drawIntegral(50, 70);
+            do cellImage.drawPi(50, 70);
             return;
         }
 
         if (randomNumber = 1) {
-            do cellImage.drawPi(50, 70);
+            do cellImage.drawIntegral(50, 70);
             return;
         }
 
@@ -64,7 +114,7 @@ class Cells {
         }
 
         if (randomNumber = 5) {
-            do cellImage.drawTetrisShape(50, 70, 0);
+            do cellImage.drawTetrisShape(50, 70, 1);
             return;
         }
 
@@ -78,21 +128,22 @@ class Cells {
         var Random randomizer;
         
 
-        let seed2 = seed2 + 78;
+        let seed2 = seed2 + 1;
         if (seed2 > 1000) {
-            let seed2 = 321;
+            let seed2 = 9;
         }
 
         let randomizer = Random.new(seed2);  
         let randomNumber = randomizer.nextInt(6);
+        let rand2 = randomNumber;
 
         if (randomNumber = 0) {
-            do cellImage.drawIntegral(166, 70);
+            do cellImage.drawPi(166, 70);
             return;
         }
 
         if (randomNumber = 1) {
-            do cellImage.drawFiit(166, 70);
+            do cellImage.drawIntegral(166, 70);
             return;
         }
 
@@ -126,21 +177,22 @@ class Cells {
         var Random randomizer;
         
 
-        let seed3 = seed3 + 21;
+        let seed3 = seed3 + 4;
         if (seed3 > 1000) {
-            let seed3 = 65;
+            let seed3 = 6;
         }
 
         let randomizer = Random.new(seed3);  
         let randomNumber = randomizer.nextInt(6);
+        let rand3 = randomNumber;
 
         if (randomNumber = 0) {
-            do cellImage.drawIntegral(283, 70);
+            do cellImage.drawPi(283, 70);
             return;
         }
 
         if (randomNumber = 1) {
-            do cellImage.drawPi(283, 70);
+            do cellImage.drawIntegral(283, 70);
             return;
         }
 

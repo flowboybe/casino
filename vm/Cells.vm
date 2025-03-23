@@ -1,6 +1,8 @@
-function Cells.ActivateCells 1
+function Cells.ActivateCells 2
 push constant 0
 pop local 0
+call Main.getCoins 0
+pop local 1
 label WHILE_EXP0
 push local 0
 push constant 20
@@ -24,11 +26,162 @@ add
 pop local 0
 goto WHILE_EXP0
 label WHILE_END0
+push static 3
+push static 4
+eq
+push static 3
+and
+push static 5
+eq
+push static 4
+and
+push static 5
+eq
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push local 1
+push constant 100
+add
+call Main.setCoins 1
+pop temp 0
+call Main.updateCoins 0
+pop temp 0
+push constant 0
+return
+label IF_FALSE0
+push static 3
+push constant 0
+eq
+push static 4
+and
+push constant 0
+eq
+if-goto IF_TRUE1
+goto IF_FALSE1
+label IF_TRUE1
+push local 1
+push constant 50
+add
+call Main.setCoins 1
+pop temp 0
+call Main.updateCoins 0
+pop temp 0
+push constant 0
+return
+label IF_FALSE1
+push static 3
+push constant 0
+eq
+push static 5
+and
+push constant 0
+eq
+if-goto IF_TRUE2
+goto IF_FALSE2
+label IF_TRUE2
+push local 1
+push constant 50
+add
+call Main.setCoins 1
+pop temp 0
+call Main.updateCoins 0
+pop temp 0
+push constant 0
+return
+label IF_FALSE2
+push static 4
+push constant 0
+eq
+push static 5
+and
+push constant 0
+eq
+if-goto IF_TRUE3
+goto IF_FALSE3
+label IF_TRUE3
+push local 1
+push constant 50
+add
+call Main.setCoins 1
+pop temp 0
+call Main.updateCoins 0
+pop temp 0
+push constant 0
+return
+label IF_FALSE3
+push static 3
+push constant 1
+eq
+push static 4
+and
+push constant 1
+eq
+if-goto IF_TRUE4
+goto IF_FALSE4
+label IF_TRUE4
+push local 1
+push constant 50
+add
+call Main.setCoins 1
+pop temp 0
+call Main.updateCoins 0
+pop temp 0
+push constant 0
+return
+label IF_FALSE4
+push static 3
+push constant 1
+eq
+push static 5
+and
+push constant 1
+eq
+if-goto IF_TRUE5
+goto IF_FALSE5
+label IF_TRUE5
+push local 1
+push constant 50
+add
+call Main.setCoins 1
+pop temp 0
+call Main.updateCoins 0
+pop temp 0
+push constant 0
+return
+label IF_FALSE5
+push static 4
+push constant 1
+eq
+push static 5
+and
+push constant 1
+eq
+if-goto IF_TRUE6
+goto IF_FALSE6
+label IF_TRUE6
+push local 1
+push constant 50
+add
+call Main.setCoins 1
+pop temp 0
+call Main.updateCoins 0
+pop temp 0
+push constant 0
+return
+label IF_FALSE6
+push local 1
+push constant 50
+sub
+call Main.setCoins 1
+pop temp 0
+call Main.updateCoins 0
+pop temp 0
 push constant 0
 return
 function Cells.changeFirstCell 3
 push static 0
-push constant 61
+push constant 3
 add
 pop static 0
 push static 0
@@ -37,7 +190,7 @@ gt
 if-goto IF_TRUE0
 goto IF_FALSE0
 label IF_TRUE0
-push constant 46
+push constant 4
 pop static 0
 label IF_FALSE0
 push static 0
@@ -48,6 +201,8 @@ push constant 6
 call Random.nextInt 2
 pop local 1
 push local 1
+pop static 3
+push local 1
 push constant 0
 eq
 if-goto IF_TRUE1
@@ -56,7 +211,7 @@ label IF_TRUE1
 push local 0
 push constant 50
 push constant 70
-call CellsImages.drawIntegral 3
+call CellsImages.drawPi 3
 pop temp 0
 push constant 0
 return
@@ -70,7 +225,7 @@ label IF_TRUE2
 push local 0
 push constant 50
 push constant 70
-call CellsImages.drawPi 3
+call CellsImages.drawIntegral 3
 pop temp 0
 push constant 0
 return
@@ -127,7 +282,7 @@ label IF_TRUE6
 push local 0
 push constant 50
 push constant 70
-push constant 0
+push constant 1
 call CellsImages.drawTetrisShape 4
 pop temp 0
 push constant 0
@@ -137,7 +292,7 @@ push constant 0
 return
 function Cells.changeSecondCell 3
 push static 1
-push constant 78
+push constant 1
 add
 pop static 1
 push static 1
@@ -146,7 +301,7 @@ gt
 if-goto IF_TRUE0
 goto IF_FALSE0
 label IF_TRUE0
-push constant 321
+push constant 9
 pop static 1
 label IF_FALSE0
 push static 1
@@ -157,6 +312,8 @@ push constant 6
 call Random.nextInt 2
 pop local 1
 push local 1
+pop static 4
+push local 1
 push constant 0
 eq
 if-goto IF_TRUE1
@@ -165,7 +322,7 @@ label IF_TRUE1
 push local 0
 push constant 166
 push constant 70
-call CellsImages.drawIntegral 3
+call CellsImages.drawPi 3
 pop temp 0
 push constant 0
 return
@@ -179,7 +336,7 @@ label IF_TRUE2
 push local 0
 push constant 166
 push constant 70
-call CellsImages.drawFiit 3
+call CellsImages.drawIntegral 3
 pop temp 0
 push constant 0
 return
@@ -246,7 +403,7 @@ push constant 0
 return
 function Cells.changeThirdCell 3
 push static 2
-push constant 21
+push constant 4
 add
 pop static 2
 push static 2
@@ -255,7 +412,7 @@ gt
 if-goto IF_TRUE0
 goto IF_FALSE0
 label IF_TRUE0
-push constant 65
+push constant 6
 pop static 2
 label IF_FALSE0
 push static 2
@@ -266,6 +423,8 @@ push constant 6
 call Random.nextInt 2
 pop local 1
 push local 1
+pop static 5
+push local 1
 push constant 0
 eq
 if-goto IF_TRUE1
@@ -274,7 +433,7 @@ label IF_TRUE1
 push local 0
 push constant 283
 push constant 70
-call CellsImages.drawIntegral 3
+call CellsImages.drawPi 3
 pop temp 0
 push constant 0
 return
@@ -288,7 +447,7 @@ label IF_TRUE2
 push local 0
 push constant 283
 push constant 70
-call CellsImages.drawPi 3
+call CellsImages.drawIntegral 3
 pop temp 0
 push constant 0
 return

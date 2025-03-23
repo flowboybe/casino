@@ -45,7 +45,7 @@ class MachineOptions {
         let x = 443;
         let y = 178;
         let width = 20;
-        let height = 65;
+        let height = 62;
         do Screen.drawRectangle(x, y, x + width, y + height);  // очистка нижнего рычага
 
         do Screen.setColor(true);
