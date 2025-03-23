@@ -1,0 +1,9 @@
+class Bankruptcy {
+    function void kickOut() {
+
+        do Output.moveCursor(11, 10);
+        do Output.printString("GET OUT OF HERE AND COME BACK WITH THE MONEY!");
+
+        return;
+    }
+}

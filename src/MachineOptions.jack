@@ -2,10 +2,16 @@ class MachineOptions {
     // опустить рычаг
     function void lowerArm () {
         var char key;
-        var int x, y, width, height;
+        var int x, y, width, height, coins;
 
  
         let key = Keyboard.keyPressed();
+        let coins = Main.getCoins();
+
+        if (coins = 0) {
+            return;
+        }
+
         if (key = 32) {
             // нажатие пробела
 

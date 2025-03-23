@@ -82,7 +82,7 @@ pop temp 0
 call Main.updateCoins 0
 pop temp 0
 push constant 11
-push constant 63
+push constant 61
 call Output.moveCursor 2
 pop temp 0
 push constant 1
@@ -92,7 +92,7 @@ call String.appendChar 2
 call Output.printString 1
 pop temp 0
 push constant 12
-push constant 63
+push constant 61
 call Output.moveCursor 2
 pop temp 0
 push constant 1
@@ -102,7 +102,7 @@ call String.appendChar 2
 call Output.printString 1
 pop temp 0
 push constant 13
-push constant 63
+push constant 61
 call Output.moveCursor 2
 pop temp 0
 push constant 1
@@ -112,7 +112,7 @@ call String.appendChar 2
 call Output.printString 1
 pop temp 0
 push constant 14
-push constant 63
+push constant 61
 call Output.moveCursor 2
 pop temp 0
 push constant 1
@@ -122,7 +122,7 @@ call String.appendChar 2
 call Output.printString 1
 pop temp 0
 push constant 15
-push constant 63
+push constant 61
 call Output.moveCursor 2
 pop temp 0
 push constant 1
@@ -331,7 +331,7 @@ if-goto IF_TRUE4
 goto IF_FALSE4
 label IF_TRUE4
 push static 0
-push constant 0
+push constant 1
 gt
 if-goto IF_TRUE5
 goto IF_FALSE5
@@ -340,6 +340,20 @@ push static 0
 push constant 1
 sub
 pop static 0
+push constant 5
+push constant 60
+call Output.moveCursor 2
+pop temp 0
+push constant 3
+call String.new 1
+push constant 32
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+call Output.printString 1
+pop temp 0
 push constant 5
 push constant 60
 call Output.moveCursor 2
@@ -357,6 +371,22 @@ goto IF_FALSE6
 label IF_TRUE6
 call Screen.clearScreen 0
 pop temp 0
+call Main.getCoins 0
+push constant 0
+eq
+if-goto IF_TRUE7
+goto IF_FALSE7
+label IF_TRUE7
+call Bankruptcy.kickOut 0
+pop temp 0
+label WHILE_EXP1
+push constant 0
+not
+not
+if-goto WHILE_END1
+goto WHILE_EXP1
+label WHILE_END1
+label IF_FALSE7
 push constant 0
 return
 label IF_FALSE6

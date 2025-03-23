@@ -1,9 +1,0 @@
-function Mod.mod 0
-push argument 0
-push argument 0
-push argument 1
-call Math.divide 2
-sub
-push argument 1
-call Math.multiply 2
-return

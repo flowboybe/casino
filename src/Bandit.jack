@@ -22,15 +22,15 @@ class Bandit {
         do Output.moveCursor(1, 50);
         do Output.printString("Cash: ");
         do Main.updateCoins();
-        do Output.moveCursor(11, 63);
+        do Output.moveCursor(11, 61);
         do Output.printString("S");
-        do Output.moveCursor(12, 63);
+        do Output.moveCursor(12, 61);
         do Output.printString("P");
-        do Output.moveCursor(13, 63);
+        do Output.moveCursor(13, 61);
         do Output.printString("A");
-        do Output.moveCursor(14, 63);
+        do Output.moveCursor(14, 61);
         do Output.printString("C");
-        do Output.moveCursor(15, 63);
+        do Output.moveCursor(15, 61);
         do Output.printString("E");
         do Output.moveCursor(3,3);
         do Output.printString("X - quit || E - increase bid || Q - decrease bid");
@@ -60,8 +60,10 @@ class Bandit {
             }
 
             if (pressedKey = 81) {
-                if (currentBid > 0) {
+                if (currentBid > 1) {
                     let currentBid = currentBid - 1;
+                    do Output.moveCursor(5, 60);
+                    do Output.printString("   ");
                     do Output.moveCursor(5, 60);
                     do Output.printInt(currentBid);
                 }
@@ -69,6 +71,12 @@ class Bandit {
 
             if (pressedKey = 88) {
                 do Screen.clearScreen();
+
+                if (Main.getCoins() = 0) {
+                        do Bankruptcy.kickOut();
+                        while (true) {}
+                }
+
                 return;
             }
             
