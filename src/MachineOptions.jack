@@ -39,7 +39,7 @@ class MachineOptions {
         var char key;
         var int x, y, width, height;
 
-        do Sys.wait(1000);
+        do Sys.wait(200);
 
         do Screen.setColor(false);
         let x = 443;

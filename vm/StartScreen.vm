@@ -306,7 +306,7 @@ push constant 79
 call String.appendChar 2
 call Output.printString 1
 pop temp 0
-push constant 2
+push constant 1
 push constant 50
 call Output.moveCursor 2
 pop temp 0
@@ -485,10 +485,6 @@ if-goto IF_TRUE1
 goto IF_FALSE1
 label IF_TRUE1
 call Screen.clearScreen 0
-pop temp 0
-push constant 0
-push constant 0
-call Output.moveCursor 2
 pop temp 0
 call Blackjack.initializeBlackjack 0
 pop temp 0

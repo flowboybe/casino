@@ -33,7 +33,7 @@ class StartScreen{
         var char pressedKey;
         do Output.moveCursor(2, 5);
         do Output.printString("CASINO");
-        do Output.moveCursor(2, 50);
+        do Output.moveCursor(1, 50);
         do Output.printString("Cash: ");
         do Main.updateCoins();
         do Output.moveCursor(10,20);
