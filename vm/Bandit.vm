@@ -1,7 +1,7 @@
 function Bandit.getCurrentBid 0
 push static 0
 return
-function Bandit.initializeBandit 3
+function Bandit.initializeBandit 1
 push constant 50
 pop static 0
 call Main.getCoins 0
@@ -13,13 +13,11 @@ label IF_TRUE0
 call Main.getCoins 0
 pop static 0
 label IF_FALSE0
-push local 0
-call DrawingMachine.drawMachine 1
+call DrawingMachine.drawMachine 0
 pop temp 0
-push local 0
-call DrawingMachine.drawArm 1
+call DrawingMachine.drawArm 0
 pop temp 0
-push constant 1
+push constant 2
 push constant 3
 call Output.moveCursor 2
 pop temp 0
@@ -59,7 +57,7 @@ push constant 84
 call String.appendChar 2
 call Output.printString 1
 pop temp 0
-push constant 1
+push constant 2
 push constant 20
 call Output.moveCursor 2
 pop temp 0
@@ -89,7 +87,7 @@ push constant 54
 call String.appendChar 2
 call Output.printString 1
 pop temp 0
-push constant 1
+push constant 2
 push constant 50
 call Output.moveCursor 2
 pop temp 0
@@ -294,7 +292,7 @@ not
 not
 if-goto WHILE_END0
 call Keyboard.keyPressed 0
-pop local 2
+pop local 0
 push static 0
 call Main.getCoins 0
 gt
@@ -304,7 +302,7 @@ label IF_TRUE1
 call Main.getCoins 0
 pop static 0
 label IF_FALSE1
-push local 2
+push local 0
 push constant 69
 eq
 if-goto IF_TRUE2
@@ -377,7 +375,7 @@ call Output.printInt 1
 pop temp 0
 label IF_FALSE4
 label IF_FALSE2
-push local 2
+push local 0
 push constant 81
 eq
 if-goto IF_TRUE5
@@ -416,7 +414,7 @@ call Output.printInt 1
 pop temp 0
 label IF_FALSE6
 label IF_FALSE5
-push local 2
+push local 0
 push constant 88
 eq
 if-goto IF_TRUE7
@@ -443,11 +441,9 @@ label IF_FALSE8
 push constant 0
 return
 label IF_FALSE7
-push local 1
-call MachineOptions.lowerArm 1
+call MachineOptions.lowerArm 0
 pop temp 0
-push local 1
-call MachineOptions.liftArm 1
+call MachineOptions.liftArm 0
 pop temp 0
 goto WHILE_EXP0
 label WHILE_END0

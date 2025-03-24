@@ -324,7 +324,7 @@ push constant 79
 call String.appendChar 2
 call Output.printString 1
 pop temp 0
-push constant 1
+push constant 2
 push constant 50
 call Output.moveCursor 2
 pop temp 0

@@ -97,5 +97,10 @@ push constant 33
 call String.appendChar 2
 call Output.printString 1
 pop temp 0
+push constant 5000
+call Sys.wait 1
+pop temp 0
+call Sys.halt 0
+pop temp 0
 push constant 0
 return
