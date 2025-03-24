@@ -1,0 +1,168 @@
+function DrawingMachine.drawMachine 4
+push constant 30
+pop local 0
+push constant 50
+pop local 1
+push constant 382
+pop local 2
+push constant 150
+pop local 3
+push local 0
+push local 1
+push local 0
+push local 2
+add
+push local 1
+push local 3
+add
+call Screen.drawRectangle 4
+pop temp 0
+push local 0
+push constant 20
+add
+pop local 0
+push local 1
+push constant 20
+add
+pop local 1
+push local 2
+push constant 40
+sub
+pop local 2
+push local 3
+push constant 40
+sub
+pop local 3
+push constant 0
+call Screen.setColor 1
+pop temp 0
+push local 0
+push local 1
+push local 0
+push local 2
+add
+push local 1
+push local 3
+add
+call Screen.drawRectangle 4
+pop temp 0
+push local 0
+push constant 110
+add
+pop local 0
+push constant 5
+pop local 2
+push constant 0
+not
+call Screen.setColor 1
+pop temp 0
+push local 0
+push local 1
+push local 0
+push local 2
+add
+push local 1
+push local 3
+add
+call Screen.drawRectangle 4
+pop temp 0
+push local 0
+push constant 115
+add
+pop local 0
+push local 0
+push local 1
+push local 0
+push local 2
+add
+push local 1
+push local 3
+add
+call Screen.drawRectangle 4
+pop temp 0
+push constant 30
+pop local 0
+push constant 200
+pop local 1
+push constant 382
+pop local 2
+push constant 55
+pop local 3
+push local 0
+push local 1
+push local 0
+push local 2
+add
+push local 1
+push local 3
+add
+call Screen.drawRectangle 4
+pop temp 0
+push constant 0
+return
+function DrawingMachine.drawArm 4
+push constant 413
+pop local 0
+push constant 170
+pop local 1
+push constant 29
+pop local 2
+push constant 8
+pop local 3
+push local 0
+push local 1
+push local 0
+push local 2
+add
+push local 1
+push local 3
+add
+call Screen.drawRectangle 4
+pop temp 0
+push constant 442
+pop local 0
+push constant 171
+pop local 1
+push constant 19
+pop local 2
+push constant 7
+pop local 3
+push local 0
+push local 1
+push local 0
+push local 2
+add
+push local 1
+push local 3
+add
+call Screen.drawRectangle 4
+pop temp 0
+push constant 453
+pop local 0
+push constant 120
+pop local 1
+push constant 8
+pop local 2
+push constant 50
+pop local 3
+push local 0
+push local 1
+push local 0
+push local 2
+add
+push local 1
+push local 3
+add
+call Screen.drawRectangle 4
+pop temp 0
+push constant 456
+pop local 0
+push constant 116
+pop local 1
+push local 0
+push local 1
+push constant 7
+call Screen.drawCircle 3
+pop temp 0
+push constant 0
+return

@@ -1,0 +1,82 @@
+class DrawingMachine {
+    function void drawMachine() {
+        var int x, y, width, height;
+
+
+        let x = 30;
+        let y = 50;
+
+        let width = 382;
+        let height = 150;
+
+        do Screen.drawRectangle(x, y, x + width, y + height); // верхняя часть машины
+
+        let x = x + 20;
+        let y = y + 20;
+
+        let width = width - 40;
+        let height = height - 40;
+
+        do Screen.setColor(false);
+
+        do Screen.drawRectangle(x, y, x + width, y + height); // поле для ячеек
+
+        // верхие левые углы ячеек: (50, 70), (166, 70), (281, 70)
+
+        let x = x + 110;
+        let width = 5;
+ 
+        do Screen.setColor(true);
+        do Screen.drawRectangle(x, y, x + width, y + height); // разделитель 1 и 2 ячейки
+
+
+        let x = x + 115;
+ 
+        do Screen.drawRectangle(x, y, x + width, y + height); // разделитель 2 и 3 ячейки
+
+        let x = 30;
+        let y = 200;
+
+        let width = 382;
+        let height = 55;
+
+        do Screen.drawRectangle(x, y, x + width, y + height); // нижняя часть машины
+
+        return;
+    }
+
+    function void drawArm() {
+        var int x, y, width, height;
+
+        let x = 413;
+        let y = 170;
+
+        let width = 29;
+        let height = 8;
+        
+        do Screen.drawRectangle(x, y, x + width, y + height); // горизонтальная часть рычага
+
+        let x = 442;
+        let y = 171;
+
+        let width = 19;
+        let height = 7;
+        
+        do Screen.drawRectangle(x, y, x + width, y + height); // сужение горизонтальной части
+
+        let x = 453;
+        let y = 120;
+
+        let width = 8;
+        let height = 50;
+
+        do Screen.drawRectangle(x, y, x + width, y + height); // вертикальная часть рычага
+
+        let x = 456;
+        let y = 116;
+
+        do Screen.drawCircle(x, y, 7); // верхняя часть рычага
+
+        return;
+    }
+}

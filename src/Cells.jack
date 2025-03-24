@@ -1,0 +1,259 @@
+class Cells {
+    static int seed1;
+    static int seed2;
+    static int seed3;
+    static int rand1;
+    static int rand2;
+    static int rand3;
+
+    // ячейки начинают изменяться
+    function void ActivateCells() {
+        var int iterations, coins, bid;
+        let iterations = 0;
+        
+        let coins = Main.getCoins();
+        let bid = Bandit.getCurrentBid();
+
+        while (iterations < 20) {
+            do Cells.cleanCells();
+            do Cells.changeFirstCell();
+            do Cells.changeSecondCell();
+            do Cells.changeThirdCell();
+
+            do Sys.wait(200);
+            
+            let iterations = iterations + 1;
+        }
+
+        if (rand1 = rand2 & rand1 = rand3 & rand2 = rand3) {
+            do Main.setCoins(coins + (bid * 2));
+            do Main.updateCoins();
+            return;
+        }
+
+        if (rand1 = 1 & rand2 = 1) {
+            do Main.setCoins(coins + bid);
+            do Main.updateCoins();
+            return;
+        }
+
+        if (rand1 = 1 & rand3 = 1) {
+            do Main.setCoins(coins + bid);
+            do Main.updateCoins();
+            return;
+        }
+
+        if (rand2 = 1 & rand3 = 1) {
+            do Main.setCoins(coins + bid);
+            do Main.updateCoins();
+            return;
+        }
+
+        if (rand1 = 2 & rand2 = 2) {
+            do Main.setCoins(coins + bid);
+            do Main.updateCoins();
+            return;
+        }
+
+        if (rand1 = 2 & rand3 = 2) {
+            do Main.setCoins(coins + bid);
+            do Main.updateCoins();
+            return;
+        }
+
+        if (rand2 = 2 & rand3 = 2) {
+            do Main.setCoins(coins + bid);
+            do Main.updateCoins();
+            return;
+        }
+
+        do Main.setCoins(coins - bid);
+        do Main.updateCoins();
+
+        if (Main.getCoins() < 50) {
+            let bid = Main.getCoins();
+            do Output.moveCursor(5, 60);
+            do Output.printString("   ");
+            do Output.moveCursor(5, 60);
+            do Output.printInt(bid);
+        }
+
+        return;
+    }
+
+    // выбор для первой ячейки
+    function void changeFirstCell() { 
+        var CellsImages cellImage;
+        var int randomNumber;
+        var Random randomizer;
+        
+
+        let seed1 = seed1 + 3;
+        if (seed1 > 1000) {
+            let seed1 = 3;
+        }
+
+        let randomizer = Random.new(seed1);  
+        let randomNumber = randomizer.nextInt(6);
+        let rand1 = randomNumber;
+
+        if (randomNumber = 0) {
+            do cellImage.drawFiit(50, 70);
+            return;
+        }
+
+        if (randomNumber = 1) {
+            do cellImage.drawIntegral(50, 70);
+            return;
+        }
+
+        if (randomNumber = 2) {
+            do cellImage.drawPi(50, 70);
+            return;
+        }
+
+        if (randomNumber = 3) {
+            do cellImage.drawSeven(50, 70);
+            return;
+        }
+
+        if (randomNumber = 4) {
+            do cellImage.drawTetrisShape(50, 70, 0);
+            return;
+        }
+
+        if (randomNumber = 5) {
+            do cellImage.drawTetrisShape(50, 70, 1);
+            return;
+        }
+
+        return;
+    }
+
+    // выбор для второй ячейки
+    function void changeSecondCell() {
+        var CellsImages cellImage;
+        var int randomNumber;
+        var Random randomizer;
+        
+
+        let seed2 = seed2 + 9;
+        if (seed2 > 1000) {
+            let seed2 = 4;
+        }
+
+        let randomizer = Random.new(seed2);  
+        let randomNumber = randomizer.nextInt(6);
+        let rand2 = randomNumber;
+
+        if (randomNumber = 0) {
+            do cellImage.drawFiit(166, 70);
+            return;
+        }
+
+        if (randomNumber = 1) {
+            do cellImage.drawIntegral(166, 70);
+            return;
+        }
+
+        if (randomNumber = 2) {
+            do cellImage.drawPi(166, 70);
+            return;
+        }
+
+        if (randomNumber = 3) {
+            do cellImage.drawSeven(166, 70);
+            return;
+        }
+
+        if (randomNumber = 4) {
+            do cellImage.drawTetrisShape(166, 70, 0);
+            return;
+        }
+
+        if (randomNumber = 5) {
+            do cellImage.drawTetrisShape(166, 70, 1);
+            return;
+        }
+
+        return;
+    }
+
+    // выбор для третьей ячейки
+    function void changeThirdCell() {
+        var CellsImages cellImage;
+        var int randomNumber;
+        var Random randomizer;
+        
+
+        let seed3 = seed3 + 5;
+        if (seed3 > 1000) {
+            let seed3 = 5;
+        }
+
+        let randomizer = Random.new(seed3);  
+        let randomNumber = randomizer.nextInt(6);
+        let rand3 = randomNumber;
+
+        if (randomNumber = 0) {
+            do cellImage.drawFiit(283, 70);
+            return;
+        }
+
+        if (randomNumber = 1) {
+            do cellImage.drawIntegral(283, 70);
+            return;
+        }
+
+        if (randomNumber = 2) {
+            do cellImage.drawPi(283, 70);
+            return;
+        }
+
+        if (randomNumber = 3) {
+            do cellImage.drawSeven(283, 70);
+            return;
+        }
+
+        if (randomNumber = 4) {
+            do cellImage.drawTetrisShape(283, 70, 0);
+            return;
+        }
+
+        if (randomNumber = 5) {
+            do cellImage.drawTetrisShape(283, 70, 1);
+            return;
+        }
+
+        return;
+    }
+
+    function void cleanCells() {
+        var int x, y, width, height;
+
+        let x = 50;
+        let y = 70;
+        let width = 109;
+        let height = 110;
+
+        do Screen.setColor(false);
+        do Screen.drawRectangle(x, y, x + width, y + height); 
+
+
+        let x = 166;
+        let width = 108;
+
+        do Screen.drawRectangle(x, y, x + width, y + height);
+
+
+        let x = 281;
+        let width = 107;
+
+        do Screen.drawRectangle(x, y, x + width, y + height);
+
+        do Screen.setColor(true);
+
+        return;
+    }
+
+}

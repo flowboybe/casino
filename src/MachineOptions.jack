@@ -1,0 +1,71 @@
+class MachineOptions {
+    // опустить рычаг
+    function void lowerArm () {
+        var char key;
+        var int x, y, width, height, coins;
+
+ 
+        let key = Keyboard.keyPressed();
+        let coins = Main.getCoins();
+
+        if (coins = 0) {
+            return;
+        }
+
+        if (key = 32) {
+            // нажатие пробела
+
+            do Cells.cleanCells();
+
+            do Screen.setColor(false);
+            let x = 443;
+            let y = 105;
+            let width = 20;
+            let height = 65;
+            do Screen.drawRectangle(x, y, x + width, y + height); // очистка верхнего рычага
+
+            do Screen.setColor(true);
+            let x = 453;
+            let y = 178;
+            let width = 8;
+            let height = 50;
+            do Screen.drawRectangle(x, y, x + width, y + height);
+            let x = 456;
+            let y = 232;
+            do Screen.drawCircle(x, y, 7); // отрисовка нижнего рычага  
+
+            do Cells.ActivateCells(); // активация смены ячеек
+        } 
+
+        return;
+    }
+
+    // поднять рычаг
+    function void liftArm() {
+        var char key;
+        var int x, y, width, height;
+
+        do Sys.wait(200);
+
+        do Screen.setColor(false);
+        let x = 443;
+        let y = 178;
+        let width = 20;
+        let height = 62;
+        do Screen.drawRectangle(x, y, x + width, y + height);  // очистка нижнего рычага
+
+        do Screen.setColor(true);
+        let x = 453;
+        let y = 120;
+        let width = 8;
+        let height = 50;
+
+        do Screen.drawRectangle(x, y, x + width, y + height);
+
+        let x = 456;
+        let y = 116;
+        do Screen.drawCircle(x, y, 7); // отрисовка верхнего рычага
+
+        return;
+    }
+}

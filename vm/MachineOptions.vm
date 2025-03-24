@@ -1,0 +1,137 @@
+function MachineOptions.lowerArm 6
+call Keyboard.keyPressed 0
+pop local 0
+call Main.getCoins 0
+pop local 5
+push local 5
+push constant 0
+eq
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push constant 0
+return
+label IF_FALSE0
+push local 0
+push constant 32
+eq
+if-goto IF_TRUE1
+goto IF_FALSE1
+label IF_TRUE1
+call Cells.cleanCells 0
+pop temp 0
+push constant 0
+call Screen.setColor 1
+pop temp 0
+push constant 443
+pop local 1
+push constant 105
+pop local 2
+push constant 20
+pop local 3
+push constant 65
+pop local 4
+push local 1
+push local 2
+push local 1
+push local 3
+add
+push local 2
+push local 4
+add
+call Screen.drawRectangle 4
+pop temp 0
+push constant 0
+not
+call Screen.setColor 1
+pop temp 0
+push constant 453
+pop local 1
+push constant 178
+pop local 2
+push constant 8
+pop local 3
+push constant 50
+pop local 4
+push local 1
+push local 2
+push local 1
+push local 3
+add
+push local 2
+push local 4
+add
+call Screen.drawRectangle 4
+pop temp 0
+push constant 456
+pop local 1
+push constant 232
+pop local 2
+push local 1
+push local 2
+push constant 7
+call Screen.drawCircle 3
+pop temp 0
+call Cells.ActivateCells 0
+pop temp 0
+label IF_FALSE1
+push constant 0
+return
+function MachineOptions.liftArm 5
+push constant 200
+call Sys.wait 1
+pop temp 0
+push constant 0
+call Screen.setColor 1
+pop temp 0
+push constant 443
+pop local 1
+push constant 178
+pop local 2
+push constant 20
+pop local 3
+push constant 62
+pop local 4
+push local 1
+push local 2
+push local 1
+push local 3
+add
+push local 2
+push local 4
+add
+call Screen.drawRectangle 4
+pop temp 0
+push constant 0
+not
+call Screen.setColor 1
+pop temp 0
+push constant 453
+pop local 1
+push constant 120
+pop local 2
+push constant 8
+pop local 3
+push constant 50
+pop local 4
+push local 1
+push local 2
+push local 1
+push local 3
+add
+push local 2
+push local 4
+add
+call Screen.drawRectangle 4
+pop temp 0
+push constant 456
+pop local 1
+push constant 116
+pop local 2
+push local 1
+push local 2
+push constant 7
+call Screen.drawCircle 3
+pop temp 0
+push constant 0
+return
