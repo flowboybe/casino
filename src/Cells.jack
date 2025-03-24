@@ -1,13 +1,14 @@
 class Cells {
-    static int seed1;
-    static int seed2;
-    static int seed3;
     static int rand1;
     static int rand2;
     static int rand3;
+    static int seedCells1;
+    static int seedCells2;
+    static int seedCells3;
 
     // ячейки начинают изменяться
-    function void ActivateCells() {
+    function void ActivateCells(int seed1, int seed2, int seed3) {
+
         var int iterations, coins, bid;
         let iterations = 0;
         
@@ -16,9 +17,12 @@ class Cells {
 
         while (iterations < 20) {
             do Cells.cleanCells();
-            do Cells.changeFirstCell();
-            do Cells.changeSecondCell();
-            do Cells.changeThirdCell();
+            do Cells.changeFirstCell(seed1);
+            do Cells.changeSecondCell(seed2);
+            do Cells.changeThirdCell(seed3);
+            let seed1 = seedCells1;
+            let seed2 = seedCells2;
+            let seed3 = seedCells3;
 
             do Sys.wait(200);
             
@@ -26,7 +30,7 @@ class Cells {
         }
 
         if (rand1 = rand2 & rand1 = rand3 & rand2 = rand3) {
-            do Main.setCoins(coins + (bid * 2));
+            do Main.setCoins(coins + (bid * 10));
             do Main.updateCoins();
             return;
         }
@@ -82,18 +86,19 @@ class Cells {
     }
 
     // выбор для первой ячейки
-    function void changeFirstCell() { 
+    function void changeFirstCell(int seed) { 
         var CellsImages cellImage;
         var int randomNumber;
         var Random randomizer;
-        
 
-        let seed1 = seed1 + 3;
-        if (seed1 > 1000) {
-            let seed1 = 3;
+        let seed = seed + 3;
+        if (seed > 1000) {
+            let seed = 3;
         }
+        let seedCells1 = seed;
 
-        let randomizer = Random.new(seed1);  
+
+        let randomizer = Random.new(seed);  
         let randomNumber = randomizer.nextInt(6);
         let rand1 = randomNumber;
 
@@ -126,23 +131,24 @@ class Cells {
             do cellImage.drawTetrisShape(50, 70, 1);
             return;
         }
+        do randomizer.dispose();
+        do cellImage.dispose();
 
         return;
     }
-
     // выбор для второй ячейки
-    function void changeSecondCell() {
+    function void changeSecondCell(int seed) {
         var CellsImages cellImage;
         var int randomNumber;
         var Random randomizer;
         
-
-        let seed2 = seed2 + 9;
-        if (seed2 > 1000) {
-            let seed2 = 4;
+        let seed = seed + 9;
+        if (seed > 1000) {
+            let seed = 4;
         }
+        let seedCells2 = seed;
 
-        let randomizer = Random.new(seed2);  
+        let randomizer = Random.new(seed);  
         let randomNumber = randomizer.nextInt(6);
         let rand2 = randomNumber;
 
@@ -175,23 +181,25 @@ class Cells {
             do cellImage.drawTetrisShape(166, 70, 1);
             return;
         }
+        do randomizer.dispose();
+        do cellImage.dispose();
 
         return;
     }
 
     // выбор для третьей ячейки
-    function void changeThirdCell() {
+    function void changeThirdCell(int seed) {
         var CellsImages cellImage;
         var int randomNumber;
         var Random randomizer;
-        
 
-        let seed3 = seed3 + 5;
-        if (seed3 > 1000) {
-            let seed3 = 5;
+        let seed = seed + 5;
+        if (seed > 1000) {
+            let seed = 5;
         }
+        let seedCells3 = seed;
 
-        let randomizer = Random.new(seed3);  
+        let randomizer = Random.new(seed);  
         let randomNumber = randomizer.nextInt(6);
         let rand3 = randomNumber;
 
@@ -224,6 +232,8 @@ class Cells {
             do cellImage.drawTetrisShape(283, 70, 1);
             return;
         }
+        do randomizer.dispose();
+        do cellImage.dispose();
 
         return;
     }
@@ -255,5 +265,4 @@ class Cells {
 
         return;
     }
-
 }

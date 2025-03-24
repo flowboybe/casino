@@ -72,12 +72,54 @@ push local 2
 push constant 7
 call Screen.drawCircle 3
 pop temp 0
-call Cells.ActivateCells 0
+push static 0
+push static 1
+push static 2
+call Cells.ActivateCells 3
 pop temp 0
 label IF_FALSE1
 push constant 0
 return
 function MachineOptions.liftArm 5
+push static 0
+push constant 3
+add
+pop static 0
+push static 0
+push constant 1000
+gt
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push constant 3
+pop static 0
+label IF_FALSE0
+push static 1
+push constant 9
+add
+pop static 1
+push static 1
+push constant 1000
+gt
+if-goto IF_TRUE1
+goto IF_FALSE1
+label IF_TRUE1
+push constant 4
+pop static 1
+label IF_FALSE1
+push static 2
+push constant 5
+add
+pop static 2
+push static 2
+push constant 1000
+gt
+if-goto IF_TRUE2
+goto IF_FALSE2
+label IF_TRUE2
+push constant 5
+pop static 2
+label IF_FALSE2
 push constant 200
 call Sys.wait 1
 pop temp 0

@@ -282,4 +282,9 @@ class CellsImages {
 
         return;
     }
+
+    method void dispose(){
+        do Memory.deAlloc(this);
+        return;
+    }
 }

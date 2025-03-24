@@ -1,4 +1,6 @@
 class MachineOptions {
+    static int seed1, seed2, seed3;
+
     // опустить рычаг
     function void lowerArm () {
         var char key;
@@ -34,7 +36,7 @@ class MachineOptions {
             let y = 232;
             do Screen.drawCircle(x, y, 7); // отрисовка нижнего рычага  
 
-            do Cells.ActivateCells(); // активация смены ячеек
+            do Cells.ActivateCells(seed1, seed2, seed3); // активация смены ячеек
         } 
 
         return;
@@ -44,6 +46,21 @@ class MachineOptions {
     function void liftArm() {
         var char key;
         var int x, y, width, height;
+
+        let seed1 = seed1 + 3;
+        if (seed1 > 1000) {
+            let seed1 = 3;
+        }
+
+        let seed2 = seed2 + 9;
+        if (seed2 > 1000) {
+            let seed2 = 4;
+        }
+
+        let seed3 = seed3 + 5;
+        if (seed3 > 1000) {
+            let seed3 = 5;
+        }
 
         do Sys.wait(200);
 

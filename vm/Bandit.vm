@@ -17,8 +17,8 @@ call DrawingMachine.drawMachine 0
 pop temp 0
 call DrawingMachine.drawArm 0
 pop temp 0
-push constant 2
-push constant 3
+push constant 1
+push constant 1
 call Output.moveCursor 2
 pop temp 0
 push constant 16
@@ -57,8 +57,8 @@ push constant 84
 call String.appendChar 2
 call Output.printString 1
 pop temp 0
-push constant 2
-push constant 20
+push constant 1
+push constant 18
 call Output.moveCursor 2
 pop temp 0
 push constant 11
@@ -160,7 +160,7 @@ call String.appendChar 2
 call Output.printString 1
 pop temp 0
 push constant 3
-push constant 3
+push constant 1
 call Output.moveCursor 2
 pop temp 0
 push constant 48

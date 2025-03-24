@@ -13,12 +13,21 @@ not
 if-goto WHILE_END0
 call Cells.cleanCells 0
 pop temp 0
-call Cells.changeFirstCell 0
+push argument 0
+call Cells.changeFirstCell 1
 pop temp 0
-call Cells.changeSecondCell 0
+push argument 1
+call Cells.changeSecondCell 1
 pop temp 0
-call Cells.changeThirdCell 0
+push argument 2
+call Cells.changeThirdCell 1
 pop temp 0
+push static 3
+pop argument 0
+push static 4
+pop argument 1
+push static 5
+pop argument 2
 push constant 200
 call Sys.wait 1
 pop temp 0
@@ -28,23 +37,23 @@ add
 pop local 0
 goto WHILE_EXP0
 label WHILE_END0
-push static 3
-push static 4
+push static 0
+push static 1
 eq
-push static 3
+push static 0
 and
-push static 5
+push static 2
 eq
-push static 4
+push static 1
 and
-push static 5
+push static 2
 eq
 if-goto IF_TRUE0
 goto IF_FALSE0
 label IF_TRUE0
 push local 1
 push local 2
-push constant 2
+push constant 10
 call Math.multiply 2
 add
 call Main.setCoins 1
@@ -54,10 +63,10 @@ pop temp 0
 push constant 0
 return
 label IF_FALSE0
-push static 3
+push static 0
 push constant 1
 eq
-push static 4
+push static 1
 and
 push constant 1
 eq
@@ -74,10 +83,10 @@ pop temp 0
 push constant 0
 return
 label IF_FALSE1
-push static 3
+push static 0
 push constant 1
 eq
-push static 5
+push static 2
 and
 push constant 1
 eq
@@ -94,10 +103,10 @@ pop temp 0
 push constant 0
 return
 label IF_FALSE2
-push static 4
+push static 1
 push constant 1
 eq
-push static 5
+push static 2
 and
 push constant 1
 eq
@@ -114,10 +123,10 @@ pop temp 0
 push constant 0
 return
 label IF_FALSE3
-push static 3
+push static 0
 push constant 2
 eq
-push static 4
+push static 1
 and
 push constant 2
 eq
@@ -134,10 +143,10 @@ pop temp 0
 push constant 0
 return
 label IF_FALSE4
-push static 3
+push static 0
 push constant 2
 eq
-push static 5
+push static 2
 and
 push constant 2
 eq
@@ -154,10 +163,10 @@ pop temp 0
 push constant 0
 return
 label IF_FALSE5
-push static 4
+push static 1
 push constant 2
 eq
-push static 5
+push static 2
 and
 push constant 2
 eq
@@ -214,20 +223,22 @@ label IF_FALSE7
 push constant 0
 return
 function Cells.changeFirstCell 3
-push static 0
+push argument 0
 push constant 3
 add
-pop static 0
-push static 0
+pop argument 0
+push argument 0
 push constant 1000
 gt
 if-goto IF_TRUE0
 goto IF_FALSE0
 label IF_TRUE0
 push constant 3
-pop static 0
+pop argument 0
 label IF_FALSE0
-push static 0
+push argument 0
+pop static 3
+push argument 0
 call Random.new 1
 pop local 2
 push local 2
@@ -235,7 +246,7 @@ push constant 6
 call Random.nextInt 2
 pop local 1
 push local 1
-pop static 3
+pop static 0
 push local 1
 push constant 0
 eq
@@ -322,23 +333,31 @@ pop temp 0
 push constant 0
 return
 label IF_FALSE6
+push local 2
+call Random.dispose 1
+pop temp 0
+push local 0
+call CellsImages.dispose 1
+pop temp 0
 push constant 0
 return
 function Cells.changeSecondCell 3
-push static 1
+push argument 0
 push constant 9
 add
-pop static 1
-push static 1
+pop argument 0
+push argument 0
 push constant 1000
 gt
 if-goto IF_TRUE0
 goto IF_FALSE0
 label IF_TRUE0
 push constant 4
-pop static 1
+pop argument 0
 label IF_FALSE0
-push static 1
+push argument 0
+pop static 4
+push argument 0
 call Random.new 1
 pop local 2
 push local 2
@@ -346,7 +365,7 @@ push constant 6
 call Random.nextInt 2
 pop local 1
 push local 1
-pop static 4
+pop static 1
 push local 1
 push constant 0
 eq
@@ -433,23 +452,31 @@ pop temp 0
 push constant 0
 return
 label IF_FALSE6
+push local 2
+call Random.dispose 1
+pop temp 0
+push local 0
+call CellsImages.dispose 1
+pop temp 0
 push constant 0
 return
 function Cells.changeThirdCell 3
-push static 2
+push argument 0
 push constant 5
 add
-pop static 2
-push static 2
+pop argument 0
+push argument 0
 push constant 1000
 gt
 if-goto IF_TRUE0
 goto IF_FALSE0
 label IF_TRUE0
 push constant 5
-pop static 2
+pop argument 0
 label IF_FALSE0
-push static 2
+push argument 0
+pop static 5
+push argument 0
 call Random.new 1
 pop local 2
 push local 2
@@ -457,7 +484,7 @@ push constant 6
 call Random.nextInt 2
 pop local 1
 push local 1
-pop static 5
+pop static 2
 push local 1
 push constant 0
 eq
@@ -544,6 +571,12 @@ pop temp 0
 push constant 0
 return
 label IF_FALSE6
+push local 2
+call Random.dispose 1
+pop temp 0
+push local 0
+call CellsImages.dispose 1
+pop temp 0
 push constant 0
 return
 function Cells.cleanCells 4

@@ -97,7 +97,9 @@ class Blackjack{
         let player = Hand.new(false);
         let dealer = Hand.new(true);
         let deck = Deck.new();
+        do Blackjack.drawHangADeck();
         do deck.shuffle();
+        do Blackjack.drawOverlay();
 
         do player.giveCard(deck);
         do dealer.giveCard(deck);
@@ -228,6 +230,16 @@ class Blackjack{
         do Output.printString("   ");
         do Output.moveCursor(5,60);
         do Output.printInt(currentBid);
+        return;
+    }
+
+    function void drawHangADeck(){
+        do Screen.setColor(false);
+        do Screen.drawRectangle(6, 36, 506, 209);
+        do Output.moveCursor(11, 25);
+        do Output.printString("HANG A DECK!");
+        do Output.moveCursor(12, 25);
+        do Output.printString("(SPAM SPACE)");
         return;
     }
 }
