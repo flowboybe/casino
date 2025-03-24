@@ -46,11 +46,11 @@ if-goto WHILE_END0
 call Keyboard.keyPressed 0
 pop local 0
 push local 1
-push constant 13
+push constant 3
 add
 pop local 1
 push local 1
-push constant 991
+push constant 910
 gt
 if-goto IF_TRUE0
 goto IF_FALSE0
@@ -64,8 +64,11 @@ eq
 if-goto IF_TRUE1
 goto IF_FALSE1
 label IF_TRUE1
-push constant 20
+push constant 100
 call Sys.wait 1
+pop temp 0
+push local 1
+call Main.setSeed 1
 pop temp 0
 push local 1
 return
@@ -120,6 +123,8 @@ push local 3
 add
 pop pointer 1
 push that 0
+push local 0
+add
 call Random.new 1
 pop local 5
 push local 5
