@@ -1,4 +1,4 @@
-function StartScreen.chooseDifficulty 1
+function StartScreen.chooseDifficulty 2
 push constant 12
 push constant 20
 call Output.moveCursor 2
@@ -247,46 +247,64 @@ not
 and
 not
 if-goto WHILE_END0
+push local 1
+push constant 7
+add
+pop local 1
+push local 1
+push constant 1000
+gt
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push constant 1
+pop local 1
+label IF_FALSE0
 call Keyboard.keyPressed 0
 pop local 0
 goto WHILE_EXP0
 label WHILE_END0
+push local 1
+call Main.setSeed 1
+pop temp 0
 call Screen.clearScreen 0
 pop temp 0
 push local 0
 push constant 49
 eq
-if-goto IF_TRUE0
-goto IF_FALSE0
-label IF_TRUE0
-push constant 500
-call Main.SetCoins 1
-pop temp 0
-label IF_FALSE0
-push local 0
-push constant 50
-eq
 if-goto IF_TRUE1
 goto IF_FALSE1
 label IF_TRUE1
-push constant 250
-call Main.SetCoins 1
+push constant 500
+call Main.setCoins 1
 pop temp 0
 label IF_FALSE1
 push local 0
-push constant 51
+push constant 50
 eq
 if-goto IF_TRUE2
 goto IF_FALSE2
 label IF_TRUE2
-push constant 1
-call Main.SetCoins 1
+push constant 250
+call Main.setCoins 1
 pop temp 0
 label IF_FALSE2
+push local 0
+push constant 51
+eq
+if-goto IF_TRUE3
+goto IF_FALSE3
+label IF_TRUE3
+push constant 1
+call Main.setCoins 1
+pop temp 0
+label IF_FALSE3
 push constant 0
 return
-function StartScreen.initializeMenu 1
-push constant 5
+function StartScreen.initializeMenu 2
+call Main.getSeed 0
+pop local 1
+push constant 2
 push constant 5
 call Output.moveCursor 2
 pop temp 0
@@ -306,7 +324,7 @@ push constant 79
 call String.appendChar 2
 call Output.printString 1
 pop temp 0
-push constant 5
+push constant 2
 push constant 50
 call Output.moveCursor 2
 pop temp 0
@@ -326,8 +344,7 @@ push constant 32
 call String.appendChar 2
 call Output.printString 1
 pop temp 0
-push argument 0
-call Output.printInt 1
+call Main.updateCoins 0
 pop temp 0
 push constant 10
 push constant 20
@@ -464,16 +481,32 @@ not
 and
 not
 if-goto WHILE_END0
+push local 1
+push constant 3
+add
+pop local 1
+push local 1
+push constant 1000
+gt
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push constant 41
+pop local 1
+label IF_FALSE0
 call Keyboard.keyPressed 0
 pop local 0
 goto WHILE_EXP0
 label WHILE_END0
+push local 1
+call Main.setSeed 1
+pop temp 0
 push local 0
 push constant 49
 eq
-if-goto IF_TRUE0
-goto IF_FALSE0
-label IF_TRUE0
+if-goto IF_TRUE1
+goto IF_FALSE1
+label IF_TRUE1
 call Screen.clearScreen 0
 pop temp 0
 push constant 6
@@ -492,37 +525,17 @@ push constant 116
 call String.appendChar 2
 call Output.printString 1
 pop temp 0
-label IF_FALSE0
+label IF_FALSE1
 push local 0
 push constant 50
 eq
-if-goto IF_TRUE1
-goto IF_FALSE1
-label IF_TRUE1
+if-goto IF_TRUE2
+goto IF_FALSE2
+label IF_TRUE2
 call Screen.clearScreen 0
 pop temp 0
-push constant 9
-call String.new 1
-push constant 66
-call String.appendChar 2
-push constant 108
-call String.appendChar 2
-push constant 97
-call String.appendChar 2
-push constant 99
-call String.appendChar 2
-push constant 107
-call String.appendChar 2
-push constant 106
-call String.appendChar 2
-push constant 97
-call String.appendChar 2
-push constant 99
-call String.appendChar 2
-push constant 107
-call String.appendChar 2
-call Output.printString 1
+call Blackjack.initializeBlackjack 0
 pop temp 0
-label IF_FALSE1
+label IF_FALSE2
 push constant 0
 return

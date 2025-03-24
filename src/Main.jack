@@ -1,5 +1,6 @@
 class Main{
     static int coins;
+    static int seed;
 
     function void main(){
         do StartScreen.chooseDifficulty();
@@ -9,12 +10,29 @@ class Main{
         return;
     }
 
-    function int GetCoins(){
+    function int getCoins(){
         return coins;
     }
 
-    function void SetCoins(int value){
+    function void setCoins(int value){
         let coins = value;
+        return;
+    }
+
+    function void updateCoins(){
+        do Output.moveCursor(2, 55);
+        do Output.printString("      ");
+        do Output.moveCursor(2, 55);
+        do Output.printInt(coins);
+        return;
+    }
+
+    function int getSeed(){
+        return seed;
+    }
+
+    function void setSeed(int value){
+        let seed = value;
         return;
     }
 }

@@ -1,0 +1,77 @@
+class Hand{
+    field Array cards;
+    field int points;
+    field int length;
+    field int nominals;
+    field bool isDealersHand;
+    field bool isCardsClosed;
+
+    constructor Hand new(bool isDealer){
+        let cards = Array.new(6);
+        let isDealersHand = isDealer;
+        let isCardsClosed = true;
+        let length = 0;
+        let points = 0;
+        let nominals = 0;
+        return this;
+    }
+
+    method void addCard(Card card){
+        let cards[length] = (card.getColour() * 10) + card.getPoints();
+        let length = length + 1;
+        let nominals = nominals + card.getNominalo();
+        do card.dispose();
+        return;
+    }
+
+    method void showCards(int x, int y){
+        var int iterator;
+        var Card currentCard;
+
+        let iterator = 0;
+        while (iterator < length){
+            let currentCard = Card.new(cards[iterator] - (cards[iterator] / 10 * 10), cards[iterator] / 10);
+            do currentCard.openCard();
+            if ((iterator > 0) & isDealersHand & isCardsClosed){
+                do currentCard.closeCard();
+            }
+            do currentCard.undrawCard(x + (iterator * 34), y);
+            do currentCard.drawCard(x + (iterator * 34), y);
+            let iterator = iterator + 1;
+        } 
+
+        do currentCard.dispose();
+        return;
+    }
+
+    method int getNominals(){
+        return nominals;
+    }
+
+    method void giveCard(Deck deck){
+        do addCard(deck.takeCard());
+        if (isDealersHand){
+            do showCards(20, 50);
+        }
+        else{
+            do showCards(20, 150);
+        }
+        do Sys.wait(500);
+        return;
+    }
+
+    method int countCards(){
+        return length;
+    }
+
+    method void openCards(){
+        let isCardsClosed = false;
+        return;
+    }
+
+    method void dispose(){
+        do cards.dispose();
+        do Memory.deAlloc(this);
+        return;
+    }
+}

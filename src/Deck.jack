@@ -1,0 +1,48 @@
+class Deck{
+    field Array cards;
+    field int peek;
+
+    constructor Deck new(){
+        var int counter;
+
+        let cards = Array.new(36);
+        let peek = 36;
+        let counter = 0;
+        
+        while (counter < 36){
+            let cards[counter] = counter + 1;
+            let counter = counter + 1;
+        }
+        return this;
+    }
+
+    method void shuffle() {
+    var int i, j, temp;
+    var Random randomizer;
+    
+    let randomizer = Random.new(Main.getSeed());
+    let i = 35;
+    while (i > -1) {
+        let j = randomizer.nextInt(i + 1);
+        let temp = cards[i];
+        let cards[i] = cards[j];
+        let cards[j] = temp;
+        let i = i - 1;
+    }
+    
+    do randomizer.dispose();
+    return;
+}
+
+
+    method Card takeCard(){
+        let peek = peek - 1;
+        return Card.new(cards[peek] - 1 - (cards[peek] - 1 / 9 * 9), cards[peek] - 1 / 9);
+    }
+
+    method void dispose(){
+        do cards.dispose();
+        do Memory.deAlloc(this);
+        return;
+    }
+}

@@ -1,6 +1,8 @@
 class StartScreen{
     function void chooseDifficulty(){
         var char pressedKey;
+        var int seed;
+
         do Output.moveCursor(12,20);
         do Output.printString("WELCOME TO OUR CASINO!");
         do Sys.wait(3000);
@@ -14,28 +16,36 @@ class StartScreen{
         do Output.moveCursor(13,10);
         do Output.printString("3. LETS GO GAMBLING!");
         while ((~(pressedKey = 49)) & (~(pressedKey = 50)) & (~(pressedKey = 51))){
+            let seed = seed + 7;
+            if (seed > 1000){
+                let seed = 1;
+            }
             let pressedKey = Keyboard.keyPressed();
         }
+        do Main.setSeed(seed);
         do Screen.clearScreen();
         if (pressedKey = 49){
-            do Main.SetCoins(500);
+            do Main.setCoins(500);
         }
         if (pressedKey = 50){
-            do Main.SetCoins(250);
+            do Main.setCoins(250);
         }
         if (pressedKey = 51){
-            do Main.SetCoins(1);
+            do Main.setCoins(1);
         }
         return;
     }
 
     function void initializeMenu(int coins){
         var char pressedKey;
-        do Output.moveCursor(5, 5);
+        var int seed;
+
+        let seed = Main.getSeed();
+        do Output.moveCursor(2, 5);
         do Output.printString("CASINO");
-        do Output.moveCursor(5, 50);
+        do Output.moveCursor(2, 50);
         do Output.printString("Cash: ");
-        do Output.printInt(coins);
+        do Main.updateCoins();
         do Output.moveCursor(10,20);
         do Output.printString("SELECT GAME MODE:");
         do Output.moveCursor(12,20);
@@ -44,15 +54,20 @@ class StartScreen{
         do Output.printString("2. BLACKJACK");
         do Sys.wait(1000);
         while ((~(pressedKey = 49)) & (~(pressedKey = 50))){
+            let seed = seed + 3;
+            if (seed > 1000){
+                let seed = 41;
+            }
             let pressedKey = Keyboard.keyPressed();
         }
+        do Main.setSeed(seed);
         if (pressedKey = 49){
             do Screen.clearScreen();
             do Output.printString("Bandit");
         }
         if (pressedKey = 50){
             do Screen.clearScreen();
-            do Output.printString("Blackjack");
+            do Blackjack.initializeBlackjack();
         }
         return;
     }

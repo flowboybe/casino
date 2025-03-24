@@ -1,0 +1,233 @@
+class Blackjack{
+    static int currentBid;
+
+    function void initializeBlackjack(){
+        let currentBid = 0;
+        do Blackjack.drawOverlay();
+        do Blackjack.initiateGame();
+        return;
+    }
+
+    function void drawOverlay(){
+        do Screen.clearScreen();
+        do Screen.setColor(true);
+        do Screen.drawRectangle(446, 100, 478, 148);
+        do Output.moveCursor(2, 5);
+        do Output.printString("BLACKJACK");
+        do Output.moveCursor(2, 50);
+        do Output.printString("Cash: ");
+        do Main.updateCoins();
+        do Output.moveCursor(20,3);
+        do Output.printString("S - start round || E - increase bid || Q - decrease bid");
+        do Output.moveCursor(21,3);
+        do Output.printString("F - end round   || T - take card    || X - return to menu");
+        do Output.moveCursor(22,20);
+        do Output.printString("by: br41nd34d");
+        do Output.moveCursor(5,50);
+        do Output.printString("Your bid: ");
+        do Output.moveCursor(10, 3);
+        do Output.printString("Dealer's hand");
+        do Output.moveCursor(12, 3);
+        do Output.printString("Your hand");
+        do Output.moveCursor(14, 56);
+        do Output.printString("DECK");
+        do Blackjack.updateBid();
+        do Screen.setColor(true);
+        do Screen.drawLine(5, 35, 5, 210);
+        do Screen.drawLine(5, 210, 507, 210);
+        do Screen.drawLine(507, 210, 507, 35);
+        do Screen.drawLine(507, 35, 5, 35);
+        do Screen.drawLine(5, 145, 250, 145);
+        do Screen.drawLine(250, 145, 250, 210);
+        do Screen.drawLine(5, 105, 250, 105);
+        do Screen.drawLine(250, 105, 250, 35);
+        return;
+    }
+
+    function void initiateGame(){
+        var char pressedKey;
+        var int seed;
+
+        let seed = Main.getSeed();
+        do Screen.drawRectangle(446, 100, 478, 148);
+        do Blackjack.updateBid();
+        
+        while (true){
+            let pressedKey = Keyboard.keyPressed();
+            let seed = seed + 43;
+            if (seed > 1000){
+                let seed = 17;
+            }
+            if ((pressedKey = 83) & (currentBid > 0)){
+                do Main.setSeed(seed);
+                do Blackjack.doRound();
+                do Sys.wait(2000);
+                do Blackjack.drawOverlay();
+            }
+            if (pressedKey = 69){
+                if ((currentBid < Main.getCoins()) & (currentBid < 500)){
+                    let currentBid = currentBid + 1;
+                    do Blackjack.updateBid();
+                    do Sys.wait(50);
+                }
+            }  
+            if (pressedKey = 81){
+                if (currentBid > 0){
+                    let currentBid = currentBid - 1;
+                    do Blackjack.updateBid();
+                    do Sys.wait(50);
+                }
+            }
+            if (pressedKey = 88){
+                do Screen.clearScreen();
+                return;
+            }
+        }
+        return;
+    }
+
+    function void doRound(){
+        var Hand player;
+        var Hand dealer;
+        var Deck deck;
+        var char pressedKey;
+
+        do Main.setCoins(Main.getCoins() - currentBid);
+        do Main.updateCoins();
+        let player = Hand.new(false);
+        let dealer = Hand.new(true);
+        let deck = Deck.new();
+        do deck.shuffle();
+
+        do player.giveCard(deck);
+        do dealer.giveCard(deck);
+        do player.giveCard(deck);
+        do dealer.giveCard(deck);
+
+        while (true){
+            let pressedKey = Keyboard.keyPressed();
+            if (pressedKey = 84){
+                if (player.countCards() > 5){
+                    do Output.moveCursor(17, 35);
+                    do Output.printString("You don't need more cards!");
+                    do Sys.wait(1000);
+                    do Output.moveCursor(17, 35);
+                    do Output.printString("                          ");
+                }
+                else{
+                    do player.giveCard(deck);
+                    if ((dealer.getNominals() < 18) & (dealer.countCards() < 6)){
+                        do dealer.giveCard(deck);
+                    }
+                }
+            }
+            if (pressedKey = 70){
+                while ((dealer.getNominals() < 18) & (dealer.countCards() < 6)){
+                    do dealer.giveCard(deck);
+                }
+                do dealer.openCards();
+                do dealer.showCards(20, 50);
+                do Sys.wait(1000);
+                do Output.moveCursor(10, 32);
+                do Output.printString("Dealers points: ");
+                do Output.printInt(dealer.getNominals());
+                do Sys.wait(1000);
+                do Output.moveCursor(12, 32);
+                do Output.printString("Your points: ");
+                do Output.printInt(player.getNominals());
+                do Sys.wait(1000);
+                if  ((dealer.getNominals() = 22) | (player.getNominals() = 22)){
+                    if ((dealer.countCards() = 2) | (player.countCards() = 2)){
+                        if ((dealer.countCards() = 2) & (player.countCards() = 2)){
+                            do Blackjack.draw();
+                            do player.dispose();
+                            do dealer.dispose();
+                            do deck.dispose();
+                            return;
+                        }
+                        if ((dealer.countCards() = 2) & (~(player.countCards() = 2))){
+                            do Blackjack.winDealer();
+                            do player.dispose();
+                            do dealer.dispose();
+                            do deck.dispose();
+                            return;
+                        }
+                        else{
+                            do Blackjack.winPlayer();
+                            do player.dispose();
+                            do dealer.dispose();
+                            do deck.dispose();
+                return;
+                        }
+                    }
+                }
+                if ((dealer.getNominals() < 22) & (player.getNominals() > 21)){
+                    do Blackjack.winDealer();
+                }
+                if ((dealer.getNominals() > 21) & (player.getNominals() < 22)){
+                    do Blackjack.winPlayer();
+                }
+                if ((dealer.getNominals() > 21) & (player.getNominals() > 21)){
+                    do Blackjack.draw();
+                }
+                if ((dealer.getNominals() < 22) & (player.getNominals() < 22)){
+                    if (dealer.getNominals() < player.getNominals()){
+                        do Blackjack.winPlayer();
+                    }
+                    if (dealer.getNominals() > player.getNominals()){
+                        do Blackjack.winDealer();
+                    }
+                    if (dealer.getNominals() = player.getNominals()){
+                        do Blackjack.draw();
+                    }
+                }
+
+                do player.dispose();
+                do dealer.dispose();
+                do deck.dispose();
+                return;
+            }
+        }
+
+        return;
+    }
+    
+    function void winPlayer(){
+        do Main.setCoins(Main.getCoins() + (currentBid * 2));
+        do Main.updateCoins();
+        do Screen.setColor(false);
+        do Screen.drawRectangle(6, 36, 506, 209);
+        do Output.moveCursor(11, 25);
+        do Output.printString("YOU WIN!");
+        return;
+    }
+
+    function void winDealer(){
+        do Screen.setColor(false);
+        do Screen.drawRectangle(6, 36, 506, 209);
+        do Output.moveCursor(11, 25);
+        do Output.printString("YOU LOSE!");
+        if (Main.getCoins() < currentBid){
+            let currentBid = Main.getCoins();
+        }
+        return;
+    }
+
+    function void draw(){
+        do Main.setCoins(Main.getCoins() + currentBid);
+        do Main.updateCoins();
+        do Screen.setColor(false);
+        do Screen.drawRectangle(6, 36, 506, 209);
+        do Output.moveCursor(11, 25);
+        do Output.printString("DRAW!");
+        return;
+    }
+
+    function void updateBid(){
+        do Output.moveCursor(5,60);
+        do Output.printString("   ");
+        do Output.moveCursor(5,60);
+        do Output.printInt(currentBid);
+        return;
+    }
+}

@@ -1,0 +1,94 @@
+class Card{
+    field bool opened;
+    field int points;
+    field int colour;
+    field int nominalo;
+
+    constructor Card new(int p, int c){
+        let points = p;
+        let colour = c;
+        let opened = false;
+        do evaluateNominalo(p);
+        return this;
+    }
+
+    method void evaluateNominalo(int p){
+        if(p = 0){
+            let nominalo = 2;
+        }
+        if(p = 1){
+            let nominalo = 3;
+        }
+        if(p = 2){
+            let nominalo = 4;
+        }
+        if(p = 3){
+            let nominalo = 6;
+        }
+        if(p = 4){
+            let nominalo = 7;
+        }
+        if(p = 5){
+            let nominalo = 8;
+        }
+        if(p = 6){
+            let nominalo = 9;
+        }
+        if(p = 7){
+            let nominalo = 10;
+        }
+        if(p = 8){
+            let nominalo = 11;
+        }
+        return;
+    }
+
+    method void openCard(){
+        let opened = true;
+        return;
+    }
+
+    method void closeCard(){
+        let opened = false;
+        return;
+    }
+
+    method void drawCard(int x, int y){
+        do Screen.setColor(true);
+        if (~(opened)){
+            do Screen.drawRectangle(x, y, x + 32, y + 48);
+        }
+        else{
+            do Screen.drawLine(x, y, x, y + 48);
+            do Screen.drawLine(x, y + 48, x + 32, y + 48);
+            do Screen.drawLine(x + 32, y + 48, x + 32, y);
+            do Screen.drawLine(x + 32, y, x, y);
+            do SymbolTable.drawPoint(points, x + 4, y + 4);
+            do SymbolTable.drawColour(colour, x + 13, y + 22);
+        }
+        return;
+    }
+
+    method void undrawCard(int x, int y){
+        do Screen.setColor(false);
+        do Screen.drawRectangle(x, y, x + 32, y + 48);
+        return;
+    }
+
+    method int getNominalo(){
+        return nominalo;
+    }
+
+    method int getPoints(){
+        return points;
+    }
+
+    method int getColour(){
+        return colour;
+    }
+
+    method void dispose() {
+        do Memory.deAlloc(this);
+        return;
+    }
+}
