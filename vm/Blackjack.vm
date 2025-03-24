@@ -1,5 +1,5 @@
 function Blackjack.initializeBlackjack 0
-push constant 1
+push constant 0
 pop static 0
 call Blackjack.drawOverlay 0
 pop temp 0
@@ -14,9 +14,9 @@ push constant 0
 not
 call Screen.setColor 1
 pop temp 0
-push constant 450
+push constant 446
 push constant 100
-push constant 482
+push constant 478
 push constant 148
 call Screen.drawRectangle 4
 pop temp 0
@@ -370,80 +370,8 @@ push constant 32
 call String.appendChar 2
 call Output.printString 1
 pop temp 0
-call Blackjack.updateBid 0
-pop temp 0
-push constant 0
-not
-call Screen.setColor 1
-pop temp 0
-push constant 5
-push constant 35
-push constant 5
-push constant 210
-call Screen.drawLine 4
-pop temp 0
-push constant 5
-push constant 210
-push constant 507
-push constant 210
-call Screen.drawLine 4
-pop temp 0
-push constant 507
-push constant 210
-push constant 507
-push constant 35
-call Screen.drawLine 4
-pop temp 0
-push constant 507
-push constant 35
-push constant 5
-push constant 35
-call Screen.drawLine 4
-pop temp 0
-push constant 0
-return
-function Blackjack.initiateGame 2
-call Main.getSeed 0
-pop local 1
-push constant 450
-push constant 100
-push constant 482
-push constant 148
-call Screen.drawRectangle 4
-pop temp 0
-call Blackjack.updateBid 0
-pop temp 0
-label WHILE_EXP0
-push constant 0
-not
-not
-if-goto WHILE_END0
-call Keyboard.keyPressed 0
-pop local 0
-push local 1
-push constant 43
-add
-pop local 1
-push local 1
-push constant 1000
-gt
-if-goto IF_TRUE0
-goto IF_FALSE0
-label IF_TRUE0
-push constant 17
-pop local 1
-label IF_FALSE0
-push local 0
-push constant 83
-eq
-if-goto IF_TRUE1
-goto IF_FALSE1
-label IF_TRUE1
-push local 1
-call Main.setSeed 1
-pop temp 0
 push constant 10
-push constant 1
+push constant 3
 call Output.moveCursor 2
 pop temp 0
 push constant 13
@@ -477,7 +405,7 @@ call String.appendChar 2
 call Output.printString 1
 pop temp 0
 push constant 12
-push constant 1
+push constant 3
 call Output.moveCursor 2
 pop temp 0
 push constant 9
@@ -502,6 +430,122 @@ push constant 100
 call String.appendChar 2
 call Output.printString 1
 pop temp 0
+push constant 14
+push constant 56
+call Output.moveCursor 2
+pop temp 0
+push constant 4
+call String.new 1
+push constant 68
+call String.appendChar 2
+push constant 69
+call String.appendChar 2
+push constant 67
+call String.appendChar 2
+push constant 75
+call String.appendChar 2
+call Output.printString 1
+pop temp 0
+call Blackjack.updateBid 0
+pop temp 0
+push constant 0
+not
+call Screen.setColor 1
+pop temp 0
+push constant 5
+push constant 35
+push constant 5
+push constant 210
+call Screen.drawLine 4
+pop temp 0
+push constant 5
+push constant 210
+push constant 507
+push constant 210
+call Screen.drawLine 4
+pop temp 0
+push constant 507
+push constant 210
+push constant 507
+push constant 35
+call Screen.drawLine 4
+pop temp 0
+push constant 507
+push constant 35
+push constant 5
+push constant 35
+call Screen.drawLine 4
+pop temp 0
+push constant 5
+push constant 145
+push constant 250
+push constant 145
+call Screen.drawLine 4
+pop temp 0
+push constant 250
+push constant 145
+push constant 250
+push constant 210
+call Screen.drawLine 4
+pop temp 0
+push constant 5
+push constant 105
+push constant 250
+push constant 105
+call Screen.drawLine 4
+pop temp 0
+push constant 250
+push constant 105
+push constant 250
+push constant 35
+call Screen.drawLine 4
+pop temp 0
+push constant 0
+return
+function Blackjack.initiateGame 2
+call Main.getSeed 0
+pop local 1
+push constant 446
+push constant 100
+push constant 478
+push constant 148
+call Screen.drawRectangle 4
+pop temp 0
+call Blackjack.updateBid 0
+pop temp 0
+label WHILE_EXP0
+push constant 0
+not
+not
+if-goto WHILE_END0
+call Keyboard.keyPressed 0
+pop local 0
+push local 1
+push constant 43
+add
+pop local 1
+push local 1
+push constant 1000
+gt
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push constant 17
+pop local 1
+label IF_FALSE0
+push local 0
+push constant 83
+eq
+push static 0
+push constant 0
+gt
+and
+if-goto IF_TRUE1
+goto IF_FALSE1
+label IF_TRUE1
+push local 1
+call Main.setSeed 1
+pop temp 0
 call Blackjack.doRound 0
 pop temp 0
 push constant 2000
@@ -520,9 +564,9 @@ push static 0
 call Main.getCoins 0
 lt
 push static 0
-and
 push constant 500
 lt
+and
 if-goto IF_TRUE3
 goto IF_FALSE3
 label IF_TRUE3
@@ -544,7 +588,7 @@ if-goto IF_TRUE4
 goto IF_FALSE4
 label IF_TRUE4
 push static 0
-push constant 1
+push constant 0
 gt
 if-goto IF_TRUE5
 goto IF_FALSE5
@@ -631,7 +675,7 @@ gt
 if-goto IF_TRUE1
 goto IF_FALSE1
 label IF_TRUE1
-push constant 15
+push constant 17
 push constant 35
 call Output.moveCursor 2
 pop temp 0
@@ -694,7 +738,7 @@ pop temp 0
 push constant 1000
 call Sys.wait 1
 pop temp 0
-push constant 15
+push constant 17
 push constant 35
 call Output.moveCursor 2
 pop temp 0
@@ -764,6 +808,11 @@ push local 1
 call Hand.getNominals 1
 push constant 18
 lt
+push local 1
+call Hand.countCards 1
+push constant 6
+lt
+and
 if-goto IF_TRUE2
 goto IF_FALSE2
 label IF_TRUE2
@@ -785,6 +834,11 @@ push local 1
 call Hand.getNominals 1
 push constant 18
 lt
+push local 1
+call Hand.countCards 1
+push constant 6
+lt
+and
 not
 if-goto WHILE_END1
 push local 1
@@ -805,7 +859,7 @@ push constant 1000
 call Sys.wait 1
 pop temp 0
 push constant 10
-push constant 17
+push constant 32
 call Output.moveCursor 2
 pop temp 0
 push constant 16
@@ -851,8 +905,8 @@ pop temp 0
 push constant 1000
 call Sys.wait 1
 pop temp 0
-push constant 11
-push constant 17
+push constant 12
+push constant 32
 call Output.moveCursor 2
 pop temp 0
 push constant 13
@@ -930,6 +984,17 @@ goto IF_FALSE6
 label IF_TRUE6
 call Blackjack.draw 0
 pop temp 0
+push local 0
+call Hand.dispose 1
+pop temp 0
+push local 1
+call Hand.dispose 1
+pop temp 0
+push local 2
+call Deck.dispose 1
+pop temp 0
+push constant 0
+return
 label IF_FALSE6
 push local 1
 call Hand.countCards 1
@@ -946,10 +1011,32 @@ goto IF_FALSE7
 label IF_TRUE7
 call Blackjack.winDealer 0
 pop temp 0
+push local 0
+call Hand.dispose 1
+pop temp 0
+push local 1
+call Hand.dispose 1
+pop temp 0
+push local 2
+call Deck.dispose 1
+pop temp 0
+push constant 0
+return
 goto IF_END7
 label IF_FALSE7
 call Blackjack.winPlayer 0
 pop temp 0
+push local 0
+call Hand.dispose 1
+pop temp 0
+push local 1
+call Hand.dispose 1
+pop temp 0
+push local 2
+call Deck.dispose 1
+pop temp 0
+push constant 0
+return
 label IF_END7
 label IF_FALSE5
 label IF_FALSE4
@@ -1141,6 +1228,15 @@ push constant 33
 call String.appendChar 2
 call Output.printString 1
 pop temp 0
+call Main.getCoins 0
+push static 0
+lt
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+call Main.getCoins 0
+pop static 0
+label IF_FALSE0
 push constant 0
 return
 function Blackjack.draw 0
