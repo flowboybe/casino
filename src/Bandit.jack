@@ -48,7 +48,7 @@ class Bandit {
             }
 
             if (pressedKey = 69) {
-                if (currentBid < Main.getCoins() & currentBid < 50) {
+                if (currentBid < Main.getCoins() & currentBid < 100) {
                     let currentBid = currentBid + 1;
                     do Output.moveCursor(5, 60);
                     do Output.printString("   ");
@@ -79,8 +79,7 @@ class Bandit {
                 do Screen.clearScreen();
 
                 if (Main.getCoins() = 0) {
-                        do Bankruptcy.kickOut();
-                        while (true) {}
+                    do Bankruptcy.kickOut();
                 }
 
                 return;

@@ -313,7 +313,7 @@ call Main.getCoins 0
 lt
 push static 0
 and
-push constant 50
+push constant 100
 lt
 if-goto IF_TRUE3
 goto IF_FALSE3
@@ -430,13 +430,6 @@ goto IF_FALSE8
 label IF_TRUE8
 call Bankruptcy.kickOut 0
 pop temp 0
-label WHILE_EXP1
-push constant 0
-not
-not
-if-goto WHILE_END1
-goto WHILE_EXP1
-label WHILE_END1
 label IF_FALSE8
 push constant 0
 return

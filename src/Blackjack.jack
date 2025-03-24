@@ -80,6 +80,11 @@ class Blackjack{
             }
             if (pressedKey = 88){
                 do Screen.clearScreen();
+
+                if (Main.getCoins() = 0) {
+                    do Bankruptcy.kickOut();
+                }
+
                 return;
             }
         }

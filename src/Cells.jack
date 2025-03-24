@@ -30,43 +30,61 @@ class Cells {
         }
 
         if (rand1 = rand2 & rand1 = rand3 & rand2 = rand3) {
-            do Main.setCoins(coins + (bid * 10));
+            do Main.setCoins(coins + (bid * 5));
             do Main.updateCoins();
             return;
         }
 
         if (rand1 = 1 & rand2 = 1) {
-            do Main.setCoins(coins + bid);
+            do Main.setCoins(coins + (bid * 2));
             do Main.updateCoins();
             return;
         }
 
         if (rand1 = 1 & rand3 = 1) {
-            do Main.setCoins(coins + bid);
+            do Main.setCoins(coins + (bid * 2));
             do Main.updateCoins();
             return;
         }
 
         if (rand2 = 1 & rand3 = 1) {
-            do Main.setCoins(coins + bid);
+            do Main.setCoins(coins + (bid * 2));
             do Main.updateCoins();
             return;
         }
 
         if (rand1 = 2 & rand2 = 2) {
-            do Main.setCoins(coins + bid);
+            do Main.setCoins(coins + (bid * 2));
             do Main.updateCoins();
             return;
         }
 
         if (rand1 = 2 & rand3 = 2) {
-            do Main.setCoins(coins + bid);
+            do Main.setCoins(coins + (bid * 2));
             do Main.updateCoins();
             return;
         }
 
         if (rand2 = 2 & rand3 = 2) {
-            do Main.setCoins(coins + bid);
+            do Main.setCoins(coins + (bid * 2));
+            do Main.updateCoins();
+            return;
+        }
+
+        if (rand1 = 3 & rand2 = 3) {
+            do Main.setCoins(coins + (bid * 2));
+            do Main.updateCoins();
+            return;
+        }
+
+        if (rand1 = 3 & rand3 = 3) {
+            do Main.setCoins(coins + (bid * 2));
+            do Main.updateCoins();
+            return;
+        }
+
+        if (rand2 = 3 & rand3 = 3) {
+            do Main.setCoins(coins + (bid * 2));
             do Main.updateCoins();
             return;
         }
@@ -100,7 +118,7 @@ class Cells {
 
         let randomizer = Random.new(seed);  
         let randomNumber = randomizer.nextInt(6);
-        let rand1 = randomNumber;
+        let rand1 = randomNumber + 1;
 
         if (randomNumber = 0) {
             do cellImage.drawFiit(50, 70);
@@ -150,7 +168,7 @@ class Cells {
 
         let randomizer = Random.new(seed);  
         let randomNumber = randomizer.nextInt(6);
-        let rand2 = randomNumber;
+        let rand2 = randomNumber + 1;
 
         if (randomNumber = 0) {
             do cellImage.drawFiit(166, 70);
@@ -201,7 +219,7 @@ class Cells {
 
         let randomizer = Random.new(seed);  
         let randomNumber = randomizer.nextInt(6);
-        let rand3 = randomNumber;
+        let rand3 = randomNumber + 1;
 
         if (randomNumber = 0) {
             do cellImage.drawFiit(283, 70);
