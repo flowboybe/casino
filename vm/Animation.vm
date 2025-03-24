@@ -1,14 +1,17 @@
-function Animation.Animate 4
+function Animation.Animate 6
+push constant 0
+pop local 4
 push constant 7
 pop local 0
-push constant 20
+push constant 18
 pop local 2
 push constant 0
 pop local 1
+push constant 0
+pop local 5
 label WHILE_EXP0
-push local 1
-push constant 27
-lt
+push constant 0
+not
 not
 if-goto WHILE_END0
 push local 1
@@ -25,12 +28,18 @@ push constant 10
 push local 2
 call Output.moveCursor 2
 pop temp 0
-push local 1
+push local 5
+push constant 1
+add
+push constant 36
+call Animation.Remainder 2
 call Output.printInt 1
 pop temp 0
-push local 3
-push constant 10
-call Math.divide 2
+push local 5
+push constant 1
+add
+push constant 36
+call Animation.Remainder 2
 push constant 0
 eq
 if-goto IF_TRUE0
@@ -47,18 +56,41 @@ push local 1
 push constant 1
 add
 pop local 1
+push local 5
+push constant 1
+add
+push constant 36
+call Animation.Remainder 2
+pop local 5
 push local 2
 push constant 4
 add
 pop local 2
-push constant 500
-call Sys.wait 1
-pop temp 0
 goto WHILE_EXP1
 label WHILE_END1
-push constant 20
+push constant 1000
+call Sys.wait 1
+pop temp 0
+push local 4
+push constant 1
+add
+push constant 36
+call Animation.Remainder 2
+pop local 4
+push local 4
+pop local 5
+push constant 18
 pop local 2
 goto WHILE_EXP0
 label WHILE_END0
 push constant 0
+return
+function Animation.Remainder 0
+push argument 0
+push argument 1
+push argument 0
+push argument 1
+call Math.divide 2
+call Math.multiply 2
+sub
 return

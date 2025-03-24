@@ -4,23 +4,34 @@ class Animation{
         var int curNum;
         var int curPosX;
         var int num;
+        var int startValue;
+        var int temp;
+        let startValue = 0;
         let width = 7;
-        let curPosX = 20;
+        let curPosX = 18;
         let curNum = 0;
-        while (curNum < 27){
+        let temp = 0;
+        while (true) {
             let num = curNum;
             while (curNum < (num + width)){ 
                 do Output.moveCursor(10, curPosX);
-                do Output.printInt(curNum);
-                if ((num / 10) = 0){
+                do Output.printInt(Animation.Remainder(temp + 1, 36));
+                if ((Animation.Remainder(temp + 1, 36) = 0)){
                     do Output.printString(" ");
                 }
                 let curNum = curNum + 1;
+                let temp = Animation.Remainder(temp + 1, 36);
                 let curPosX = curPosX + 4;
-                do Sys.wait(500);
             }
-            let curPosX = 20;
+            do Sys.wait(1000);
+            let startValue = Animation.Remainder(startValue + 1, 36);
+            let temp = startValue;
+            let curPosX = 18;
         }
         return;
+    }
+
+    function int Remainder(int number, int divider){
+        return ((number) - (divider * (number / divider)));
     }
 }
