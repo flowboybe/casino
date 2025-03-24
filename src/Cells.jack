@@ -35,24 +35,6 @@ class Cells {
             return;
         }
 
-        if (rand1 = 1 & rand2 = 1) {
-            do Main.setCoins(coins + (bid * 2));
-            do Main.updateCoins();
-            return;
-        }
-
-        if (rand1 = 1 & rand3 = 1) {
-            do Main.setCoins(coins + (bid * 2));
-            do Main.updateCoins();
-            return;
-        }
-
-        if (rand2 = 1 & rand3 = 1) {
-            do Main.setCoins(coins + (bid * 2));
-            do Main.updateCoins();
-            return;
-        }
-
         if (rand1 = 2 & rand2 = 2) {
             do Main.setCoins(coins + (bid * 2));
             do Main.updateCoins();
@@ -72,19 +54,19 @@ class Cells {
         }
 
         if (rand1 = 3 & rand2 = 3) {
-            do Main.setCoins(coins + (bid * 2));
+            do Main.setCoins(coins + bid);
             do Main.updateCoins();
             return;
         }
 
         if (rand1 = 3 & rand3 = 3) {
-            do Main.setCoins(coins + (bid * 2));
+            do Main.setCoins(coins + bid);
             do Main.updateCoins();
             return;
         }
 
         if (rand2 = 3 & rand3 = 3) {
-            do Main.setCoins(coins + (bid * 2));
+            do Main.setCoins(coins + bid);
             do Main.updateCoins();
             return;
         }

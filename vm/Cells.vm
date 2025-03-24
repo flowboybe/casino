@@ -64,11 +64,11 @@ push constant 0
 return
 label IF_FALSE0
 push static 0
-push constant 1
+push constant 2
 eq
 push static 1
 and
-push constant 1
+push constant 2
 eq
 if-goto IF_TRUE1
 goto IF_FALSE1
@@ -86,11 +86,11 @@ push constant 0
 return
 label IF_FALSE1
 push static 0
-push constant 1
+push constant 2
 eq
 push static 2
 and
-push constant 1
+push constant 2
 eq
 if-goto IF_TRUE2
 goto IF_FALSE2
@@ -108,11 +108,11 @@ push constant 0
 return
 label IF_FALSE2
 push static 1
-push constant 1
+push constant 2
 eq
 push static 2
 and
-push constant 1
+push constant 2
 eq
 if-goto IF_TRUE3
 goto IF_FALSE3
@@ -130,19 +130,17 @@ push constant 0
 return
 label IF_FALSE3
 push static 0
-push constant 2
+push constant 3
 eq
 push static 1
 and
-push constant 2
+push constant 3
 eq
 if-goto IF_TRUE4
 goto IF_FALSE4
 label IF_TRUE4
 push local 1
 push local 2
-push constant 2
-call Math.multiply 2
 add
 call Main.setCoins 1
 pop temp 0
@@ -152,19 +150,17 @@ push constant 0
 return
 label IF_FALSE4
 push static 0
-push constant 2
+push constant 3
 eq
 push static 2
 and
-push constant 2
+push constant 3
 eq
 if-goto IF_TRUE5
 goto IF_FALSE5
 label IF_TRUE5
 push local 1
 push local 2
-push constant 2
-call Math.multiply 2
 add
 call Main.setCoins 1
 pop temp 0
@@ -174,19 +170,17 @@ push constant 0
 return
 label IF_FALSE5
 push static 1
-push constant 2
+push constant 3
 eq
 push static 2
 and
-push constant 2
+push constant 3
 eq
 if-goto IF_TRUE6
 goto IF_FALSE6
 label IF_TRUE6
 push local 1
 push local 2
-push constant 2
-call Math.multiply 2
 add
 call Main.setCoins 1
 pop temp 0
@@ -195,72 +189,6 @@ pop temp 0
 push constant 0
 return
 label IF_FALSE6
-push static 0
-push constant 3
-eq
-push static 1
-and
-push constant 3
-eq
-if-goto IF_TRUE7
-goto IF_FALSE7
-label IF_TRUE7
-push local 1
-push local 2
-push constant 2
-call Math.multiply 2
-add
-call Main.setCoins 1
-pop temp 0
-call Main.updateCoins 0
-pop temp 0
-push constant 0
-return
-label IF_FALSE7
-push static 0
-push constant 3
-eq
-push static 2
-and
-push constant 3
-eq
-if-goto IF_TRUE8
-goto IF_FALSE8
-label IF_TRUE8
-push local 1
-push local 2
-push constant 2
-call Math.multiply 2
-add
-call Main.setCoins 1
-pop temp 0
-call Main.updateCoins 0
-pop temp 0
-push constant 0
-return
-label IF_FALSE8
-push static 1
-push constant 3
-eq
-push static 2
-and
-push constant 3
-eq
-if-goto IF_TRUE9
-goto IF_FALSE9
-label IF_TRUE9
-push local 1
-push local 2
-push constant 2
-call Math.multiply 2
-add
-call Main.setCoins 1
-pop temp 0
-call Main.updateCoins 0
-pop temp 0
-push constant 0
-return
-label IF_FALSE9
 push local 1
 push local 2
 sub
@@ -271,9 +199,9 @@ pop temp 0
 call Main.getCoins 0
 push constant 50
 lt
-if-goto IF_TRUE10
-goto IF_FALSE10
-label IF_TRUE10
+if-goto IF_TRUE7
+goto IF_FALSE7
+label IF_TRUE7
 call Main.getCoins 0
 pop local 2
 push constant 5
@@ -297,7 +225,7 @@ pop temp 0
 push local 2
 call Output.printInt 1
 pop temp 0
-label IF_FALSE10
+label IF_FALSE7
 push constant 0
 return
 function Cells.changeFirstCell 3
