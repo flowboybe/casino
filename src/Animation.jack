@@ -124,7 +124,7 @@ class Animation{
 
     function void death(){
         do Screen.clearScreen();
-        if (Main.getCoins() = 0) {
+        if (Main.GetCoins() < 0) {
             do Bankruptcy.kickOut();
         }
         return;

@@ -861,19 +861,6 @@ lt
 if-goto IF_TRUE0
 goto IF_FALSE0
 label IF_TRUE0
-push constant 1
-push constant 10
-push constant 2
-push constant 20
-call Screen.drawRectangle 4
-pop temp 0
-push constant 3
-push constant 1
-call Output.moveCursor 2
-pop temp 0
-push argument 0
-call Output.printInt 1
-pop temp 0
 push static 0
 push constant 2
 eq
@@ -945,12 +932,6 @@ eq
 if-goto IF_TRUE5
 goto IF_FALSE5
 label IF_TRUE5
-push constant 1
-push constant 10
-push constant 2
-push constant 20
-call Screen.drawRectangle 4
-pop temp 0
 push argument 0
 call Animation.CheckBlack 1
 push constant 0
