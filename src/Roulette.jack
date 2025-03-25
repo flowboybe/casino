@@ -186,9 +186,6 @@ class Roulette{
 
     function void Check(int n){
         if (number < 0){
-            do Screen.drawRectangle(1, 10, 2, 20);
-            do Output.moveCursor(3, 1);
-            do Output.printInt(n);
             if (color = 2){
                 if (n = 0){
                     do Main.SetCoins(Main.GetCoins() + (Bet.GetBet() * 5));
@@ -206,7 +203,6 @@ class Roulette{
                 }
             }
             if (color = 0){
-                do Screen.drawRectangle(1, 10, 2, 20);
                 if (Animation.CheckBlack(n) = true){
                     do Main.SetCoins(Main.GetCoins() + (Bet.GetBet() * 3));
                     do Roulette.PrintResult(Bet.GetBet() * 2, 1);

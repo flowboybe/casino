@@ -16,8 +16,6 @@ class Animation{
         do random.dispose();
         let random = Random.new(seed);
         let someRandomValue = random.nextInt(36);
-        do Output.moveCursor(1, 1);
-        do Output.printInt(someRandomValue);
         let counter = 0; 
         let posx = 131;
         let time = 5;
@@ -126,11 +124,9 @@ class Animation{
 
     function void death(){
         do Screen.clearScreen();
-        do Output.moveCursor(15, 30);
-        do Output.printString("YOU LOOSE! :(((((");
-        do Sys.wait(1000);
-        do Screen.clearScreen();
-        do Main.main();
+        if (Main.getCoins() = 0) {
+            do Bankruptcy.kickOut();
+        }
         return;
     }
 }
