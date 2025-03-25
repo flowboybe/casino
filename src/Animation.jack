@@ -1,29 +1,66 @@
 class Animation{
-    function void Animate(){
+    static int someRandomValue;
+    static int seed;
+    static Random random;
+    function void Animate(int starting){
         var int width;
         var int curNum;
         var int curPosX;
         var int num;
         var int startValue;
         var int temp;
-        let startValue = 0;
+        var int time;
+        var int posx;
+        var int counter;
+        var int someRandomValue;
+        do random.dispose();
+        let random = Random.new(seed);
+        let someRandomValue = random.nextInt(36);
+        let counter = 0;
+        let posx = 131;
+        let time = 5;
+        let startValue = starting;
         let width = 7;
         let curPosX = 18;
-        let curNum = 0;
-        let temp = 0;
+        let curNum = starting;
+        let temp = starting;
+        
         while (true) {
             let num = curNum;
-            while (curNum < (num + width)){ 
+            while (curNum < (num + width)){
+                do Screen.drawLine(131, 130, 355, 130);
+                if (Animation.CheckBlack(Animation.Remainder(temp + 1, 36)) = true){
+                    do Screen.setColor(true);
+                    do Screen.drawRectangle(posx, 124, posx + 31, 129);
+                }
+                if (Animation.CheckBlack(Animation.Remainder(temp + 1, 36)) = false){
+                    do Screen.setColor(false);
+                    do Screen.drawRectangle(posx + 1, 125, posx + 30, 128);
+                }
                 do Output.moveCursor(10, curPosX);
                 do Output.printInt(Animation.Remainder(temp + 1, 36));
-                if ((Animation.Remainder(temp + 1, 36) = 0)){
+                if (((Animation.Remainder(temp + 1, 36) / 10) = 0)){
                     do Output.printString(" ");
                 }
+                if ((Animation.Remainder(temp + 1, 36)) = someRandomValue){
+                    let counter = counter + 1;
+                }
+                if ((counter > 4) & (curPosX = 30) & (Animation.Remainder((temp + 1), 36) = someRandomValue)){
+                    do Roulette.endGame(Animation.Remainder(temp + 1, 36));
+                    return;
+                }
+
+                do Screen.drawLine(131, 130, 355, 130);
+                do random.dispose();
                 let curNum = curNum + 1;
                 let temp = Animation.Remainder(temp + 1, 36);
                 let curPosX = curPosX + 4;
+                let posx = posx + 32;
+
             }
-            do Sys.wait(1000);
+            do Sys.wait(time);
+            let posx = 131;
+            let time = time + 5;
             let startValue = Animation.Remainder(startValue + 1, 36);
             let temp = startValue;
             let curPosX = 18;
@@ -32,6 +69,66 @@ class Animation{
     }
 
     function int Remainder(int number, int divider){
-        return ((number) - (divider * (number / divider)));
+        if (number < 0){
+            while(number < 0){
+                let number = number + divider;
+            }
+            return number;
+        }
+        if (~(number < 0)){
+            return ((number) - (divider * (number / divider)));
+        }
+        return 34;
+    }
+
+    function boolean CheckBlack(int number){
+        var int i;
+        let i = 2;
+        while (true){
+            if (number = i){
+                return true;
+            }
+            if (i = 10){
+                let i = 9;
+            }
+            if (i = 17){
+                let i = 18;
+            }
+            if (i = 28){
+                let i = 27;
+            }
+            if (i = 35){
+                return false;
+            }
+            let i = i + 2;
+        }
+        return false;
+    }
+
+    function int GetRandomValue(){
+        return someRandomValue;
+    }
+
+    function void ChangeSeed(){
+        let seed = seed + 10;
+        return;
+    }
+
+    function void InitializeRandomAndSeed(){
+        let random = Random.new(100);
+        let someRandomValue = 3;
+        let seed = 200;
+        return;
+    }
+
+    function void death(){
+        do Screen.clearScreen();
+        do Output.moveCursor(15, 30);
+        do Output.printString("YOU LOOSE! :(((((");
+        do Sys.wait(1000);
+        do Screen.clearScreen();
+        do Main.main();
+        return;
     }
 }
+

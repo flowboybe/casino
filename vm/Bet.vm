@@ -1,20 +1,113 @@
 function Bet.GetBet 0
 push static 0
 return
+function Bet.SetBet 0
+push argument 0
+pop static 0
+push constant 0
+return
 function Bet.RefreshBet 0
 push constant 5
-push constant 5
+push constant 10
 call Output.moveCursor 2
 pop temp 0
-push constant 8
+call Bet.GetBet 0
+call Output.printInt 1
+pop temp 0
+push constant 3
 call String.new 1
-push constant 66
+push constant 32
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+call Output.printString 1
+pop temp 0
+push constant 0
+return
+function Bet.RefreshCoins 0
+push argument 0
+push constant 1
+lt
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+call Animation.death 0
+pop temp 0
+push constant 0
+return
+label IF_FALSE0
+push constant 5
+push constant 56
+call Output.moveCursor 2
+pop temp 0
+push argument 0
+call Output.printInt 1
+pop temp 0
+push constant 3
+call String.new 1
+push constant 32
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+call Output.printString 1
+pop temp 0
+push constant 0
+return
+function Bet.RefreshColor 0
+push constant 17
+push constant 54
+call Output.moveCursor 2
+pop temp 0
+push argument 0
+call Output.printString 1
+pop temp 0
+push constant 0
+return
+function Bet.RefreshNumber 0
+push argument 0
+push constant 0
+lt
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push constant 19
+push constant 55
+call Output.moveCursor 2
+pop temp 0
+push constant 4
+call String.new 1
+push constant 78
+call String.appendChar 2
+push constant 111
+call String.appendChar 2
+push constant 110
 call String.appendChar 2
 push constant 101
 call String.appendChar 2
-push constant 116
-call String.appendChar 2
-push constant 58
+call Output.printString 1
+pop temp 0
+label IF_FALSE0
+push argument 0
+push constant 0
+lt
+not
+if-goto IF_TRUE1
+goto IF_FALSE1
+label IF_TRUE1
+push constant 19
+push constant 55
+call Output.moveCursor 2
+pop temp 0
+push argument 0
+call Output.printInt 1
+pop temp 0
+push constant 5
+call String.new 1
+push constant 32
 call String.appendChar 2
 push constant 32
 call String.appendChar 2
@@ -26,13 +119,7 @@ push constant 32
 call String.appendChar 2
 call Output.printString 1
 pop temp 0
-push constant 5
-push constant 10
-call Output.moveCursor 2
-pop temp 0
-call Bet.GetBet 0
-call Output.printInt 1
-pop temp 0
+label IF_FALSE1
 push constant 0
 return
 function Bet.RaiseBet 0
@@ -71,5 +158,93 @@ pop static 0
 call Bet.RefreshBet 0
 pop temp 0
 label IF_FALSE0
+push constant 0
+return
+function Bet.ChangeColor 0
+push argument 0
+push constant 0
+eq
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push constant 1
+call Roulette.setColor 1
+pop temp 0
+push constant 5
+call String.new 1
+push constant 87
+call String.appendChar 2
+push constant 104
+call String.appendChar 2
+push constant 105
+call String.appendChar 2
+push constant 116
+call String.appendChar 2
+push constant 101
+call String.appendChar 2
+call Bet.RefreshColor 1
+pop temp 0
+label IF_FALSE0
+push argument 0
+push constant 1
+eq
+if-goto IF_TRUE1
+goto IF_FALSE1
+label IF_TRUE1
+push constant 2
+call Roulette.setColor 1
+pop temp 0
+push constant 5
+call String.new 1
+push constant 71
+call String.appendChar 2
+push constant 114
+call String.appendChar 2
+push constant 101
+call String.appendChar 2
+push constant 101
+call String.appendChar 2
+push constant 110
+call String.appendChar 2
+call Bet.RefreshColor 1
+pop temp 0
+label IF_FALSE1
+push argument 0
+push constant 2
+eq
+if-goto IF_TRUE2
+goto IF_FALSE2
+label IF_TRUE2
+push constant 0
+call Roulette.setColor 1
+pop temp 0
+push constant 5
+call String.new 1
+push constant 66
+call String.appendChar 2
+push constant 108
+call String.appendChar 2
+push constant 97
+call String.appendChar 2
+push constant 99
+call String.appendChar 2
+push constant 107
+call String.appendChar 2
+call Bet.RefreshColor 1
+pop temp 0
+label IF_FALSE2
+push constant 0
+return
+function Bet.ChangeNumber 0
+push argument 1
+push argument 0
+add
+call Roulette.setNumber 1
+pop temp 0
+push argument 1
+push argument 0
+add
+call Bet.RefreshNumber 1
+pop temp 0
 push constant 0
 return
