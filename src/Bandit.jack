@@ -50,19 +50,16 @@ class Bandit {
             if (pressedKey = 69) {
                 if (currentBid < Main.getCoins() & currentBid < 100) {
                     let currentBid = currentBid + 1;
-                    do Output.moveCursor(5, 60);
-                    do Output.printString("   ");
-                    do Output.moveCursor(5, 60);
-                    do Output.printInt(currentBid);
                 }
 
                 if (currentBid > Main.getCoins()) {
                     let currentBid = Main.getCoins();
-                    do Output.moveCursor(5, 60);
-                    do Output.printString("   ");
-                    do Output.moveCursor(5, 60);
-                    do Output.printInt(currentBid);
                 }
+
+                do Output.moveCursor(5, 60);
+                do Output.printString("   ");
+                do Output.moveCursor(5, 60);
+                do Output.printInt(currentBid);
             }
 
             if (pressedKey = 81) {
@@ -85,7 +82,6 @@ class Bandit {
                 return;
             }
             
-
             do MachineOptions.lowerArm();
             do MachineOptions.liftArm();
         }

@@ -13,32 +13,11 @@ class Card{
     }
 
     method void evaluateNominalo(int p){
-        if(p = 0){
-            let nominalo = 2;
+        if (p > 2) {
+            let nominalo = p + 3;
         }
-        if(p = 1){
-            let nominalo = 3;
-        }
-        if(p = 2){
-            let nominalo = 4;
-        }
-        if(p = 3){
-            let nominalo = 6;
-        }
-        if(p = 4){
-            let nominalo = 7;
-        }
-        if(p = 5){
-            let nominalo = 8;
-        }
-        if(p = 6){
-            let nominalo = 9;
-        }
-        if(p = 7){
-            let nominalo = 10;
-        }
-        if(p = 8){
-            let nominalo = 11;
+        else {
+            let nominalo = p + 2;
         }
         return;
     }
