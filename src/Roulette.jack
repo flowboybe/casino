@@ -210,9 +210,7 @@ class Roulette{
                     return;
                 }
             }
-            do Main.SetCoins(Main.GetCoins() - Bet.GetBet());
             do Roulette.PrintResult(Bet.GetBet(), 0);
-            do Bet.RefreshCoins(Main.GetCoins());
         }
         if (~(number < 0)){
             do Screen.drawLine(1, 10, 2, 20);
@@ -222,10 +220,13 @@ class Roulette{
                 do Bet.RefreshCoins(Main.GetCoins());
             }
             if (~(n = number)){
-                do Main.SetCoins(Main.GetCoins() - (Bet.GetBet()));
                 do Roulette.PrintResult(Bet.GetBet(), 0);
-                do Bet.RefreshCoins(Main.GetCoins());
             }
+        }
+        do Bet.SetBet(0);
+        do Bet.RefreshBet();
+        if (Main.GetCoins() = 0){
+            do Animation.death();
         }
         return;
     }

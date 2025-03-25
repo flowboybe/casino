@@ -349,14 +349,7 @@ return
 function Animation.death 0
 call Screen.clearScreen 0
 pop temp 0
-call Main.GetCoins 0
-push constant 0
-eq
-if-goto IF_TRUE0
-goto IF_FALSE0
-label IF_TRUE0
 call Bankruptcy.kickOut 0
 pop temp 0
-label IF_FALSE0
 push constant 0
 return

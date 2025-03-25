@@ -17,10 +17,6 @@ class Bet{
     }
 
     function void RefreshCoins(int newCoins){
-        if (newCoins < 1){
-            do Animation.death();
-            return;
-        }
         do Output.moveCursor(5, 56);
         do Output.printInt(newCoins);
         do Output.printString("   ");
