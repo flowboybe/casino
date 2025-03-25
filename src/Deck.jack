@@ -23,10 +23,7 @@ class Deck{
         let seed = i;
         while (true){
             let pressedKey = Keyboard.keyPressed();
-            let seed = seed + 3;
-            if (seed > 910){
-                let seed = i;
-            }
+            let seed = seed + 7;
             if (pressedKey = 32){
                 do Sys.wait(100);
                 do Main.setSeed(seed);
