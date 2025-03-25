@@ -9,6 +9,13 @@ push static 2
 push constant 36
 call Random.nextInt 2
 pop local 9
+push constant 1
+push constant 1
+call Output.moveCursor 2
+pop temp 0
+push local 9
+call Output.printInt 1
+pop temp 0
 push constant 0
 pop local 8
 push constant 131
@@ -165,6 +172,9 @@ add
 push constant 36
 call Animation.Remainder 2
 call Roulette.endGame 1
+pop temp 0
+push local 9
+call Roulette.Check 1
 pop temp 0
 push constant 0
 return
@@ -328,7 +338,7 @@ push static 0
 return
 function Animation.ChangeSeed 0
 push static 1
-push constant 10
+push constant 5
 add
 pop static 1
 push constant 0

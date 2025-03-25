@@ -112,7 +112,6 @@ class Roulette{
                     do Bet.RefreshCoins(Main.GetCoins());
                     do Animation.ChangeSeed();
                     do Animation.Animate(Animation.Remainder((Animation.GetRandomValue() - 3), 36));
-                    do Roulette.Check();
                 }
             }
             if (key = 90){
@@ -185,10 +184,13 @@ class Roulette{
         return;
     }
 
-    function void Check(){
+    function void Check(int n){
         if (number < 0){
+            do Screen.drawRectangle(1, 10, 2, 20);
+            do Output.moveCursor(3, 1);
+            do Output.printInt(n);
             if (color = 2){
-                if (Animation.GetRandomValue() = 0){
+                if (n = 0){
                     do Main.SetCoins(Main.GetCoins() + (Bet.GetBet() * 5));
                     do Roulette.PrintResult(Bet.GetBet() * 4, 1);
                     do Bet.RefreshCoins(Main.GetCoins());
@@ -196,7 +198,7 @@ class Roulette{
                 }
             }
             if (color = 1){
-                if (Animation.CheckBlack(Animation.GetRandomValue()) = false){
+                if (Animation.CheckBlack(n) = false){
                     do Main.SetCoins(Main.GetCoins() + (Bet.GetBet() * 3));
                     do Roulette.PrintResult(Bet.GetBet() * 2, 1);
                     do Bet.RefreshCoins(Main.GetCoins());
@@ -205,27 +207,27 @@ class Roulette{
             }
             if (color = 0){
                 do Screen.drawRectangle(1, 10, 2, 20);
-                if (Animation.CheckBlack(Animation.GetRandomValue()) = true){
+                if (Animation.CheckBlack(n) = true){
                     do Main.SetCoins(Main.GetCoins() + (Bet.GetBet() * 3));
                     do Roulette.PrintResult(Bet.GetBet() * 2, 1);
                     do Bet.RefreshCoins(Main.GetCoins());
                     return;
                 }
             }
-            do Main.SetCoins(Main.GetCoins() - (Bet.GetBet() * 2));
-            do Roulette.PrintResult(Bet.GetBet() * 2, 0);
+            do Main.SetCoins(Main.GetCoins() - Bet.GetBet());
+            do Roulette.PrintResult(Bet.GetBet(), 0);
             do Bet.RefreshCoins(Main.GetCoins());
         }
         if (~(number < 0)){
             do Screen.drawLine(1, 10, 2, 20);
-            if (Animation.GetRandomValue() = number){
+            if (n = number){
                 do Main.SetCoins(Main.GetCoins() + (Bet.GetBet() * 5));
                 do Roulette.PrintResult(Bet.GetBet() * 4, 1);
                 do Bet.RefreshCoins(Main.GetCoins());
             }
-            if (~(Animation.GetRandomValue() = number)){
-                do Main.SetCoins(Main.GetCoins() - (Bet.GetBet() * 3));
-                do Roulette.PrintResult(Bet.GetBet() * 2, 0);
+            if (~(n = number)){
+                do Main.SetCoins(Main.GetCoins() - (Bet.GetBet()));
+                do Roulette.PrintResult(Bet.GetBet(), 0);
                 do Bet.RefreshCoins(Main.GetCoins());
             }
         }

@@ -16,7 +16,9 @@ class Animation{
         do random.dispose();
         let random = Random.new(seed);
         let someRandomValue = random.nextInt(36);
-        let counter = 0;
+        do Output.moveCursor(1, 1);
+        do Output.printInt(someRandomValue);
+        let counter = 0; 
         let posx = 131;
         let time = 5;
         let startValue = starting;
@@ -47,6 +49,7 @@ class Animation{
                 }
                 if ((counter > 4) & (curPosX = 30) & (Animation.Remainder((temp + 1), 36) = someRandomValue)){
                     do Roulette.endGame(Animation.Remainder(temp + 1, 36));
+                    do Roulette.Check(someRandomValue);
                     return;
                 }
 
@@ -110,7 +113,7 @@ class Animation{
     }
 
     function void ChangeSeed(){
-        let seed = seed + 10;
+        let seed = seed + 5;
         return;
     }
 

@@ -647,8 +647,6 @@ push constant 36
 call Animation.Remainder 2
 call Animation.Animate 1
 pop temp 0
-call Roulette.Check 0
-pop temp 0
 label IF_FALSE5
 label IF_FALSE4
 push local 0
@@ -863,13 +861,26 @@ lt
 if-goto IF_TRUE0
 goto IF_FALSE0
 label IF_TRUE0
+push constant 1
+push constant 10
+push constant 2
+push constant 20
+call Screen.drawRectangle 4
+pop temp 0
+push constant 3
+push constant 1
+call Output.moveCursor 2
+pop temp 0
+push argument 0
+call Output.printInt 1
+pop temp 0
 push static 0
 push constant 2
 eq
 if-goto IF_TRUE1
 goto IF_FALSE1
 label IF_TRUE1
-call Animation.GetRandomValue 0
+push argument 0
 push constant 0
 eq
 if-goto IF_TRUE2
@@ -901,7 +912,7 @@ eq
 if-goto IF_TRUE3
 goto IF_FALSE3
 label IF_TRUE3
-call Animation.GetRandomValue 0
+push argument 0
 call Animation.CheckBlack 1
 push constant 0
 eq
@@ -940,7 +951,7 @@ push constant 2
 push constant 20
 call Screen.drawRectangle 4
 pop temp 0
-call Animation.GetRandomValue 0
+push argument 0
 call Animation.CheckBlack 1
 push constant 0
 not
@@ -970,14 +981,10 @@ label IF_FALSE6
 label IF_FALSE5
 call Main.GetCoins 0
 call Bet.GetBet 0
-push constant 2
-call Math.multiply 2
 sub
 call Main.SetCoins 1
 pop temp 0
 call Bet.GetBet 0
-push constant 2
-call Math.multiply 2
 push constant 0
 call Roulette.PrintResult 2
 pop temp 0
@@ -998,7 +1005,7 @@ push constant 2
 push constant 20
 call Screen.drawLine 4
 pop temp 0
-call Animation.GetRandomValue 0
+push argument 0
 push static 1
 eq
 if-goto IF_TRUE8
@@ -1021,7 +1028,7 @@ call Main.GetCoins 0
 call Bet.RefreshCoins 1
 pop temp 0
 label IF_FALSE8
-call Animation.GetRandomValue 0
+push argument 0
 push static 1
 eq
 not
@@ -1030,14 +1037,10 @@ goto IF_FALSE9
 label IF_TRUE9
 call Main.GetCoins 0
 call Bet.GetBet 0
-push constant 3
-call Math.multiply 2
 sub
 call Main.SetCoins 1
 pop temp 0
 call Bet.GetBet 0
-push constant 2
-call Math.multiply 2
 push constant 0
 call Roulette.PrintResult 2
 pop temp 0
