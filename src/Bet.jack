@@ -1,0 +1,82 @@
+class Bet{
+    static int bet;
+    function int GetBet(){
+        return bet;
+    }
+
+    function void SetBet(int m){
+        let bet = m;
+        return;
+    }
+
+    function void RefreshBet(){
+        do Output.moveCursor(5, 10);
+        do Output.printInt(Bet.GetBet());
+        do Output.printString("   ");
+        return;
+    }
+
+    function void RefreshCoins(int newCoins){
+        do Output.moveCursor(5, 56);
+        do Output.printInt(newCoins);
+        do Output.printString("   ");
+        return;
+    }
+
+    function void RefreshColor(String color){
+        do Output.moveCursor(17, 54);
+        do Output.printString(color);
+        return;
+    }
+
+    function void RefreshNumber(int num){
+        if (num < 0){
+            do Output.moveCursor(19, 55);
+            do Output.printString("None");
+        }
+        if (~(num < 0)){
+            do Output.moveCursor(19, 55);
+            do Output.printInt(num);
+            do Output.printString("     ");
+        }
+        return;
+    }
+
+    function void RaiseBet(int money){
+        if (~((bet + money) > Main.GetCoins())){
+            let bet = bet + money;
+            do Bet.RefreshBet();
+        }
+        return;
+    }
+
+    function void LowerBet(int money){
+        if (~((bet - money) < 0)){
+            let bet = bet - money;
+            do Bet.RefreshBet();
+        }
+        return;
+    }
+
+    function void ChangeColor(int color){
+        if (color = 0){
+            do Roulette.setColor(1);
+            do Bet.RefreshColor("White");
+        }
+        if (color = 1){
+            do Roulette.setColor(2);
+            do Bet.RefreshColor("Green");
+        }
+        if (color = 2){
+            do Roulette.setColor(0);
+            do Bet.RefreshColor("Black");
+        }
+        return;
+    }
+
+    function void ChangeNumber(int change, int number){
+        do Roulette.setNumber(number + change);
+        do Bet.RefreshNumber(number + change);
+        return;
+    }
+}

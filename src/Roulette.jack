@@ -1,0 +1,253 @@
+class Roulette{
+    static int color;
+    static int number;
+    function void startRoulette(int coins){
+        var char key;
+        var int curNum;
+        var int width;
+        var int num;
+        var int curPosX;
+        var int i;
+        var int posx;
+
+        let number = -1;
+        let color = 0;
+        let curPosX = 18;
+        let width = 7;
+        let curNum = 0;
+        let num = curNum;
+        do Screen.clearScreen();
+        do Animation.InitializeRandomAndSeed();
+        do Bet.SetBet(0);
+        do Output.moveCursor(1, 27);
+        do Output.printString("Roulette");
+        do Output.moveCursor(5, 50);
+        do Output.printString("Cash: ");
+        do Output.printInt(coins);
+        do Output.moveCursor(5, 5);
+        do Output.printString("Bet: ");
+        do Output.printInt(Bet.GetBet());
+
+        do Output.moveCursor(20,3);
+        do Output.printString("W-");
+        do Output.moveCursor(20, 5);
+        do Output.printString("Raise bet ");
+        do Output.printString("||");
+
+        do Output.moveCursor(22,3);
+        do Output.printString("S-");
+        do Output.moveCursor(22, 5);
+        do Output.printString("Lower bet ");
+        do Output.printString("||");
+
+        do Output.moveCursor(22, 18);
+        do Output.printString("Z-Change color || C/V-Change number");
+
+        do Output.moveCursor(20, 18);
+        do Output.printString("SPACE-Spin || X - Quit");
+
+
+        do Output.moveCursor(13, 28);
+        do Output.printString("SPIN!");
+
+        do Output.moveCursor(7, 30);
+        do Output.printString("|");
+        do Output.moveCursor(8, 30);
+        do Output.printString("V");
+
+        do Output.moveCursor(15, 50);
+        do Output.printString("Your bet:");
+
+        do Output.moveCursor(17, 40);
+        do Output.printString("Choose color: Black");
+
+        do Output.moveCursor(19, 40);
+        do Output.printString("Choose number: None"); 
+
+        do Screen.setColor(true);
+
+        do Screen.drawLine(131, 100, 355, 100);
+        do Screen.drawLine(131, 130, 355, 130);
+
+        do Screen.drawLine(131, 100, 131, 130);
+        do Screen.drawLine(355, 100, 355, 130);
+        do Screen.drawLine(131, 125, 355, 125);
+
+        let i = width - 1;
+        let posx = 163;
+        while (~(i = 0)){
+            do Screen.drawLine(posx, 100, posx, 130);
+            if ((Animation.Remainder(i, 2) = 1) & (~(i = (width - 1)))){
+                do Screen.drawRectangle(posx, 125, posx + 32, 130);
+            }
+            let i = i - 1;
+            let posx = posx + 32;
+        }
+
+
+        while (curNum < (num + width)){ 
+            do Output.moveCursor(10, curPosX);
+            do Output.printInt(curNum);
+            if ((Animation.Remainder(num + 1, 36) = 0)){
+                do Output.printString(" ");
+            }
+            let curNum = curNum + 1;
+            let curPosX = curPosX + 4;
+        }
+
+
+
+
+        while(true){
+            let key = Keyboard.keyPressed();
+            if (key = 87){
+                do Bet.RaiseBet(1);
+            }
+            if (key = 83){
+                do Bet.LowerBet(1);
+            }
+            if (key = 32){
+                if (Bet.GetBet() > 0){
+                    do Main.SetCoins(Main.GetCoins() - Bet.GetBet());
+                    do Bet.RefreshCoins(Main.GetCoins());
+                    do Animation.ChangeSeed();
+                    do Animation.Animate(Animation.Remainder((Animation.GetRandomValue() - 3), 36));
+                }
+            }
+            if (key = 90){
+                do Bet.ChangeColor(color);
+            }
+            if (key = 67){
+                if (number < 36){
+                    do Bet.ChangeNumber(1, number);
+                }
+            }
+            if (key = 86){
+                if (number > -1){
+                    do Bet.ChangeNumber(-1, number);
+                }
+            }
+            if (key = 88){
+                if (Main.GetCoins() = 0){
+                    do Animation.death();
+                }
+                do Screen.clearScreen();
+                do StartScreen.initializeMenu(Main.GetCoins());
+            }
+            do Sys.wait(70);
+        }
+        return;
+    }
+    function void setColor(int newColor){
+        let color = newColor;
+        return;
+    }
+    function void setNumber(int newNumber){
+        let number = newNumber;
+        return;
+    }
+    
+    function void endGame(int n){
+        var int curNum;
+        var int width;
+        var int num;
+        var int curPosX;
+        var int i;
+        var int posx;
+        var int temp;
+
+        let temp = n - 3;
+        let curPosX = 18;
+        let width = 7;
+        let curNum = n - 3;
+        let num = curNum;
+        let i = n - 3;
+        let posx = 131;
+
+        while (curNum < (num + width)){
+            if (Animation.CheckBlack(Animation.Remainder(temp, 36)) = true){
+                do Screen.setColor(true);
+                do Screen.drawRectangle(posx, 124, posx + 31, 129);
+            }
+            if (Animation.CheckBlack(Animation.Remainder(temp, 36)) = false){
+                do Screen.setColor(false);
+                do Screen.drawRectangle(posx + 1, 125, posx + 30, 128);
+            }
+            do Output.moveCursor(10, curPosX);
+            do Output.printInt(Animation.Remainder(temp, 36));
+            if (((Animation.Remainder(temp, 36) / 10) = 0)){
+                do Output.printString(" ");
+            }
+            do Screen.drawLine(131, 130, 355, 130);
+            let curNum = curNum + 1;
+            let temp = Animation.Remainder(temp + 1, 36);
+            let curPosX = curPosX + 4;
+            let posx = posx + 32;
+        }
+        return;
+    }
+
+    function void Check(int n){
+        if (number < 0){
+            if (color = 2){
+                if (n = 0){
+                    do Main.SetCoins(Main.GetCoins() + (Bet.GetBet() * 5));
+                    do Roulette.PrintResult(Bet.GetBet() * 4, 1);
+                    do Bet.RefreshCoins(Main.GetCoins());
+                    return;
+                }
+            }
+            if (color = 1){
+                if (Animation.CheckBlack(n) = false){
+                    do Main.SetCoins(Main.GetCoins() + (Bet.GetBet() * 3));
+                    do Roulette.PrintResult(Bet.GetBet() * 2, 1);
+                    do Bet.RefreshCoins(Main.GetCoins());
+                    return;
+                }
+            }
+            if (color = 0){
+                if (Animation.CheckBlack(n) = true){
+                    do Main.SetCoins(Main.GetCoins() + (Bet.GetBet() * 3));
+                    do Roulette.PrintResult(Bet.GetBet() * 2, 1);
+                    do Bet.RefreshCoins(Main.GetCoins());
+                    return;
+                }
+            }
+            do Roulette.PrintResult(Bet.GetBet(), 0);
+        }
+        if (~(number < 0)){
+            do Screen.drawLine(1, 10, 2, 20);
+            if (n = number){
+                do Main.SetCoins(Main.GetCoins() + (Bet.GetBet() * 5));
+                do Roulette.PrintResult(Bet.GetBet() * 4, 1);
+                do Bet.RefreshCoins(Main.GetCoins());
+            }
+            if (~(n = number)){
+                do Roulette.PrintResult(Bet.GetBet(), 0);
+            }
+        }
+        return;
+    }
+
+    function void PrintResult(int mon, int status){
+        if (status = 1){
+            do Output.moveCursor(5, 25);
+            do Output.printString("You win ");
+            do Output.printInt(mon);
+            do Output.printString("!");
+        }
+        if (status = 0){
+            do Output.moveCursor(5, 25);
+            do Output.printString("You loose ");
+            do Output.printInt(mon);
+            do Output.printString("!");
+            do Bet.SetBet(0);
+            do Bet.RefreshBet();
+        }
+        do Sys.wait(3000);
+        do Output.moveCursor(5, 25);
+        do Output.printString("                  ");
+        return;
+    }
+    
+}
