@@ -188,24 +188,24 @@ class Roulette{
         if (number < 0){
             if (color = 2){
                 if (n = 0){
-                    do Main.setCoins(Main.getCoins() + (Bet.GetBet() * 5));
-                    do Roulette.PrintResult(Bet.GetBet() * 4, 1);
+                    do Main.setCoins(Main.getCoins() + (Bet.GetBet() * 11));
+                    do Roulette.PrintResult(Bet.GetBet() * 10, 1);
                     do Bet.RefreshCoins(Main.getCoins());
                     return;
                 }
             }
             if (color = 1){
                 if (Animation.CheckBlack(n) = false){
-                    do Main.setCoins(Main.getCoins() + (Bet.GetBet() * 3));
-                    do Roulette.PrintResult(Bet.GetBet() * 2, 1);
+                    do Main.setCoins(Main.getCoins() + (Bet.GetBet() * 4));
+                    do Roulette.PrintResult(Bet.GetBet() * 3, 1);
                     do Bet.RefreshCoins(Main.getCoins());
                     return;
                 }
             }
             if (color = 0){
                 if (Animation.CheckBlack(n) = true){
-                    do Main.setCoins(Main.getCoins() + (Bet.GetBet() * 3));
-                    do Roulette.PrintResult(Bet.GetBet() * 2, 1);
+                    do Main.setCoins(Main.getCoins() + (Bet.GetBet() * 4));
+                    do Roulette.PrintResult(Bet.GetBet() * 3, 1);
                     do Bet.RefreshCoins(Main.getCoins());
                     return;
                 }
@@ -215,8 +215,8 @@ class Roulette{
         if (~(number < 0)){
             do Screen.drawLine(1, 10, 2, 20);
             if (n = number){
-                do Main.setCoins(Main.getCoins() + (Bet.GetBet() * 5));
-                do Roulette.PrintResult(Bet.GetBet() * 4, 1);
+                do Main.setCoins(Main.getCoins() + (Bet.GetBet() * 11));
+                do Roulette.PrintResult(Bet.GetBet() * 10, 1);
                 do Bet.RefreshCoins(Main.getCoins());
             }
             if (~(n = number)){
