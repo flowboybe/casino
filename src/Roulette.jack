@@ -10,7 +10,7 @@ class Roulette{
         var int i;
         var int posx;
 
-        let number = 0;
+        let number = -1;
         let color = 0;
         let curPosX = 18;
         let width = 7;
@@ -62,7 +62,7 @@ class Roulette{
         do Output.printString("Choose color: Black");
 
         do Output.moveCursor(19, 40);
-        do Output.printString("Choose number: 0"); 
+        do Output.printString("Choose number: None"); 
 
         do Screen.setColor(true);
 
@@ -128,8 +128,11 @@ class Roulette{
                 }
             }
             if (key = 88){
+                if (Main.GetCoins() = 0){
+                    do Animation.death();
+                }
                 do Screen.clearScreen();
-                do Main.main(); 
+                do StartScreen.initializeMenu(Main.GetCoins());
             }
             do Sys.wait(70);
         }
@@ -223,11 +226,6 @@ class Roulette{
                 do Roulette.PrintResult(Bet.GetBet(), 0);
             }
         }
-        do Bet.SetBet(0);
-        do Bet.RefreshBet();
-        if (Main.GetCoins() = 0){
-            do Animation.death();
-        }
         return;
     }
 
@@ -236,15 +234,17 @@ class Roulette{
             do Output.moveCursor(5, 25);
             do Output.printString("You win ");
             do Output.printInt(mon);
-            do Output.printString("! :)");
+            do Output.printString("!");
         }
         if (status = 0){
             do Output.moveCursor(5, 25);
             do Output.printString("You loose ");
             do Output.printInt(mon);
-            do Output.printString("! ):");
+            do Output.printString("!");
+            do Bet.SetBet(0);
+            do Bet.RefreshBet();
         }
-        do Sys.wait(1500);
+        do Sys.wait(3000);
         do Output.moveCursor(5, 25);
         do Output.printString("                  ");
         return;

@@ -1,5 +1,6 @@
 function Roulette.startRoulette 7
-push constant 0
+push constant 1
+neg
 pop static 1
 push constant 0
 pop static 0
@@ -426,7 +427,7 @@ push constant 19
 push constant 40
 call Output.moveCursor 2
 pop temp 0
-push constant 16
+push constant 19
 call String.new 1
 push constant 67
 call String.appendChar 2
@@ -458,7 +459,13 @@ push constant 58
 call String.appendChar 2
 push constant 32
 call String.appendChar 2
-push constant 48
+push constant 78
+call String.appendChar 2
+push constant 111
+call String.appendChar 2
+push constant 110
+call String.appendChar 2
+push constant 101
 call String.appendChar 2
 call Output.printString 1
 pop temp 0
@@ -703,9 +710,19 @@ eq
 if-goto IF_TRUE11
 goto IF_FALSE11
 label IF_TRUE11
+call Main.GetCoins 0
+push constant 0
+eq
+if-goto IF_TRUE12
+goto IF_FALSE12
+label IF_TRUE12
+call Animation.death 0
+pop temp 0
+label IF_FALSE12
 call Screen.clearScreen 0
 pop temp 0
-call Main.main 0
+call Main.GetCoins 0
+call StartScreen.initializeMenu 1
 pop temp 0
 label IF_FALSE11
 push constant 70
@@ -1015,20 +1032,6 @@ pop temp 0
 label IF_FALSE9
 label IF_FALSE7
 push constant 0
-call Bet.SetBet 1
-pop temp 0
-call Bet.RefreshBet 0
-pop temp 0
-call Main.GetCoins 0
-push constant 0
-eq
-if-goto IF_TRUE10
-goto IF_FALSE10
-label IF_TRUE10
-call Animation.death 0
-pop temp 0
-label IF_FALSE10
-push constant 0
 return
 function Roulette.PrintResult 0
 push argument 1
@@ -1064,15 +1067,9 @@ pop temp 0
 push argument 0
 call Output.printInt 1
 pop temp 0
-push constant 4
+push constant 1
 call String.new 1
 push constant 33
-call String.appendChar 2
-push constant 32
-call String.appendChar 2
-push constant 58
-call String.appendChar 2
-push constant 41
 call String.appendChar 2
 call Output.printString 1
 pop temp 0
@@ -1114,20 +1111,19 @@ pop temp 0
 push argument 0
 call Output.printInt 1
 pop temp 0
-push constant 4
+push constant 1
 call String.new 1
 push constant 33
 call String.appendChar 2
-push constant 32
-call String.appendChar 2
-push constant 41
-call String.appendChar 2
-push constant 58
-call String.appendChar 2
 call Output.printString 1
 pop temp 0
+push constant 0
+call Bet.SetBet 1
+pop temp 0
+call Bet.RefreshBet 0
+pop temp 0
 label IF_FALSE1
-push constant 1500
+push constant 3000
 call Sys.wait 1
 pop temp 0
 push constant 5
