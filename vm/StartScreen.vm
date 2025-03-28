@@ -509,6 +509,11 @@ push constant 50
 eq
 not
 and
+push local 0
+push constant 51
+eq
+not
+and
 not
 if-goto WHILE_END0
 push local 1
@@ -524,6 +529,8 @@ label IF_TRUE0
 push constant 41
 pop local 1
 label IF_FALSE0
+call Keyboard.keyPressed 0
+pop local 0
 goto WHILE_EXP0
 label WHILE_END0
 push local 1

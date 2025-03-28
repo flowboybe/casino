@@ -55,15 +55,16 @@ class StartScreen {
         do Output.moveCursor(16, 20);
         do Output.printString("3. ROULETTE");
         do Sys.wait(1000);
-        while ((~(pressedKey = 49)) & (~(pressedKey = 50))){
+        while ((~(pressedKey = 49)) & (~(pressedKey = 50)) & (~(pressedKey = 51))){
             let seed = seed + 3;
             if (seed > 1000) {
                 let seed = 41;
             }
-        }
-        while ((~(pressedKey = 49)) & (~(pressedKey = 50)) & (~(pressedKey = 51))){
             let pressedKey = Keyboard.keyPressed();
         }
+        // while ((~(pressedKey = 49)) & (~(pressedKey = 50)) & (~(pressedKey = 51))){
+        //     let pressedKey = Keyboard.keyPressed();
+        // }
         do Main.setSeed(seed);
         if (pressedKey = 49) {
             do Screen.clearScreen();

@@ -43,7 +43,7 @@ class Bet{
     }
 
     function void RaiseBet(int money){
-        if (~((bet + money) > Main.GetCoins())){
+        if (~((bet + money) > Main.getCoins())){
             let bet = bet + money;
             do Bet.RefreshBet();
         }

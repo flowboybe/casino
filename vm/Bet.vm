@@ -115,7 +115,7 @@ function Bet.RaiseBet 0
 push static 0
 push argument 0
 add
-call Main.GetCoins 0
+call Main.getCoins 0
 gt
 not
 if-goto IF_TRUE0

@@ -351,32 +351,6 @@ push constant 86
 call String.appendChar 2
 call Output.printString 1
 pop temp 0
-push constant 15
-push constant 50
-call Output.moveCursor 2
-pop temp 0
-push constant 9
-call String.new 1
-push constant 89
-call String.appendChar 2
-push constant 111
-call String.appendChar 2
-push constant 117
-call String.appendChar 2
-push constant 114
-call String.appendChar 2
-push constant 32
-call String.appendChar 2
-push constant 98
-call String.appendChar 2
-push constant 101
-call String.appendChar 2
-push constant 116
-call String.appendChar 2
-push constant 58
-call String.appendChar 2
-call Output.printString 1
-pop temp 0
 push constant 17
 push constant 40
 call Output.moveCursor 2
@@ -637,12 +611,12 @@ gt
 if-goto IF_TRUE5
 goto IF_FALSE5
 label IF_TRUE5
-call Main.GetCoins 0
+call Main.getCoins 0
 call Bet.GetBet 0
 sub
-call Main.SetCoins 1
+call Main.setCoins 1
 pop temp 0
-call Main.GetCoins 0
+call Main.getCoins 0
 call Bet.RefreshCoins 1
 pop temp 0
 call Animation.ChangeSeed 0
@@ -710,7 +684,7 @@ eq
 if-goto IF_TRUE11
 goto IF_FALSE11
 label IF_TRUE11
-call Main.GetCoins 0
+call Main.getCoins 0
 push constant 0
 eq
 if-goto IF_TRUE12
@@ -721,7 +695,7 @@ pop temp 0
 label IF_FALSE12
 call Screen.clearScreen 0
 pop temp 0
-call Main.GetCoins 0
+call Main.getCoins 0
 call StartScreen.initializeMenu 1
 pop temp 0
 label IF_FALSE11
@@ -890,12 +864,12 @@ eq
 if-goto IF_TRUE2
 goto IF_FALSE2
 label IF_TRUE2
-call Main.GetCoins 0
+call Main.getCoins 0
 call Bet.GetBet 0
 push constant 5
 call Math.multiply 2
 add
-call Main.SetCoins 1
+call Main.setCoins 1
 pop temp 0
 call Bet.GetBet 0
 push constant 4
@@ -903,7 +877,7 @@ call Math.multiply 2
 push constant 1
 call Roulette.PrintResult 2
 pop temp 0
-call Main.GetCoins 0
+call Main.getCoins 0
 call Bet.RefreshCoins 1
 pop temp 0
 push constant 0
@@ -923,12 +897,12 @@ eq
 if-goto IF_TRUE4
 goto IF_FALSE4
 label IF_TRUE4
-call Main.GetCoins 0
+call Main.getCoins 0
 call Bet.GetBet 0
 push constant 3
 call Math.multiply 2
 add
-call Main.SetCoins 1
+call Main.setCoins 1
 pop temp 0
 call Bet.GetBet 0
 push constant 2
@@ -936,7 +910,7 @@ call Math.multiply 2
 push constant 1
 call Roulette.PrintResult 2
 pop temp 0
-call Main.GetCoins 0
+call Main.getCoins 0
 call Bet.RefreshCoins 1
 pop temp 0
 push constant 0
@@ -957,12 +931,12 @@ eq
 if-goto IF_TRUE6
 goto IF_FALSE6
 label IF_TRUE6
-call Main.GetCoins 0
+call Main.getCoins 0
 call Bet.GetBet 0
 push constant 3
 call Math.multiply 2
 add
-call Main.SetCoins 1
+call Main.setCoins 1
 pop temp 0
 call Bet.GetBet 0
 push constant 2
@@ -970,7 +944,7 @@ call Math.multiply 2
 push constant 1
 call Roulette.PrintResult 2
 pop temp 0
-call Main.GetCoins 0
+call Main.getCoins 0
 call Bet.RefreshCoins 1
 pop temp 0
 push constant 0
@@ -1001,12 +975,12 @@ eq
 if-goto IF_TRUE8
 goto IF_FALSE8
 label IF_TRUE8
-call Main.GetCoins 0
+call Main.getCoins 0
 call Bet.GetBet 0
 push constant 5
 call Math.multiply 2
 add
-call Main.SetCoins 1
+call Main.setCoins 1
 pop temp 0
 call Bet.GetBet 0
 push constant 4
@@ -1014,7 +988,7 @@ call Math.multiply 2
 push constant 1
 call Roulette.PrintResult 2
 pop temp 0
-call Main.GetCoins 0
+call Main.getCoins 0
 call Bet.RefreshCoins 1
 pop temp 0
 label IF_FALSE8
